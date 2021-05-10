@@ -1,5 +1,5 @@
-from storage.models import AiModel
+from storage.models import Cases
 from django.contrib import admin
 
 # Register your models here.
-admin.site.register(AiModel)
+admin.site.register(Cases)

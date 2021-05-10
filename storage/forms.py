@@ -1,9 +1,9 @@
 from django import forms
 from django.db.models import fields
-from .models import AiModel
+from .models import Cases
 
 
-class AiModelUploadForm(forms.ModelForm):
+class CasesUploadForm(forms.ModelForm):
     class Meta:
-        model = AiModel
-        fields = ('name','summary','category','model_file','model_image')
+        model = Cases
+        fields = ('Case_Name','description','category','Case_image')

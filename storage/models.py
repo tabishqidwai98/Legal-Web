@@ -2,22 +2,27 @@ from django.db import models
 
 # Create your models here.
 
-class AiModel(models.Model):
-    """Model definition for AiModel."""
+class Cases(models.Model):
+    """Model definition for Cases."""
 
-    model_category = (
-        (1,"image"),
-        (2,"text"),
-        (3,"nlp"),
-        (4,"video"),
-        (5,"others"),
+    Case_category = (
+        (1,"Criminal Case"),
+        (2,"Civil Case"),
+        (3,"Marriage Dissolution"),
+        (4,"Paternity and Child Custody"),
+        (5,"Protection Orders Aganist Domestic Violence"),
+        (6,"Name Changes"),
+        (7,"Guardianship"),
+        (8,"Termination of Parental Rights and Adoptions"),
+        (9,"Juvenile Matters"),
+        (10,"Emancipation and Approval of Underage Marriages.")
     )
 
-    name = models.CharField(max_length=255,default='model')
-    summary = models.TextField()
-    model_file = models.FileField(upload_to='ai_models',null=True)
-    category = models.IntegerField(choices=model_category,default=model_category[0][1])
-    model_image = models.ImageField(upload_to='ai_models/images',null=True)
+    Case_Name = models.CharField(max_length=255,default='Case')
+    category = models.IntegerField(choices=Case_category,default=Case_category[0][1])
+    description = models.TextField()
+    Case_image = models.ImageField(upload_to='ai_models/images',null=True)
+    Contact_No = models.IntegerField(default=911234567890, unique=False)
        
 
     def __str__(self):
