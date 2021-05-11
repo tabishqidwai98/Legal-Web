@@ -1,3 +1,4 @@
+from users.models import User_Profile
 from django.db import models
 
 # Create your models here.
@@ -23,7 +24,7 @@ class Cases(models.Model):
     Description = models.TextField()
     Case_image = models.ImageField(upload_to='Case_dir/images',null=True)
     Contact_No = models.IntegerField(default=911234567890,unique=True)
-    Name = models.CharField(max_length=255,default='your name')
+    Name = models.ForeignKey(User_Profile,on_delete = models.CASCADE)
     email= models.EmailField(max_length=255,default='example@host.com')
        
 

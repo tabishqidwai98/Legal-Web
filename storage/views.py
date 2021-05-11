@@ -16,7 +16,7 @@ def upload_form(request):
         if filled_form.is_valid():
             filled_form.save()
             # save a message in message system
-            messages.add_message(request, messages.SUCCESS, 'AI Model details uploaded successfully')
+            messages.add_message(request, messages.SUCCESS, 'Case details uploaded successfully')
             # redirect to new page
             return redirect(to='view_model')
 

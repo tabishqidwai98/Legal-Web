@@ -24,16 +24,6 @@ class Category(models.Model):
     def __str__(self):
         return self.Category
 
-class Cases_Fought(models.Model):
-
-    Case = models.CharField(max_length=255, default="your case fought, here")
-    Summary = models.TextField()
-    category = models.ForeignKey(Category, on_delete = models.CASCADE)
-    Email = models.CharField(max_length=255, default="example@host.com")
-
-    def __str__(self):
-        return self.Case
-
 class lawyer_Profile(models.Model):
 
     Name = models.CharField(max_length=255, default = "your name")
@@ -41,12 +31,21 @@ class lawyer_Profile(models.Model):
     Phone_No = models.CharField(max_length=13 ,default=911234567890)
     Category = models.ForeignKey(Category, on_delete = models.CASCADE)
     Profile_Photo = models.ImageField(upload_to="profile",null=True)
-    Cases = models.ForeignKey(Cases_Fought, on_delete=models.CASCADE)
+    Case = models.CharField(max_length=255, default="your case fought, here")
     General_Fee = models.IntegerField(default=1000)
 
 
     def __str__(self):
         return self.Name
+
+class Cases_Fought(models.Model):
+
+    Cases = models.ForeignKey(lawyer_Profile, on_delete=models.CASCADE, default=1)
+    Summary = models.TextField()
+    category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    Email = models.CharField(max_length=255, default="example@host.com")
+    def __str__(self):
+        return self.Case
 
 
 class User_Profile(models.Model):

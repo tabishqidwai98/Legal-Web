@@ -25,3 +25,11 @@ def register(request):
             return redirect(reverse('dashboard'))      # redirect to dashboard pasword
         else:
             return render(request, 'users/register.html',{'form':CustomUserCreationForm})
+
+def lawyer_Profile(request,id):
+    context = {}
+    return render(request,'storage/add_lawyer.html',context)
+
+def User_Profile(request,id):
+    context = {}
+    return render(request,'users/add_User.html',context)
