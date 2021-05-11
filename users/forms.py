@@ -13,17 +13,17 @@ class lawyerProfileForm(forms.ModelForm):
         fields = ('Name','Email','Phone_No','Category','Profile_Photo','Case','General_Fee')
         
 
-class User_Profile(forms.ModelForm):
+class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User_Profile
         fields = ('User_name','email','contact_no','address','image','bio')
 
-class Cases_Fought(forms.ModelForm):
+class CasesFoughtForm(forms.ModelForm):
     class Meta:
         model = Cases_Fought
         fields = ('Cases','Summary','category','Email')
 
-class Category(forms.ModelForm):
+class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields= ('Name','Email','Category')

@@ -10,6 +10,5 @@ urlpatterns = [
     path('oauth/', include('social_django.urls')),
     path('',index,name='index'),
     path('add_lawyer/',lawyer_Profile,name='add_lawyer'),
-    path('add_lawyer/<int:id>/',lawyer_Profile,name='add_lawyer'),
     path('add_Users/',User_Profile,name='add_Users')
 ]
