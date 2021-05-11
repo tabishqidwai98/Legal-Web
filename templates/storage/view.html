@@ -32,8 +32,8 @@
             <div class="card">
                 <a href="{% url 'detail_model' record.id %}"><img class="card-img-top" src="{{ record.model_image.url }} " alt=""></a>
                 <div class="card-body">
-                    <h4 class="card-title"><a href="{% url 'detail_model' record.id %}">{{record.name}}</a></h4>
-                    <p class="card-text">{{record.summary}}</p>
+                    <h4 class="card-title"><a href="{% url 'detail_model' record.id %}">{{record.Case_Name}}</a></h4>
+                    <p class="card-text">{{record.Description}}</p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary" href="{% url 'detail_model' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
