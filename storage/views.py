@@ -37,7 +37,7 @@ def upload_form(request):
 class CasesListView(ListView):
     model = Cases
     template_name = "storage/view.html"
-    paginate_by = 10
+    paginate_by = 8
     
 
 def query_Cases(request):

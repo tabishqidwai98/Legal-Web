@@ -10,7 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
 class lawyerProfileForm(forms.ModelForm):
     class Meta:
         model = lawyer_Profile
-        fields = ('Name','Email','Phone_No','Category','Profile_Photo','Case','General_Fee')
+        fields = ('Name','Email','Phone_No','Category','Profile_Photo','Gender','General_Fee')
         
 
 class UserProfileForm(forms.ModelForm):

@@ -26,12 +26,17 @@ class Category(models.Model):
 
 class lawyer_Profile(models.Model):
 
+    gender = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+    )
+
     Name = models.CharField(max_length=255, default = "your name")
     Email = models.CharField(max_length=255,default="example@host.com")
     Phone_No = models.CharField(max_length=13 ,default=911234567890)
     Category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    Gender = models.CharField(max_length=50, choices=gender, default=gender[0][1])
     Profile_Photo = models.ImageField(upload_to="profile",null=True)
-    Case = models.CharField(max_length=255, default="your case fought, here")
     General_Fee = models.IntegerField(default=1000)
 
 

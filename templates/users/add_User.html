@@ -1,0 +1,30 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form action="post" enctype="multipart/form-data">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Upload Your Profile</h4>
+                        </div>
+                        <div class="card-body">
+                            {% csrf_token %}
+                            {{addUserform|crispy}}
+                        </div>
+                        <div class="card-footer text-muted">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

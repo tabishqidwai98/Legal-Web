@@ -1,0 +1,79 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block css %}
+
+{% endblock css %}
+
+
+{% block content %}
+<nav class="nav">
+    <a class="nav-link active" href="{% url 'dashboard' %}">dashboard</a>
+</nav>
+<div class="container">
+    <div class="row  justify-content-center">
+        <div class="col-l2">
+            <form class="form-inline" action="{% url 'search_ai_model' %}">
+                <div class="form-group">
+                    <label for="q" class="p-2"><i class="fa fa-search" aria-hidden="true"></i> </label>
+                    <input type="text" name="q" id="q" class="form-control " placeholder="model name" aria-describedby="qhelp">
+                    <button class="btn btn-sm btn-primary">search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {% for record in page_obj %}
+        <div class="col-lg-6 col-xs-4 my-2">
+            <div class="card">
+                <a href="{% url 'detail_model' record.id %}"><img class="card-img-top" src="{{ record.model_image.url }} " alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title"><a href="{% url 'detail_model' record.id %}">{{record.Case_Name}}</a></h4>
+                    <p class="card-text">{{record.Description}}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="{% url 'detail_model' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        {% empty %}
+        <p class="lead">No records found</p>
+        {% endfor %}
+        
+    </div>
+    <div class="row">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"></li><a class="page-link" href="?page=1">&laquo; first</a></li>
+                    <li class="page-item"></li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                    {% endif %}
+                    
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                        </a>
+                    </li>
+                    
+                    {% if page_obj.has_next %}
+                    <li class="page-item"></li><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+                    <li class="page-item"></li><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block js %}
+
+{% endblock js %}
