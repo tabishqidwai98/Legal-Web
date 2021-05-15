@@ -18,7 +18,7 @@ def upload_form(request):
             # save a message in message system
             messages.add_message(request, messages.SUCCESS, 'Case details uploaded successfully')
             # redirect to new page
-            return redirect(to='view_model')
+            return redirect(to='view_cases')
 
         else:
             # if form has errors
@@ -27,11 +27,11 @@ def upload_form(request):
             ctx = {'uploadform':filled_form}
             return render(request,'storage/add.html',ctx)
 
-    if request.method =='GET':
+    #if request.method =='GET':
         # BLANK FORM
-        form = CasesUploadForm()
-        
-    return render(request,'storage/add.html',{'uploadform':form})
+    form = CasesUploadForm()
+    ctx = {'uploadform':form}
+    return render(request,'storage/add.html',ctx)
 
 
 class CasesListView(ListView):

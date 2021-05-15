@@ -94,6 +94,35 @@ def User_Profile(request):
             ctx = {'addUserForm':filled_form}
             return render (request,'users/add_User.html',ctx)
 
+class UserProfileListView(ListView):
+    model = User_Profile
+    template_name = "users/view_User.html"
+    paginate_by = 8
+    
+
+def query_User_Profile(request):
+    query = request.GET.get('q','')
+   
+    results = User_Profile.objects.filter(name__contains=query)
+    paginator = Paginator(results, 6) # num of result to show per page, change this
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
+    context = {
+        'result':page_obj,
+        'query':query
+    }
+    
+    return render(request,'users/search_User.html',context)
+
+def detail_of_User(request,pk):
+    result = User_Profile.objects.get(pk=pk)
+    context = {'result':result}
+    return render(request,'users/detail_User.html',context)
+
+def edit_User_Profile(request,id):
+    context = {}
+    return render(request,'users/edit_User.html',context)
+
 def Cases_Fought_view(request):
     if request.method == 'GET':
         form = CasesFoughtForm()
@@ -110,3 +139,32 @@ def Cases_Fought_view(request):
             messages.add_message(request, messages.ERROR, 'Form details are invalid, please check')
             ctx = {'casesFoughtForm':filled_form}
             return render (request,'users/add_casesFought.html',ctx)
+
+class CasesFoughtListView(ListView):
+    model = Cases_Fought
+    template_name = "users/view_User.html"
+    paginate_by = 8
+    
+
+def query_Cases_Fought(request):
+    query = request.GET.get('q','')
+   
+    results = Cases_Fought.objects.filter(name__contains=query)
+    paginator = Paginator(results, 6) # num of result to show per page, change this
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
+    context = {
+        'result':page_obj,
+        'query':query
+    }
+    
+    return render(request,'users/search_User.html',context)
+
+def detail_of_Cases_Fought(request,pk):
+    result = Cases_Fought.objects.get(pk=pk)
+    context = {'result':result}
+    return render(request,'users/detail_User.html',context)
+
+def edit_Cases_Fought(request,id):
+    context = {}
+    return render(request,'users/edit_User.html',context)
