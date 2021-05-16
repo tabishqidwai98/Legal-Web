@@ -151,7 +151,7 @@ class CasesFoughtListView(ListView):
 def query_Cases_Fought(request):
     query = request.GET.get('q','')
    
-    results = Cases_Fought.objects.filter(name__contains=query)
+    results = Cases_Fought.objects.filter(Cases__contains=query)
     paginator = Paginator(results, 6) # num of result to show per page, change this
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)

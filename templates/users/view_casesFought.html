@@ -32,8 +32,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title"><a href="{% url 'fought' record.id %}">{{record.Cases}}</a></h4>
-                    <p class="card-text">{{record.summary}}</p>
-                    <p class='card-text lead'>{{ record.Category }}</p>
+                    <p class="card-text">{{record.category}}</p>
+                    <p class='card-text lead'>{{ record.Name }}</p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary" href="{% url 'fought' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>

@@ -32,19 +32,6 @@ class lawyer_Profile(models.Model):
     )
 
 
-    Case_category = (
-        ('Criminal Case',"Criminal Case"),
-        ('Civil Case',"Civil Case"),
-        ('Marriage Dissolution',"Marriage Dissolution"),
-        ('Paternity and Child Custody',"Paternity and Child Custody"),
-        ('Protection Orders Aganist Domestic Violence',"Protection Orders Aganist Domestic Violence"),
-        ('Name Changes',"Name Changes"),
-        ('Guardianship',"Guardianship"),
-        ('Termination of Parental Rights and Adoptions',"Termination of Parental Rights and Adoptions"),
-        ('Juvenile Matters',"Juvenile Matters"),
-        ('Emancipation and Approval of Underage Marriages',"Emancipation and Approval of Underage Marriages"),
-    )
-
     Name = models.CharField(max_length=255, default = "your name")
     Email = models.CharField(max_length=255,default="example@host.com")
     Phone_No = models.CharField(max_length=13 ,default=911234567890)
@@ -59,22 +46,10 @@ class lawyer_Profile(models.Model):
 
 class Cases_Fought(models.Model):
 
-    Case_category = (
-        ('Criminal Case',"Criminal Case"),
-        ('Civil Case',"Civil Case"),
-        ('Marriage Dissolution',"Marriage Dissolution"),
-        ('Paternity and Child Custody',"Paternity and Child Custody"),
-        ('Protection Orders Aganist Domestic Violence',"Protection Orders Aganist Domestic Violence"),
-        ('Name Changes',"Name Changes"),
-        ('Guardianship',"Guardianship"),
-        ('Termination of Parental Rights and Adoptions',"Termination of Parental Rights and Adoptions"),
-        ('Juvenile Matters',"Juvenile Matters"),
-        ('Emancipation and Approval of Underage Marriages',"Emancipation and Approval of Underage Marriages"),
-    )
-
-    Cases = models.ForeignKey(lawyer_Profile, on_delete=models.CASCADE, default=1)
+    Cases = models.CharField(max_length=255, default='Case Name')
     Summary = models.TextField()
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    Name = models.ForeignKey(lawyer_Profile, on_delete = models.CASCADE, default=100)
     Email = models.CharField(max_length=255, default="example@host.com")
     def __str__(self):
         return self.Cases
