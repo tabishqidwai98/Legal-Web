@@ -1,0 +1,61 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block css %}
+    
+{% endblock css %}
+
+
+{% block content %}
+<h1>Search results for {{query}}</h1>
+<div class="container">
+    <div class="row">
+        {% for record in result %}
+        <div class="col-lg-6 col-xs-4 my-2">
+            <div class="card">
+                <a href="{% url 'user_profile' record.id %}"><img class="card-img-top" src="{{ record.image.url }} " alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title"><a href="{% url 'user_profile' record.id %}">{{record.Username}}</a></h4>
+                    <p class="card-text">{{record.contact_no}}</p>
+                    <p class= "card-text lead">{{record.bio}}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="{% url 'user_profile' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="lead">No records found</p>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% if result.has_previous %}
+                    <li class="page-item"></li><a class="page-link" href="?q={{query}}&page=1">&laquo; first</a></li>
+                    <li class="page-item"></li><a class="page-link" href="?q={{query}}&page={{ result.previous_page_number }}">previous</a></li>
+                    {% endif %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link">
+                            Page {{ result.number }} of {{ result.paginator.num_pages }}
+                        </a>
+                    </li>
+                    {% if result.has_next %}
+                    <li class="page-item"></li><a class="page-link" href="?q={{query}}&page={{ result.next_page_number }}">next</a></li>
+                    <li class="page-item"></li><a class="page-link" href="?q={{query}}&page={{ result.paginator.num_pages }}">last &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block js %}
+
+{% endblock js %}

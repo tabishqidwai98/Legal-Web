@@ -16,7 +16,7 @@ class lawyerProfileForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User_Profile
-        fields = ('User_name','email','contact_no','address','image','bio')
+        fields = ('Username','email','contact_no','address','image','bio')
 
 class CasesFoughtForm(forms.ModelForm):
     class Meta:
