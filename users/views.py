@@ -57,7 +57,7 @@ class lawyerProfileListView(ListView):
 def query_Lawyer_Profile(request):
     query = request.GET.get('q','')
    
-    results = lawyer_Profile.objects.filter(name__contains=query)
+    results = lawyer_Profile.objects.filter(Name__contains=query)
     paginator = Paginator(results, 6) # num of result to show per page, change this
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
