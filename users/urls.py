@@ -1,4 +1,5 @@
 from storage.views import CasesListView
+from .views import lawyerProfileListView, CasesFoughtListView, UserProfileListView
 from django.conf.urls import include
 from django.urls import path
 
@@ -19,7 +20,7 @@ urlpatterns = [
     path('User_profile/<int:pk>', detail_of_User, name='user_profile'),
     path('search_User/', query_User_Profile,name='search_User'),
     path('add_casesFought/',Cases_Fought_view, name='add_CasesFought'),
-    path('view_fought/',CasesFoughtListView,name='view_fought'),
+    path('view_fought/',CasesFoughtListView.as_view(),name='view_fought'),
     path('fought/<int:pk>',detail_of_Cases_Fought, name='fought'),
     path('search_fought/',query_Cases_Fought,name='search_fought'),
 ]

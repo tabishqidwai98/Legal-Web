@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row  justify-content-center">
         <div class="col-l2">
-            <form class="form-inline" action="{% url 'search_ai_model' %}">
+            <form class="form-inline" action="{% url 'search_fought' %}">
                 <div class="form-group">
                     <label for="q" class="p-2"><i class="fa fa-search" aria-hidden="true"></i> </label>
                     <input type="text" name="q" id="q" class="form-control " placeholder="model name" aria-describedby="qhelp">
@@ -30,13 +30,13 @@
         {% for record in page_obj %}
         <div class="col-lg-6 col-xs-4 my-2">
             <div class="card">
-                <a href="{% url 'detail_model' record.id %}"><img class="card-img-top" src="{{ record.model_image.url }} " alt=""></a>
                 <div class="card-body">
-                    <h4 class="card-title"><a href="{% url 'detail_model' record.id %}">{{record.Cases}}</a></h4>
+                    <h4 class="card-title"><a href="{% url 'fought' record.id %}">{{record.Cases}}</a></h4>
                     <p class="card-text">{{record.summary}}</p>
+                    <p class='card-text lead'>{{ record.Category }}</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="{% url 'detail_model' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
+                    <a class="btn btn-primary" href="{% url 'fought' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
                 </div>
             </div>
         </div>

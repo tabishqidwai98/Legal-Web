@@ -128,13 +128,13 @@ def Cases_Fought_view(request):
         form = CasesFoughtForm()
         return render(request,'users/add_casesFought.html',{'casesFoughtForm':form})
     elif request.method == 'POST':
-        filled_form = CasesFoughtForm(request.POST, request.FILE)
+        filled_form = CasesFoughtForm(request.POST)
         if filled_form.is_valid():
             filled_form.save()
 
             messages.add_message(request, messages.SUCCESS, 'details saved successfully')
 
-            return redirect(to='add_casesFought')
+            return redirect(to='view_fought')
         else:
             messages.add_message(request, messages.ERROR, 'Form details are invalid, please check')
             ctx = {'casesFoughtForm':filled_form}
