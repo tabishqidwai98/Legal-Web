@@ -31,12 +31,12 @@ def register(request):
             return render(request, 'users/register.html',{'form':CustomUserCreationForm})
 
 @login_required
-def lawyer_Profile(request):
+def lawyer_Profile_views(request):
     if request.method == 'GET':
         form = lawyerProfileForm()
         return render(request,'users/add_lawyer.html',{'addProfileform':form})
     elif request.method == 'POST':
-        filled_form = lawyerProfileForm(request.POST, request.FILE)
+        filled_form = lawyerProfileForm(request.POST, request.FILES)
         if filled_form.is_valid():
             filled_form.save()
 
@@ -77,6 +77,7 @@ def edit_lawyer_profile(request,id):
     context = {}
     return render(request,'users/edit_lawyer.html',context)
 
+@login_required
 def User_Profile(request):
     if request.method == 'GET':
         form = UserProfileForm()
@@ -123,6 +124,7 @@ def edit_User_Profile(request,id):
     context = {}
     return render(request,'users/edit_User.html',context)
 
+@login_required
 def Cases_Fought_view(request):
     if request.method == 'GET':
         form = CasesFoughtForm()
@@ -142,7 +144,7 @@ def Cases_Fought_view(request):
 
 class CasesFoughtListView(ListView):
     model = Cases_Fought
-    template_name = "users/view_User.html"
+    template_name = "users/view_casesFought.html"
     paginate_by = 8
     
 
@@ -158,13 +160,13 @@ def query_Cases_Fought(request):
         'query':query
     }
     
-    return render(request,'users/search_User.html',context)
+    return render(request,'users/search_casesFought.html',context)
 
 def detail_of_Cases_Fought(request,pk):
     result = Cases_Fought.objects.get(pk=pk)
     context = {'result':result}
-    return render(request,'users/detail_User.html',context)
+    return render(request,'users/detail_casesFought.html',context)
 
 def edit_Cases_Fought(request,id):
     context = {}
-    return render(request,'users/edit_User.html',context)
+    return render(request,'users/edit_casesFought.html',context)
