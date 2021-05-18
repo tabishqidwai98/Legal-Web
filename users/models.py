@@ -46,13 +46,13 @@ class lawyer_Profile(models.Model):
 
 class Cases_Fought(models.Model):
 
-    Cases = models.CharField(max_length=255, default='Case Name')
+    Case = models.CharField(max_length=255, default='Case Name')
     Summary = models.TextField()
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
     Name = models.ForeignKey(lawyer_Profile, on_delete = models.CASCADE, default=100)
     Email = models.CharField(max_length=255, default="example@host.com")
     def __str__(self):
-        return self.Cases
+        return self.Case
 
 
 class User_Profile(models.Model):

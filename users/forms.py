@@ -21,7 +21,7 @@ class UserProfileForm(forms.ModelForm):
 class CasesFoughtForm(forms.ModelForm):
     class Meta:
         model = Cases_Fought
-        fields = ('Cases','Summary','category','Name','Email')
+        fields = ('Case','Summary','category','Name','Email')
 
 class CategoryForm(forms.ModelForm):
     class Meta:
