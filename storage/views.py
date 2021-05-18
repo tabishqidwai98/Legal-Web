@@ -43,7 +43,7 @@ class CasesListView(ListView):
 def query_Cases(request):
     query = request.GET.get('q','')
    
-    results = Cases.objects.filter(name__contains=query)
+    results = Cases.objects.filter(CaseName__contains=query)
     paginator = Paginator(results, 6) # num of result to show per page, change this
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)

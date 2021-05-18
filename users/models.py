@@ -39,7 +39,7 @@ class lawyer_Profile(models.Model):
     Gender = models.CharField(max_length=50, choices=gender, default=gender[0][1])
     Profile_Photo = models.ImageField(upload_to="profile",null=True)
     General_Fee = models.IntegerField(default=1000)
-
+    Bio = models.TextField(default="Bio")
 
     def __str__(self):
         return self.Name
@@ -64,5 +64,5 @@ class User_Profile(models.Model):
     bio = models.TextField()
 
     def __str__(self):
-        return self.User_name
+        return self.Username
 
