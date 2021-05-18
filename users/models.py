@@ -56,11 +56,18 @@ class Cases_Fought(models.Model):
 
 
 class User_Profile(models.Model):
+
+    gender = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+    )
+
     Username = models.CharField(max_length = 255, default = 'your name')
     email = models.EmailField(max_length = 255, default= "example@host.com")
     contact_no = models.IntegerField(default=911234567890)
     address = models.TextField()
     image = models.ImageField()
+    gender = models.CharField(max_length=255,choices=gender,default=gender[0][1])
     bio = models.TextField()
 
     def __str__(self):
