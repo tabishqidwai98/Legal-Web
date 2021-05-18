@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
-from .models import Cases
+from django.shortcuts import render, redirect, HttpResponse
+from .models import Cases, ReviewCases
 from .forms import CasesUploadForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.generic import ListView
 from django.core.paginator import Paginator
+import mimetypes
+import os
 
 # Create your views here.
 @login_required
@@ -14,7 +16,10 @@ def upload_form(request):
         # after form is submitted
         filled_form = CasesUploadForm(request.POST,request.FILES)
         if filled_form.is_valid():
-            filled_form.save()
+            #filled_form.save()
+            form_data = filled_form.save(commit=False)
+            form_data.Name = request.user
+            form_data.save()
             # save a message in message system
             messages.add_message(request, messages.SUCCESS, 'Case details uploaded successfully')
             # redirect to new page
@@ -56,9 +61,11 @@ def query_Cases(request):
 
 def detail_of_Cases(request,pk):
     result = Cases.objects.get(pk=pk)
-    context = {'result':result}
+    reviews = ReviewCases.objects.filter(Case_id=pk)
+    context = {'result':result,'reviews':reviews}
     return render(request,'storage/detail.html',context)
 
 def edit_Cases(request,id):
-    context = {}
+    result = Cases.objects.get(pk=id)
+    context = {'result':result}
     return render(request,'storage/edit.html',context)
