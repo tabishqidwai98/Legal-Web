@@ -14,20 +14,19 @@
     <div class="row my-5">
         <div class="col-lg-6">
             <div class="card">
-                <img src="{{ result.Case_image.url }}" class="card-img-top" alt="{{ result.CaseName }}">
+                <img src="{{ result.case_image.url }}" class="card-img-top" alt="{{ result.caseName }}">
                 <div class="card-body">
                     
                     <blockquote class="blockquote">
-                        <p class="mb-0">{{result.CaseName}}</p>
+                        <p class="mb-0">{{result.caseName}}</p>
                     </blockquote>
                 </div>
                 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Upload: {{result.Name}}</li>
-                    <li class="list-group-item">Posted on:{{result.Requested_on}}</li>
-                    <li class="list-group-item">{{result.Category}}</li>
-                    <li class="list-group-item">Phone no.:{{result.Contact_No}}</li>
-                    <li class="list-group-item">{{result.email}}</li>
+                    <li class="list-group-item">Upload: {{result.user}}</li>
+                    <li class="list-group-item">Posted on:{{result.requested_on}}</li>
+                    <li class="list-group-item">{{result.category}}</li>
+                    <li class="list-group-item">Phone no.:{{result.contact_No}}</li>
                     
                 </ul>
                 <div class="card-body">
@@ -40,7 +39,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">detail description</h4>
-                    <p class="card-text">{{result.Description|linebreaks}}</p>
+                    <p class="card-text">{{result.description|linebreaks}}</p>
                 </div>
             </div>
         </div>
@@ -74,7 +73,7 @@
                     {% empty %}
                         <div class="jumbotron">
                             <h4 class="display-3">No review found</h4>
-                            <p class="lead">be the first to review the AI model</p>
+                            <p class="lead">be the first to review the requested Case</p>
                         </div>
                     {% endfor %}
         

@@ -30,13 +30,16 @@
         {% for record in page_obj %}
         <div class="col-lg-6 col-xs-4 my-2">
             <div class="card">
-                <a href="{% url 'detail_cases' record.id %}"><img class="card-img-top" src="{{ record.Case_image.url }} " alt=""></a>
+                <a href="{% url 'detail_cases' record.id %}"><img class="card-img-top" src="{{ record.case_image.url }} " alt=""></a>
                 <div class="card-body">
-                    <h4 class="card-title"><a href="{% url 'detail_cases' record.id %}">{{record.CaseName}}</a></h4>
-                    <p class="card-text">{{record.Description}}</p>
+                    <h4 class="card-title"><a href="{% url 'detail_cases' record.id %}">{{record.caseName}}</a></h4>
+                    <p class="card-text">{{record.description}}</p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary" href="{% url 'detail_cases' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
+                    <a class="btn btn-warning" href="{% url 'delete_case' record.pk %}"><i class="fa fa-remove" aria-hidden="true"></i>delete</a>
+                    <a class="btn btn-info" href="{% url 'edit_case' record.pk %}"><i class="fa fa-edit" aria-hidden="true"></i>edit</a>
+
                 </div>
             </div>
         </div>

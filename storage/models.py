@@ -1,4 +1,4 @@
-from users.models import User_Profile
+from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
 from django.core.validators import MinValueValidator,MaxValueValidator
@@ -21,26 +21,25 @@ class Cases(models.Model):
         ('Emancipation and Approval of Underage Marriages',"Emancipation and Approval of Underage Marriages"),
     )
 
-    CaseName = models.CharField(max_length=255,default='Case')
-    Category = models.CharField(choices=Case_category,default=Case_category[0][1], max_length=50)
-    Description = models.TextField()
-    Case_image = models.ImageField(upload_to='Case_dir/images',null=True)
-    Contact_No = models.IntegerField(default=911234567890,unique=True)
-    Name = models.ForeignKey(User_Profile,on_delete = models.CASCADE)
-    email= models.EmailField(max_length=255,default='example@host.com')
-    Requested_on = models.DateTimeField(auto_now=True)
+    caseName = models.CharField(max_length=255,default='Case')
+    category = models.CharField(choices=Case_category,default=Case_category[0][1], max_length=50)
+    description = models.TextField()
+    case_image = models.ImageField(upload_to='Case_dir/images',null=True)
+    contact_No = models.IntegerField(default=911234567890,unique=True)
+    user = models.ForeignKey(User,on_delete = models.CASCADE, default=100)
+    requested_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.CaseName
+        return self.caseName
 
 
 class ReviewCases(models.Model):
     title = models.CharField(max_length=225,default="review title")
     detail = models.TextField()
-    reviewer = models.ForeignKey(User_Profile,on_delete=models.DO_NOTHING)
-    Case = models.ForeignKey(Cases,on_delete=models.CASCADE)
+    reviewer = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    case = models.ForeignKey(Cases,on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(default=3,validators=[MinValueValidator(1),MaxValueValidator(5)])
     uploaded_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.title} for {self.Case}'
+        return f'{self.title} for {self.case}'

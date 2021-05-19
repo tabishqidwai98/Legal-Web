@@ -1,0 +1,43 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block css %}
+    
+{% endblock css %}
+    
+
+{% block content %}
+    <h4>Edit Cases Requested Details</h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form method="post">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Edit Details</h5>
+                        </div>
+                        <div class="card-body">
+                            {% csrf_token %}
+                            {{cform|crispy}}
+                        </div>
+                        <div class="card-footer text-muted">
+                            <button type="submit" class="btn btn-primary">save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+
+
+{% endblock content %}
+    
+
+
+{% block js %}
+    
+{% endblock js %}
+    

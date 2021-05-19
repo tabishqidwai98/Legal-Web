@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import Cases, ReviewCases
+from users.models import Profile
 from .forms import CasesUploadForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -18,7 +19,7 @@ def upload_form(request):
         if filled_form.is_valid():
             #filled_form.save()
             form_data = filled_form.save(commit=False)
-            form_data.Name = request.user
+            form_data.uploader = request.user
             form_data.save()
             # save a message in message system
             messages.add_message(request, messages.SUCCESS, 'Case details uploaded successfully')
@@ -48,7 +49,7 @@ class CasesListView(ListView):
 def query_Cases(request):
     query = request.GET.get('q','')
    
-    results = Cases.objects.filter(CaseName__contains=query)
+    results = Cases.objects.filter(caseName__contains=query)
     paginator = Paginator(results, 6) # num of result to show per page, change this
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
@@ -65,7 +66,26 @@ def detail_of_Cases(request,pk):
     context = {'result':result,'reviews':reviews}
     return render(request,'storage/detail.html',context)
 
-def edit_Cases(request,id):
-    result = Cases.objects.get(pk=id)
-    context = {'result':result}
-    return render(request,'storage/edit.html',context)
+def edit_Case(request,pk):
+    try:
+        data = Cases.objects.get(pk=pk)
+        if request.method == 'POST':
+            form = CasesUploadForm(request.POST,instance=data)
+            if form.is_valid():
+                form.save()
+                return redirect(to='view_cases')
+        else:
+            form = CasesUploadForm(instance=data)
+        context = {'cform': form}
+        return render(request,'storage/edit.html',context)
+    except Exception as e:
+        print('some error occurred')
+        return redirect(to='view_cases')
+
+def delete_case(request,pk):
+    try:
+        Cases.objects.filter(pk=pk).delete()
+    except:
+        print('some error occurred')
+
+    return redirect(to='view_cases')

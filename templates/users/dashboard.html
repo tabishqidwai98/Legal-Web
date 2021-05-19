@@ -35,7 +35,11 @@
                                 <a href="{% url 'view_lawyer' %}">view lawyers</a><br>
                                 <a href="{% url 'add_CasesFought' %}">add Cases Fought</a> <br>
                                 <a href="{% url 'view_fought' %}">view fought cases</a><br>
-                                <a href="{% url 'logout' %}">Log out</a>~
+                                
+                                <a href="{% url 'your_profile_user' user.pk %}">Your Profile</a><br>
+                                
+
+                                <a href="{% url 'logout' %}">Log out</a>
                             {% else %}
                                 <a href="{% url 'login' %}">Login</a>
                             {% endif %}

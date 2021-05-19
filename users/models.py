@@ -1,10 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Category(models.Model):
 
-    Case_category = (
+    case_category = (
         ('Criminal Case',"Criminal Case"),
         ('Civil Case',"Civil Case"),
         ('Marriage Dissolution',"Marriage Dissolution"),
@@ -17,59 +18,47 @@ class Category(models.Model):
         ('Emancipation and Approval of Underage Marriages',"Emancipation and Approval of Underage Marriages"),
     )
 
-    Name = models.CharField(max_length=255, default="Your name here")
-    Email = models.EmailField(max_length=255,default='example@host.com')
-    Category = models.CharField(choices=Case_category,default = Case_category[0][1], max_length=50)
+    category = models.CharField(choices=case_category,default = case_category[0][1], max_length=50)
 
     def __str__(self):
-        return self.Category
-
-class lawyer_Profile(models.Model):
-
-    gender = (
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-    )
-
-
-    Name = models.CharField(max_length=255, default = "your name")
-    Email = models.CharField(max_length=255,default="example@host.com")
-    Phone_No = models.CharField(max_length=13 ,default=911234567890)
-    Category = models.ForeignKey(Category, on_delete = models.CASCADE)
-    Gender = models.CharField(max_length=50, choices=gender, default=gender[0][1])
-    Profile_Photo = models.ImageField(upload_to="profile",null=True)
-    General_Fee = models.IntegerField(default=1000)
-    Bio = models.TextField(default="Bio")
-
-    def __str__(self):
-        return self.Name
+        return self.category
 
 class Cases_Fought(models.Model):
 
-    Case = models.CharField(max_length=255, default='Case Name')
-    Summary = models.TextField()
+    status_value =(
+        ('win','win'),
+        ('lose', 'lose')
+    )
+
+    case = models.CharField(max_length=255, default='Case Name')
+    summary = models.TextField()
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
-    Name = models.ForeignKey(lawyer_Profile, on_delete = models.CASCADE, default=100)
-    Email = models.CharField(max_length=255, default="example@host.com")
+    user = models.ForeignKey(User, on_delete = models.CASCADE, default=100)
+    status = models.CharField(max_length=255, choices = status_value, default=status_value[0][1])
     def __str__(self):
-        return self.Case
+        return self.case
 
 
-class User_Profile(models.Model):
+class Profile(models.Model):
 
     gender = (
         ('Male', 'Male'),
         ('Female', 'Female'),
     )
 
-    Username = models.CharField(max_length = 255, default = 'your name')
-    email = models.EmailField(max_length = 255, default= "example@host.com")
+    user_kind = (
+        ('user','user'),
+        ('lawyer', 'lawyer')
+    )
+
+    user = models.ForeignKey(User,on_delete = models.CASCADE)
     contact_no = models.IntegerField(default=911234567890)
     address = models.TextField()
     image = models.ImageField()
     gender = models.CharField(max_length=255,choices=gender,default=gender[0][1])
     bio = models.TextField()
+    user_type = models.CharField(max_length=255, choices = user_kind, default=user_kind[0][1])
 
     def __str__(self):
-        return self.Username
+        return self.user
 
