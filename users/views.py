@@ -30,6 +30,8 @@ def register(request):
         else:
             return render(request, 'users/register.html',{'form':CustomUserCreationForm})
 
+
+
 @login_required
 def lawyer_Profile_views(request):
     if request.method == 'GET':
