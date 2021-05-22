@@ -112,6 +112,8 @@ AUTHENTICATION_BACKENDS = [
     "social_core.backends.github.GithubOAuth2",  # github register
 ]
 
+AUTH_USER_MODEL ='users.User'
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 

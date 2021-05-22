@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
 from django.core.validators import MinValueValidator,MaxValueValidator
+from users.models import Client
 
 # Create your models here.
 
@@ -26,7 +27,7 @@ class Cases(models.Model):
     description = models.TextField()
     case_image = models.ImageField(upload_to='Case_dir/images',null=True)
     contact_No = models.IntegerField(default=911234567890,unique=True)
-    user = models.ForeignKey(User,on_delete = models.CASCADE, default=100)
+    user = models.ForeignKey(Client,on_delete = models.CASCADE, default=100)
     requested_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -36,7 +37,7 @@ class Cases(models.Model):
 class ReviewCases(models.Model):
     title = models.CharField(max_length=225,default="review title")
     detail = models.TextField()
-    reviewer = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    reviewer = models.ForeignKey(Client,on_delete=models.DO_NOTHING)
     case = models.ForeignKey(Cases,on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(default=3,validators=[MinValueValidator(1),MaxValueValidator(5)])
     uploaded_on = models.DateTimeField(auto_now=True)

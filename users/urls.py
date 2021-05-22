@@ -2,15 +2,20 @@ from storage.views import CasesListView
 from .views import lawyerProfileListView, CasesFoughtListView, UserProfileListView
 from django.conf.urls import include
 from django.urls import path
+from . import views
 
-from .views import Cases_Fought_view, dashboard, detail_of_lawyer, register,index, User_Profile_view, lawyer_Profile_views, query_Lawyer_Profile, UserProfileListView, query_User_Profile, detail_of_User, CasesFoughtListView, query_Cases_Fought, detail_of_Cases_Fought, lawyerProfileListView, your_User_Profile
+from .views import Cases_Fought_view, dashboard, detail_of_lawyer, register,index, User_Profile_view, lawyer_Profile_views, query_Lawyer_Profile, UserProfileListView, query_User_Profile, detail_of_User, CasesFoughtListView, query_Cases_Fought, detail_of_Cases_Fought, lawyerProfileListView, ClientSignUpView, LawyerSignUpView, your_User_Profile
 
 urlpatterns = [
     path('dashboard/', dashboard, name='dashboard'),
     path('accounts/',include('django.contrib.auth.urls')),
     path('register/', register, name='register'),
+    path('accounts/signup', register, name='register'),
+    path('accounts/signup/client', ClientSignUpView.as_view(), name='client_register'),
+    path('accounts/signup/lawyer', LawyerSignUpView.as_view(), name='lawyer_register'),
     path('oauth/', include('social_django.urls')),
     path('',index,name='index'),
+    path('profile/',views.lawyer_Profile,name='profile'),
 
     path('add_lawyer/',lawyer_Profile_views,name='add_lawyer'),
     path('view_lawyer/', lawyerProfileListView.as_view(), name='view_lawyer'),

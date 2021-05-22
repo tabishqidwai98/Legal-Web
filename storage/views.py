@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import Cases, ReviewCases
-from users.models import Profile
 from .forms import CasesUploadForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
