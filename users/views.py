@@ -8,10 +8,17 @@ from django.views.generic import ListView
 from django.core.paginator import Paginator
 from .models import Category,Profile, Cases_Fought
 
+
 # Create your views here.
 
 def index(request):
     return render(request, 'index.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
 
 def dashboard(request):
     return render(request, 'users/dashboard.html')

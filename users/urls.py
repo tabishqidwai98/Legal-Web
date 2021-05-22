@@ -2,6 +2,7 @@ from storage.views import CasesListView
 from .views import lawyerProfileListView, CasesFoughtListView, UserProfileListView
 from django.conf.urls import include
 from django.urls import path
+from users import views
 
 from .views import Cases_Fought_view, dashboard, detail_of_lawyer, register,index, User_Profile_view, lawyer_Profile_views, query_Lawyer_Profile, UserProfileListView, query_User_Profile, detail_of_User, CasesFoughtListView, query_Cases_Fought, detail_of_Cases_Fought, lawyerProfileListView, your_User_Profile
 
@@ -11,6 +12,8 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('oauth/', include('social_django.urls')),
     path('',index,name='index'),
+    path('about/',views.about,name='about'),
+    path('contact/',views.contact,name='contact'),
 
     path('add_lawyer/',lawyer_Profile_views,name='add_lawyer'),
     path('view_lawyer/', lawyerProfileListView.as_view(), name='view_lawyer'),
