@@ -18,7 +18,7 @@ def about(request):
     return render(request, 'about.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+     return render(request, 'contact.html')
 
 def dashboard(request):
     return render(request, 'users/dashboard.html')
@@ -184,3 +184,5 @@ def detail_of_Cases_Fought(request,pk):
 def edit_Cases_Fought(request,id):
     context = {}
     return render(request,'users/edit_casesFought.html',context)
+
+
