@@ -22,7 +22,7 @@ class Cases(models.Model):
     )
 
     caseName = models.CharField(max_length=255,default='Case')
-    category = models.CharField(choices=Case_category,default=Case_category[0][1], max_length=50)
+    category = models.CharField(choices=Case_category, default=Case_category[0][1], max_length=50)
     description = models.TextField()
     case_image = models.ImageField(upload_to='Case_dir/images',null=True)
     contact_No = models.IntegerField(default=911234567890,unique=True)
