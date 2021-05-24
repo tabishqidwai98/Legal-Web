@@ -16,8 +16,8 @@ urlpatterns = [
     path('oauth/', include('social_django.urls')),
     path('',index,name='index'),
     path('profile/',views.lawyer_Profile,name='profile'),
-     path('about/',about,name='about'),
-     path('contact/',contact,name='contact'),
+     path('about/',views.about,name='about'),
+     path('contact/',views.contact,name='contact'),
 
     path('add_lawyer/',lawyer_Profile_views,name='add_lawyer'),
     path('view_lawyer/', lawyerProfileListView.as_view(), name='view_lawyer'),

@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView
 from django.core.paginator import Paginator
-from .models import Category, Cases_Fought,User,Lawyer, Client
+from .models import Category, Cases_Fought, Contact,User,Lawyer, Client
 
 
 # Create your views here.
@@ -18,7 +18,17 @@ def about(request):
     return render(request, 'about.html')
 
 def contact(request):
-     return render(request, 'contact.html')
+    if request.method=='POST':
+     full_name=request.POST.get('full_name',"")
+     email=request.POST.get('email',"")
+     subject=request.POST.get('subject',"")
+     message=request.POST.get('message',"")
+     contact=Contact(full_name=full_name)
+     contact=Contact(email=email)
+     contact=Contact(subject=subject)
+     contact=Contact(message=message)
+     contact.save()
+    return render(request, 'contact.html')
 
 def dashboard(request):
     return render(request, 'users/dashboard.html')

@@ -65,3 +65,13 @@ class Cases_Fought(models.Model):
     status = models.CharField(max_length=255, choices = status_value, default=status_value[0][1])
     def __str__(self):
         return self.case
+  
+class Contact(models.Model):
+
+      full_name=models.CharField(max_length=100)
+      email=models.EmailField(max_length=100)
+      subject=models.CharField(max_length=100)
+      message=models.TextField(max_length=400)
+      def __str__(self):
+        return self.full_name
+

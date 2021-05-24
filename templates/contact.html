@@ -12,7 +12,7 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap');
 
-            .{
+            *{
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
@@ -30,19 +30,20 @@
             }
             .contact .content{
                 max-width: 800px;
-                text-align: left;
+                text-align: center;
+                padding-bottom: 50px;
 
             }
             .contact .content h2{
                 font-size: 36px;
                 font-weight: 500;
-                color: rgb(10, 12, 150);
+                color: rgb(0, 0, 0);
             }
             .contact .content p{
                 font-size: 20px;
                 font-weight: 300;
                 font-style: normal;
-                color: rgb(10, 12, 150));
+                color: rgb(0, 0, 0);
             }
             .container{
                 width: 100%;
@@ -60,19 +61,8 @@
             .container .contactInfo .box{
                 position: relative;
                 padding: 20px 0;
+                padding-right: 100px;
                 display: flex;
-               
-
-            }
-            .container .contactInfo .box .icon{
-                min-width: 60px;
-                height: 60px;
-                background: #d5d5d5;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50%;
-                font-size: 22px;
             }
             .container .contactInfo .box .text{
                 display: flex;
@@ -93,8 +83,6 @@
                 padding: 40px;
                 background: #fff;
                 box-shadow: 0 0 20px 0 #999;
-                
-                
             }
             .form{
                 margin: 35px;
@@ -122,6 +110,9 @@
                 border: none;
                 outline: none;
                 resize: none;
+            }
+            .contactForm .inputBox textarea{
+                height: 100px;
             }
             .contactForm .inputBox span{
                 position: absolute;
@@ -195,26 +186,27 @@
                     
                 </div>
                 <div class="contactForm">
-                    <form > 
-                        <h2>Send Message</h2>
+                    <form action="" method="POST" > 
+                        {% csrf_token %}
+                        <h2>CONTACT US</h2>
                         <div class="inputBox">
-                            <input type="text" name="" placeholder="Full Name" required="required">
+                            <input type="text" name="full_name" placeholder="Full Name" required="required">
                            
                         </div>
                         <div class="inputBox">
-                            <input type="text" name="" placeholder="Subject" required="required">
+                            <input type="text" name="subject" placeholder="Subject" required="required">
                             
                         </div>
                         <div class="inputBox">
-                            <input type="text" name="" placeholder="Email" required="required">
+                            <input type="text" name="email" placeholder="Email" required="required">
                             
                         </div>
                         <div class="inputBox">
-                            <textarea cols="30" rows="10"  placeholder="Type your message here.." required></textarea> 
+                            <textarea cols="30" name="message" rows="10" placeholder="Type your message here..." required></textarea> 
                             
                         </div>
-                        
-                            <button type="button" class="btn"> Send Message </button>
+
+                        <button type="submit" class="btn"> Send Message </button>
                             
                        
                     </form>
