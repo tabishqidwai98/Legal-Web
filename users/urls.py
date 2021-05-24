@@ -1,5 +1,5 @@
 from storage.views import CasesListView
-from .views import lawyerProfileListView, CasesFoughtListView, UserProfileListView
+from .views import about, contact, lawyerProfileListView, CasesFoughtListView, UserProfileListView
 from django.conf.urls import include
 from django.urls import path
 from . import views
@@ -16,6 +16,8 @@ urlpatterns = [
     path('oauth/', include('social_django.urls')),
     path('',index,name='index'),
     path('profile/',views.lawyer_Profile,name='profile'),
+     path('about/',about,name='about'),
+     path('contact/',contact,name='contact'),
 
     path('add_lawyer/',lawyer_Profile_views,name='add_lawyer'),
     path('view_lawyer/', lawyerProfileListView.as_view(), name='view_lawyer'),

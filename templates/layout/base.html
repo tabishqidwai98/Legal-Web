@@ -33,6 +33,10 @@
   .navbar-light .navbar-brand{
       color: #fff;
   }
+  .navbar-light .navbar-brand:hover{
+      color: #fff;
+  }
+  
  
 .nav-link{
     font-size: 1.5em!important;
@@ -40,12 +44,17 @@
     
 }
 
-
 .navbar.navbar-light .navbar-nav .nav-item .nav-link {
-    color: #fff;
+    color: rgb(255, 255, 255);
     -webkit-transition: .35s;
-    transition: .35s
+    transition: .35s;
 }
+.navbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
+    color: rgb(255, 255, 255);
+    
+}
+
+/*footer*/
 
 .social a{
     font-size: 2.5em;
@@ -89,13 +98,13 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Home</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="about/">About</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="dashboard/">Dashboard</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="contact/">Contact</a>
             </li>
           </ul>
