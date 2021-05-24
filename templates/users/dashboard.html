@@ -12,7 +12,7 @@
         background-position: right;
         height: 100vh;
     }
-
+</style>
     
 {% endblock css %}
     
@@ -37,7 +37,7 @@
                                 <a href="{% url 'add_CasesFought' %}">add Cases Fought</a> <br>
                                 <a href="{% url 'view_fought' %}">view fought cases</a><br>
                                 
-                                <a href="{% url 'your_profile_user' user.pk %}">Your Profile</a><br>
+                                <a href="{% url 'profile' %}">Your Profile</a><br>
                                 
 
                                 <a href="{% url 'logout' %}">Log out</a>

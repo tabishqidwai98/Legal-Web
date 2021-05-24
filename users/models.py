@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -23,6 +25,32 @@ class Category(models.Model):
     def __str__(self):
         return self.category
 
+
+class User(AbstractUser):
+    is_lawyer = models.BooleanField(default=False)
+    is_client = models.BooleanField(default=False)
+
+class Lawyer(models.Model):
+    GENDER_CHOICE = (('M','Male'),('F',"Female"))
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    designation = models.CharField(max_length=25,default='inter lawyer')
+    gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='M')
+    city = models.CharField(max_length=25,default='lucknow')
+    lawyertype =models.CharField(max_length=25,default='Criminal Lawyer')
+    experience = models.FloatField(default=1,help_text='no of years as lawyer')
+
+    def __str__(self):
+        return self.user
+
+class Client(models.Model):
+    GENDER_CHOICE = (('M','Male'),('F',"Female"))
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='M')
+
+    def __str__(self):
+        return self.user
+
+
 class Cases_Fought(models.Model):
 
     status_value =(
@@ -33,32 +61,7 @@ class Cases_Fought(models.Model):
     case = models.CharField(max_length=255, default='Case Name')
     summary = models.TextField()
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
-    user = models.ForeignKey(User, on_delete = models.CASCADE, default=100)
+    user = models.ForeignKey(Lawyer, on_delete = models.CASCADE, default=100)
     status = models.CharField(max_length=255, choices = status_value, default=status_value[0][1])
     def __str__(self):
         return self.case
-
-
-class Profile(models.Model):
-
-    gender = (
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-    )
-
-    user_kind = (
-        ('user','user'),
-        ('lawyer', 'lawyer')
-    )
-
-    user = models.ForeignKey(User,on_delete = models.CASCADE)
-    contact_no = models.IntegerField(default=911234567890)
-    address = models.TextField()
-    image = models.ImageField()
-    gender = models.CharField(max_length=255,choices=gender,default=gender[0][1])
-    bio = models.TextField()
-    user_type = models.CharField(max_length=255, choices = user_kind, default=user_kind[0][1])
-
-    def __str__(self):
-        return self.user
-

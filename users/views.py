@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.urls import reverse
-from .forms import CustomUserCreationForm,ProfileForm, CasesFoughtForm
+from .forms import CasesFoughtForm, LawyerForm, ClientForm, ClientSignUpForm, LawyerSignUpForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.core.paginator import Paginator
-from .models import Category,Profile, Cases_Fought
+from .models import Category, Cases_Fought,User,Lawyer, Client
 
 
 # Create your views here.
@@ -24,20 +24,51 @@ def dashboard(request):
     return render(request, 'users/dashboard.html')
 
 def register(request):
-    if request.method == 'GET': # agar page open kia aapne
-        return render(request, 'users/register.html',{'form':CustomUserCreationForm})
-    elif request.method == 'POST': # agar form submit kra to
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)      
-            user.backend = "django.contrib.auth.backends.ModelBackend"
-            user.save()             # save the user detail in database
-            login(request, user)    # let the autologin work
-            return redirect(reverse('dashboard'))      # redirect to dashboard pasword
+    return render(request, 'users/register.html')
+
+class ClientSignUpView(CreateView):
+    model = User
+    form_class = ClientSignUpForm
+    template_name = 'registration/signup_form.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'client'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        return redirect('dashboard')
+
+class LawyerSignUpView(CreateView):
+    model = User
+    form_class = LawyerSignUpForm
+    template_name = 'registration/signup_form.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'lawyer'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        return redirect('dashboard') 
+
+def lawyer_Profile(request):
+    if request.method == "POST":
+        user_form = LawyerForm(request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request,('Your profile was successfully updated!'))
         else:
-            return render(request, 'users/register.html',{'form':CustomUserCreationForm})
+            messages.error(request,('Unable to complete request'))
+        return redirect ("profile")
+    user_form = LawyerForm()
+    return render(request = request, template_name ="users/profile.html", context = {"user":request.user, 
+        "user_form": user_form})
 
-
+def lawyer_Profile_views(request, pk):
+    result = Lawyer.objects.get(pk=pk)
+    context = {'result':result}
+    return render(request,'users/detail_lawyer.html',context)
 
 @login_required
 def lawyer_Profile_views(request):
@@ -58,7 +89,7 @@ def lawyer_Profile_views(request):
             return render (request,'users/add_lawyer.html',ctx)
 
 class lawyerProfileListView(ListView):
-    model = Profile
+    model = Lawyer
     template_name = "users/view_lawyer.html"
     paginate_by = 8
     
@@ -66,7 +97,7 @@ class lawyerProfileListView(ListView):
 def query_Lawyer_Profile(request):
     query = request.GET.get('q','')
    
-    results = Profile.objects.filter(Name__contains=query)
+    results = Lawyer.objects.filter(user__contains=query)
     paginator = Paginator(results, 6) # num of result to show per page, change this
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
@@ -78,7 +109,7 @@ def query_Lawyer_Profile(request):
     return render(request,'users/search_lawyer.html',context)
 
 def detail_of_lawyer(request,pk):
-    result = Profile.objects.get(pk=pk)
+    result = Lawyer.objects.get(pk=pk)
     context = {'result':result}
     return render(request,'users/detail_lawyer.html',context)
 
@@ -105,7 +136,7 @@ def User_Profile_view(request):
             return render (request,'users/add_User.html',ctx)
 
 class UserProfileListView(ListView):
-    model = Profile
+    model = Client
     template_name = "users/view_User.html"
     paginate_by = 8
     
@@ -113,7 +144,7 @@ class UserProfileListView(ListView):
 def query_User_Profile(request):
     query = request.GET.get('q','')
    
-    results = Profile.objects.filter(Username__contains=query)
+    results = Client.objects.filter(Username__contains=query)
     paginator = Paginator(results, 6) # num of result to show per page, change this
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
@@ -125,12 +156,12 @@ def query_User_Profile(request):
     return render(request,'users/search_User.html',context)
 
 def detail_of_User(request,pk):
-    result = Profile.objects.get(pk=pk)
+    result = Client.objects.get(pk=pk)
     context = {'result':result}
     return render(request,'users/detail_User.html',context)
 
 def your_User_Profile(request,pk):
-    result = Profile.objects.get(pk=pk)
+    result = Client.objects.get(pk=pk)
     context = {'result':result}
     return render(request,'users/view_lawyer_profile.html',context)
 
