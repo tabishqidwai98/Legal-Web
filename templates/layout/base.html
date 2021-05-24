@@ -15,44 +15,39 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
         @import url('https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap');
 
      /*navbar*/
-  .header, .navbar{
+.header, .navbar{
     padding: .8rem;
     background-color: rgb(10, 85, 104);
-   }
+}
 
-  .navbar-nav li{
+.navbar-nav li{
     padding-right: 40px;
-    
-  }
-  .navbar-light .navbar-brand{
+}
+.navbar-dark .navbar-brand{
       color: #fff;
-  }
-  .navbar-light .navbar-brand:hover{
-      color: #fff;
-  }
-  
- 
+}
 .nav-link{
     font-size: 1.5em!important;
-   
+}
+
+
+.navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+    border-radius: 8px;
+    
+}
+.navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+    
+    border-radius: 8px;
+    border-bottom: solid 2px color rgb(255, 253, 253);
     
 }
 
-.navbar.navbar-light .navbar-nav .nav-item .nav-link {
-    color: rgb(255, 255, 255);
-    -webkit-transition: .35s;
-    transition: .35s;
-}
-.navbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
-    color: rgb(255, 255, 255);
-    
-}
 
 /*footer*/
 
@@ -87,25 +82,26 @@
 <body>
     {% include 'notification.html' %}
     <header>
-    <nav class="navbar  navbar-expand-md navbar-light  sticky-top scrolling-navbar">
-      <div class="container-fluid "> <a class="navbar-brand " href="#"><strong>Legal Web</strong> </a>
+    <nav class="navbar  navbar-expand-md navbar-dark  sticky-top scrolling-navbar">
+      <div class="container-fluid "> 
+          <a class="navbar-brand " href="#"><strong>Legal Web</strong> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" >
           <span class="navbar-toggler-icon"></span>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
               <a class="nav-link" href="/">Home</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="about/">About</a>
+              <a class="nav-link" href="/about/">About</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="dashboard/">Dashboard</a>
+                <a class="nav-link" href="/dashboard/">Dashboard</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="contact/">Contact</a>
+                <a class="nav-link" href="/contact/">Contact</a>
             </li>
           </ul>
          
