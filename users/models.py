@@ -40,7 +40,7 @@ class Lawyer(models.Model):
     experience = models.FloatField(default=1,help_text='no of years as lawyer')
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 class Client(models.Model):
     GENDER_CHOICE = (('M','Male'),('F',"Female"))

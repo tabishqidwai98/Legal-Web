@@ -6,4 +6,4 @@ from .models import Cases
 class CasesUploadForm(forms.ModelForm):
     class Meta:
         model = Cases
-        fields = ('caseName','description','category','case_image','user','contact_No')
+        fields = ('caseName','description','category','case_image','contact_No')

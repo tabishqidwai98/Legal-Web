@@ -15,17 +15,17 @@ class CustomUserCreationForm(UserCreationForm):
 class LawyerForm(forms.ModelForm):
     class Meta:
         model = Lawyer
-        fields = ('user','designation','gender','city','lawyertype','experience')
+        fields = ('designation','gender','city','lawyertype','experience')
 
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
-        fields = ('user','gender')
+        fields = ('gender',)
 
 class CasesFoughtForm(forms.ModelForm):
     class Meta:
         model = Cases_Fought
-        fields = ('case','summary','category','user','status')
+        fields = ('case','summary','category','status')
 
 class CategoryForm(forms.ModelForm):
     class Meta:
@@ -37,6 +37,7 @@ class ClientSignUpForm(UserCreationForm):
     gender = forms.ChoiceField(choices=Client.GENDER_CHOICE, widget=forms.RadioSelect)
     class Meta(UserCreationForm.Meta):
         model= User
+        
 
     @transaction.atomic
     def save(self):

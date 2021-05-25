@@ -4,9 +4,15 @@
      <div class="container py-5 text-center">
          <div class="col-lg-6 col-md-8 mx-auto">
              <h1>Welcome To legal web</h1>
-             <p><a name="" id="" class="btn btn-primary" href="accounts/login/" role="button">Login</a>
-                 <a name="" id="" class="btn btn-primary" href="register/" role="button">Register</a>
-             </p>
+             
+             {% if user.is_authenticated %}
+                 <p><a href="{% url 'dashboard' %}">View Dashboard</a></p>
+             {% else %}
+             <p><a  class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+                <a  class="btn btn-primary" href="{% url 'register' %}" role="button">Register</a>
+            </p>
+             {% endif %}
+                 
      
          </div>
      </div>
