@@ -23,11 +23,9 @@ def contact(request):
      email=request.POST.get('email',"")
      subject=request.POST.get('subject',"")
      message=request.POST.get('message',"")
-     contact=Contact(full_name=full_name)
-     contact=Contact(email=email)
-     contact=Contact(subject=subject)
-     contact=Contact(message=message)
+     contact=Contact(full_name=full_name,email=email,subject=subject,message=message)
      contact.save()
+     
     return render(request, 'contact.html')
 
 def dashboard(request):
