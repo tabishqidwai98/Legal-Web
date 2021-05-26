@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %} 
+<head>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -104,10 +105,8 @@ html {
 }
 
 </style>
+</head>
 <body>
-<head>
-    
-
 <div class="container py-5 text-center">
     <h1>Welcome To legal web</h1>
         {% if user.is_authenticated %}
@@ -142,7 +141,7 @@ html {
                     <img src="https://images.unsplash.com/photo-1605664041952-4a2855d9363b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGxhd3llcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'view_lawyer/' %}" class="btn">View Lawyers</a> 
+                      <a href="{% url 'view_lawyer' %}" class="btn">View Lawyers</a> 
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">View Lawyers</a>
                       {% endif %}
@@ -157,7 +156,7 @@ html {
                     <img src="https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'upload_cases' %}" class="btn"></a> 
+                      <a href="{% url 'upload_cases' %}" class="btn"> Poast a Case</a> 
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">request cases</a>
                       {% endif %}
