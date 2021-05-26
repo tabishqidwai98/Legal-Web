@@ -9,17 +9,47 @@
 
 
 {% block content %}
-<nav class="nav">
-    <a class="nav-link active" href="{% url 'dashboard' %}">dashboard</a>
-</nav>
+<head>
+<style>
+   .container{
+       padding-top: 20px;
+      
+   }
+   
+   .column{
+      padding: 20px;
+   }
+   .card{
+       width: 400px;
+       height:500px;
+   }
+
+   .card-title{
+       font-size: 20px;
+       font-style: 'Poppins',sans-serif;
+
+   }
+   .card-img-top{
+       width:300px;
+       height: 400px;
+   }
+   .card-footer{
+       background-color: #fff;
+   }
+
+   .btn{
+       font-size: medium;
+   }
+</style>
+</head>
 <div class="container">
     <div class="row  justify-content-center">
         <div class="col-l2">
             <form class="form-inline" action="{% url 'search_lawyer' %}">
                 <div class="form-group">
-                    <label for="q" class="p-2"><i class="fa fa-search" aria-hidden="true"></i> </label>
-                    <input type="text" name="q" id="q" class="form-control " placeholder="lawyer name" aria-describedby="qhelp">
-                    <button class="btn btn-sm btn-primary">Search</button>
+                    <label for="q" class="p-3"><i class="fa fa-search" aria-hidden="true"></i> </label>
+                    <input type="text" name="q" id="q" class="form-control " placeholder="Lawyer Name" aria-describedby="qhelp">
+                    <button class="btn btn-primary">Search</button>
                 </div>
             </form>
         </div>
@@ -28,16 +58,17 @@
 <div class="container">
     <div class="row">
         {% for record in page_obj %}
-        <div class="col-lg-6 col-xs-4 my-2">
+        <div class="col-lg-6 col-xs-4 my-2 column">
             <div class="card">
-                <a href="{% url 'lawyer_profile' record.pk %}"><img class="card-img-top" src="{{ record.Profile_Photo.url }} " alt="">{{record.user.username}}</a>
+                <a href="{% url 'lawyer_profile' record.pk %}"><img class="card-img-top" src="{{ record.Profile_Photo.url }} " alt="{{record.user.username}}"></a>
                 <div class="card-body">
-                    <h4 class="card-title"><a href="{% url 'lawyer_profile' record.pk %}">{{record.lawyertype}}</a></h4>
+                    <div class="card-title"><a href="{% url 'lawyer_profile' record.pk %}">{{record.user.username}}</a></div>
+                   <div class="card-title"><a href="{% url 'lawyer_profile' record.pk %}">{{record.lawyertype}}</a></div>
                     <p class="card-text">{{record.Category}}</p>
                     <p class="card-text lead">{{record.General_Fee}}</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="{% url 'lawyer_profile' record.pk %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
+                    <a class="btn btn-primary" href="{% url 'lawyer_profile' record.pk %}"><i class="fa fa-info" aria-hidden="true"></i> View Details</a>
                 </div>
             </div>
         </div>
@@ -72,6 +103,7 @@
         </div>
     </div>
 </div>
+
 {% endblock content %}
 
 

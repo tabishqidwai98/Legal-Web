@@ -6,6 +6,40 @@
 
 
 {% block content %}
+<style>
+.body{
+    margin: 0;
+    background-color: #fff;
+    align-items: center;
+}
+.container{
+display: inline-block;
+align-self: center;
+}
+.row{
+    padding-left: 15px;
+    padding-right: 15px;
+align-items: center;
+}
+
+.card{
+    background-image: url("{% static 'img/bg.jpg' %}");
+    width: auto;
+    height: auto;
+    color: #fff;
+    background-color: #fff;
+    
+}
+.card-header{
+   display: flex;
+}
+.card-body{
+    color: #fff;
+    opacity: 0.6;
+    width: auto;
+    height: auto; 
+}
+</style>
     <div class="container">
         <div class="row">
             <div class="col-6">

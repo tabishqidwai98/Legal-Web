@@ -26,24 +26,23 @@
                     <div class="col">
                         Hello, <b>{{ user.username|default:'Guest' }} </b>
                         <div>
-                            {% if user.is_authenticated %}    
-                                {% if user.is_lawyer %}
-                                
-                                <a href="{% url 'view_cases' %}">view Cases Request</a> <br>
-                                <a href="{% url 'add_CasesFought' %}">add Cases Fought</a> <br>
+                            {% if user.is_authenticated %}   
+
+                               {% if user.is_lawyer %}
+                                <a href="{% url 'view_cases' %}">View Cases Request</a> <br>
+                                <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a> <br>
                                 <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>
-                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">signout</a> <br>
-                                {% elif user.is_client %}
-                               
-                                <a href="{% url 'view_lawyer' %}">view lawyers</a><br>
-                                <a href="{% url 'upload_cases' %}">add a judicial Case </a> <br>
-                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">signout</a> <br>
+                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>
                                 
-                                {% elif user.is_superuser %}
+                               {% elif user.is_client %}
+                                <a href="{% url 'view_lawyer' %}">View lawyers</a><br>
+                                <a href="{% url 'upload_cases' %}">Add a judicial Case </a> <br>
+                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>
                                 
-                                <a class="btn btn-primary btn-sm " href="{% url 'admin:index' %}">visit backend</a> <br>
-                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">signout</a> <br>
-                                {% endif %}
+                               {% elif user.is_superuser %}
+                                <a class="btn btn-primary btn-sm " href="{% url 'admin:index' %}">Visit backend</a> <br>
+                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>
+                               {% endif %}
                                 
                             {% else %}
                                 <a href="{% url 'login' %}">Login</a>
