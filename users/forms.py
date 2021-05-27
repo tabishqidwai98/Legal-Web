@@ -34,6 +34,7 @@ class CategoryForm(forms.ModelForm):
 
 class ClientSignUpForm(UserCreationForm):
 
+    email=forms.EmailField(widget=forms.EmailInput)
     gender = forms.ChoiceField(choices=Client.GENDER_CHOICE, widget=forms.RadioSelect)
     class Meta(UserCreationForm.Meta):
         model= User
@@ -49,6 +50,7 @@ class ClientSignUpForm(UserCreationForm):
 
 class LawyerSignUpForm(UserCreationForm):
 
+    email=forms.EmailField(widget=forms.EmailInput)
     designation = forms.CharField(widget=forms.TextInput)
     gender = forms.ChoiceField(choices=Lawyer.GENDER_CHOICE, widget=forms.RadioSelect)
     lawyertype = forms.CharField(widget=forms.TextInput)

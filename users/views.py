@@ -70,8 +70,8 @@ def lawyer_Profile(request):
             messages.error(request,('Unable to complete request'))
         return redirect ("profile")
     user_form = LawyerForm()
-    return render(request = request, template_name ="users/profile.html", context = {"user":request.user, 
-        "user_form": user_form})
+    lawyer =Lawyer.objects.get(pk=request.user.id)
+    return render(request = request, template_name ="users/profile.html", context = {"user":lawyer,"user_form": user_form})
 
 def lawyer_Profile_views(request, pk):
     result = Lawyer.objects.get(pk=pk)

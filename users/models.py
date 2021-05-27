@@ -27,11 +27,13 @@ class Category(models.Model):
 
 
 class User(AbstractUser):
+    
     is_lawyer = models.BooleanField(default=False)
     is_client = models.BooleanField(default=False)
 
 class Lawyer(models.Model):
     GENDER_CHOICE = (('M','Male'),('F',"Female"))
+    email = models.EmailField(max_length=200)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     designation = models.CharField(max_length=25,default='inter lawyer')
     gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='M')
@@ -44,6 +46,7 @@ class Lawyer(models.Model):
 
 class Client(models.Model):
     GENDER_CHOICE = (('M','Male'),('F',"Female"))
+    email = models.EmailField(max_length=32)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='M')
 
