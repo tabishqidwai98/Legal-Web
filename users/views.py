@@ -44,6 +44,7 @@ class ClientSignUpView(CreateView):
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
+       
         user = form.save()
         return redirect('dashboard')
 

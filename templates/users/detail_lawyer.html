@@ -54,16 +54,26 @@
     </style>
 <div class="container">
     <div class="row my-5">
-        <div class="col-lg-6">
+        <div class="col-lg-8 mx-auto">
             <div class="card">
-                <img src="{{ result.Profile_Photo.url }}" class="card-img-top" alt="{{ result.user.username}}">
+                
                 <div class="card-body">
-                     <blockquote class="blockquote">
-                        <p class="mb-0">{{result.user.username}}</p>
-                    </blockquote>
+                   
+                    <p class="mb-0">
+                        <img src="{{ record.pic.url }}" class="img-thumbnail float-start" alt="{{result.user.username}}"> 
+                    </p>
+                    
                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{result.Gender}}</li>
-                    <li class="list-group-item">Lawyer Category:{{result.lawyertype}}</li>
+                    <li class="list-group-item">Name: {{result.user.username}}</li>
+                    {% if result.gender == "M" %}
+                    <li class="list-group-item">Gender : Male</li>
+                    {% else %}
+                    <li class="list-group-item">Gender : Female</li>
+                    {% endif %}
+                    <li class="list-group-item">Type: {{result.lawyertype}}</li>
+                    <li class="list-group-item">From: {{result.city}}</li>
+                    <li class="list-group-item">Designation: {{result.designation}}</li>
+                    <li class="list-group-item">Experience: {{result.experience}}</li>
                     
                  </ul>
                 </div>
@@ -73,14 +83,7 @@
             </div>
         </div>
         
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Detail Description</h4>
-                   <blockquote><p class="card-text">{{result.Bio|linebreaks}}</p></blockquote> 
-                </div>
-            </div>
-        </div>
+        
     </div>
 </div>
 </head>

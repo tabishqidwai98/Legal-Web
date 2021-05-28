@@ -39,19 +39,24 @@ class Lawyer(models.Model):
     gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='M')
     city = models.CharField(max_length=25,default='lucknow')
     lawyertype =models.CharField(max_length=25,default='Criminal Lawyer')
+    contact =models.CharField(max_length=15,default='999999999')
     experience = models.FloatField(default=1,help_text='no of years as lawyer')
+    pic= models.ImageField(upload_to="users/laywers",default="lawyer.png")
+    
 
     def __str__(self):
-        return self.user.username
+        return f'{self.user}|{self.designation}|{self.gender}|{self.city}|{self.experience}|{self.lawyertype}'
 
 class Client(models.Model):
     GENDER_CHOICE = (('M','Male'),('F',"Female"))
     email = models.EmailField(max_length=32)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='M')
+    pic= models.ImageField(upload_to="users/client",default="client.png")
+    contact =models.CharField(max_length=15,default='999999999')
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 class Cases_Fought(models.Model):
