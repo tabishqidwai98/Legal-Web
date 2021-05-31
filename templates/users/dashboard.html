@@ -4,13 +4,37 @@
 
 {% block css %}
 <style>
-    .wrapper{
-        background-color: aliceblue; 
+   .container-fluid.wrapper{
+       background-color: aliceblue;
+       padding: 0;
+       
+   }
+   
+    .img{
+        background-image: url("{% static 'img\wallpaper1.jpg' %}");
+        background-blend-mode: overlay;
+        background-size: cover;
+        height: 70vh;
+        justify-content: center;
+        display: flex;
+        
     }
-    .sideimg{
-        background-image: url("{% static 'img/bg.jpg' %}");
-        background-position: right;
-        height: 100vh;
+    .card{
+        display: flex;
+        align-self: center;
+        height: 150px;
+        width: 400px;
+      
+    }
+    .card:hover{
+        
+        cursor: pointer;
+        transform: translateY(-1.2%);
+        transition: 0.3s;
+    }
+    .card-title{
+        display: flex;
+        justify-content: center;
     }
 </style>
 
@@ -19,16 +43,37 @@
 {% block content %}
 
 <div class="container-fluid  wrapper">
-    <div class="row">
-        <div class="col-8">
+    <div class="img">
+         <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {% if user.is_authenticated %}   
+                            You are
+                            {% if user.is_lawyer %}
+                            Lawyer
+                            {% elif user.is_client %}
+                            Client
+                            {% elif user.is_superuser %}
+                            Admin
+                            {% endif %}
+                        {% endif %}
+                    </h4>
+                    <p class="card-text">Lorem, ipsum dolor laboriosam ipsa nulla. Ea soluta ducimus odio numquam, quasi eveniet nihil maxime.</p>
+                </div>
+            </div>
+        
+    </div>
             <div class="container">
                 <div class="row my-5">
+                   
                     <div class="col">
                         Hello, <b>{{ user.username|default:'Guest' }} </b>
                         <div>
                             {% if user.is_authenticated %}   
 
+
                                {% if user.is_lawyer %}
+                               
                                 <a href="{% url 'view_cases' %}">View Cases Request</a> <br>
                                 <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a> <br>
                                 <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>
@@ -54,32 +99,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-4 sideimg">
-            <div class="container">
-                <div class="row">
-                    <div class="col my-5">
-                        <div class="card mx-auto">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    {% if user.is_authenticated %}   
-                                        You are
-                                        {% if user.is_lawyer %}
-                                        Lawyer
-                                        {% elif user.is_client %}
-                                        Client
-                                        {% elif user.is_superuser %}
-                                        Admin
-                                        {% endif %}
-                                    {% endif %}
-                                </h4>
-                                <p class="card-text">Lorem, ipsum dolor laboriosam ipsa nulla. Ea soluta ducimus odio numquam, quasi eveniet nihil maxime.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+     
+       
     </div>
 </div>
 
