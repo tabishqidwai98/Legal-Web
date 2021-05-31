@@ -106,7 +106,7 @@ class lawyerProfileListView(ListView):
 def query_Lawyer_Profile(request):
     query = request.GET.get('q','')
    
-    results = Lawyer.objects.filter(user__contains=query)
+    results = Lawyer.objects.filter(user__username__contains=query)
     paginator = Paginator(results, 6) # num of result to show per page, change this
     page_num = request.GET.get('page')
     page_obj = paginator.get_page(page_num)
@@ -186,7 +186,11 @@ def Cases_Fought_view(request):
     elif request.method == 'POST':
         filled_form = CasesFoughtForm(request.POST)
         if filled_form.is_valid():
-            filled_form.save()
+            f = filled_form.save(commit=False)
+            userid = request.user.id
+            lawyer = Lawyer.objects.get(pk=userid)
+            f.user=lawyer
+            f.save()
 
             messages.add_message(request, messages.SUCCESS, 'details saved successfully')
 

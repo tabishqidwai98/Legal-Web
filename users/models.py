@@ -20,7 +20,7 @@ class Category(models.Model):
         ('Emancipation and Approval of Underage Marriages',"Emancipation and Approval of Underage Marriages"),
     )
 
-    category = models.CharField(choices=case_category,default = case_category[0][1], max_length=50)
+    category = models.CharField(default = "Criminal Case", max_length=50)
 
     def __str__(self):
         return self.category
