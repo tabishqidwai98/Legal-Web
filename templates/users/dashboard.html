@@ -7,35 +7,101 @@
    .container-fluid.wrapper{
        background-color: aliceblue;
        padding: 0;
-       
    }
    
     .img{
         background-image: url("{% static 'img\wallpaper1.jpg' %}");
-        background-blend-mode: overlay;
         background-size: cover;
         height: 70vh;
-        justify-content: center;
-        display: flex;
         
     }
-    .card{
+    .img .btn{
+        margin-left: 91%;
+    }
+    .text{
+        justify-content: center;
+        display: flex;
+    }
+    
+    a.waves-effect, a.waves-light{
+        display: inline-block;
+      align-self: flex-end;
+    }
+    .text .card{
         display: flex;
         align-self: center;
         height: 150px;
         width: 400px;
-      
     }
-    .card:hover{
-        
-        cursor: pointer;
-        transform: translateY(-1.2%);
-        transition: 0.3s;
+    .text .card:hover{
+       cursor: pointer;
+       transform: translateY(-1.2%);
+       transition: 0.3s;
     }
-    .card-title{
+
+    .text .card-title{
         display: flex;
         justify-content: center;
     }
+  
+   .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 15px;
+    margin-left: 15px;
+    align-items: center;
+   }
+
+  .column {
+  display: flex;
+  float: left;
+  width: 33.3%;
+  height: 270px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding: 0 8px;
+  }
+
+  .column .card{
+  width: 400px;
+  height: 255px;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.column .card:hover{
+  transform: translateY(-0.5%);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.651);
+}
+.column .card .card-block .img-fluid{
+  display: block;
+  border-radius: 0.5rem;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.column .card-block .btn{
+  display: block;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 8px;
+  color: white;
+  background-color: rgb(10, 85, 104);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.column .card-block .btn:hover{
+  background-color: rgba(54, 52, 52, 0.808);
+  color: rgb(255, 255, 255);
+}
+
 </style>
 
 {% endblock css %}
@@ -43,62 +109,144 @@
 {% block content %}
 
 <div class="container-fluid  wrapper">
-    <div class="img">
-         <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        {% if user.is_authenticated %}   
-                            You are
-                            {% if user.is_lawyer %}
-                            Lawyer
-                            {% elif user.is_client %}
-                            Client
-                            {% elif user.is_superuser %}
-                            Admin
-                            {% endif %}
+   <div class="img">
+      <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">signout</a>
+   
+    <div class="text">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    {% if user.is_authenticated %}   
+                        You are
+                        {% if user.is_lawyer %}
+                        Lawyer
+                        {% elif user.is_client %}
+                        Client
+                        {% elif user.is_superuser %}
+                        Admin
                         {% endif %}
-                    </h4>
-                    <p class="card-text">Lorem, ipsum dolor laboriosam ipsa nulla. Ea soluta ducimus odio numquam, quasi eveniet nihil maxime.</p>
-                </div>
+                    {% endif %}
+                </h4>
+                <p class="card-text">Lorem, ipsum dolor laboriosam ipsa nulla. Ea soluta ducimus odio numquam, quasi eveniet nihil maxime.</p>
             </div>
-        
+        </div>
     </div>
-            <div class="container">
-                <div class="row my-5">
-                   
-                    <div class="col">
-                        Hello, <b>{{ user.username|default:'Guest' }} </b>
-                        <div>
-                            {% if user.is_authenticated %}   
+    </div>
+
+    <div class="container ">
+         Hello, <b>{{ user.username|default:'Guest' }} </b>
+            <div>
+                {% if user.is_authenticated %}   
+
+                 {% if user.is_lawyer %}
+                    <div class="row">
+                        <div class="column">
+                         <div class="card">
+                            <div class="card-block">
+                                <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                                <div class="card-title">
+                                  <a href="{% url 'upload_cases' %}" class="btn">View Cases Reques</a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-                               {% if user.is_lawyer %}
-                               
-                                <a href="{% url 'view_cases' %}">View Cases Request</a> <br>
+                    <div class="column">
+                        <div class="card">
+                          <div class="card-block">
+                            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                            <div class="card-title">
+                              <a href="{% url 'add_CasesFought' %}" class="btn">Add Cases Fought</a> 
+                            </div>
+                          </div>
+                        </div>
+                    </div>         
+                    
+                    
+                    <div class="column">
+                        <div class="card">
+                          <div class="card-block">
+                             <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                             <div class="card-title">
+                               <a href="{% url 'lawyer_profile' %}" class="btn">Edit Profile</a>
+                             </div>
+                          </div>
+                        </div>
+                    </div>
+                                <!--<a href="{% url 'view_cases' %}">View Cases Request</a> <br>
                                 <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a> <br>
-                                <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>
-                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>
+                                <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>-->
                                 
-                               {% elif user.is_client %}
-                                <a href="{% url 'view_lawyer' %}">View lawyers</a><br>
+
+                              
+                               
+                 {% elif user.is_client %}
+                 <div class="row">
+                    <div class="column">
+                     <div class="card">
+                        <div class="card-block">
+                            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                            <div class="card-title">
+                              <a href="{% url 'view_lawyer' %}" class="btn">View Lawyers</a> 
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+
+                 <div class="column">
+                    <div class="card">
+                      <div class="card-block">
+                        <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                        <div class="card-title">
+                          <a href="{% url 'upload_cases' %}" class="btn">Post your Case</a> 
+                        </div>
+                      </div>
+                    </div>
+                 </div>         
+                
+                
+                 <div class="column">
+                    <div class="card">
+                      <div class="card-block">
+                         <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                         <div class="card-title">
+                           <a href="{% url 'password_change' %}" class="btn">Change password</a>
+                         </div>
+                      </div>
+                    </div>
+                 </div>
+                 
+                 <div class="column">
+                    <div class="card">
+                      <div class="card-block">
+                         <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                         <div class="card-title">
+                           <a href="{% url 'password_reset' %}" class="btn">Reset Password</a>
+                         </div>
+                      </div>
+                    </div>
+                 </div>
+                               <!-- <a href="{% url 'view_lawyer' %}">View lawyers</a><br>
                                 <a href="{% url 'upload_cases' %}">Add a judicial Case </a> <br>
                                 <a href="{% url 'password_change' %}">change password </a> <br>
                                 <a href="{% url 'password_reset' %}">reset password </a> <br>
-                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>
+                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>-->
                                 
-                               {% elif user.is_superuser %}
-                                <a class="btn btn-primary btn-sm " href="{% url 'admin:index' %}">Visit backend</a> <br>
-                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>
-                               {% endif %}
+                 {% elif user.is_superuser %}
+                  <a class="btn btn-primary btn-sm " href="{% url 'admin:index' %}">Visit backend</a> <br>
+                  <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>
+                 {% endif %}
                                 
-                            {% else %}
-                                <a href="{% url 'login' %}">Login</a>
-                            {% endif %}
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
                             
-                        </div>
-                    </div>
-                </div>
             </div>
+        </div>
+    </div>
+    </div>
      
        
     </div>
