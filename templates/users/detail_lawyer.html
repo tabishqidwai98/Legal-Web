@@ -30,8 +30,8 @@
 .card{
     border-radius: 0.5rem;
     display: flex;
-    width: 400px;
-    height: 500px;
+    width: 500px;
+    height: auto;
     cursor: pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
     overflow: hidden;
@@ -42,11 +42,9 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.450); 
 }
 .card-img-top{
-   font-size: 50px;
-   font-style: oblique;
-   width: 400px;
-   height: 200px; 
-   object-fit: cover;  
+    width:300px;
+    height: 300px; 
+    object-fit: contain; 
 }
 .card-link{
    align-items: baseline;
@@ -56,13 +54,8 @@
     <div class="row my-5">
         <div class="col-lg-8 mx-auto">
             <div class="card">
-                
                 <div class="card-body">
-                   
-                    <p class="mb-0">
-                        <img src="{{ record.pic.url }}" class="img-thumbnail float-start" alt="{{result.user.username}}"> 
-                    </p>
-                    
+                    <img class="card-img-top" src="{{ record.pic.url }} " alt="{{record.user.username}}">
                  <ul class="list-group list-group-flush">
                     <li class="list-group-item">Name: {{result.user.username}}</li>
                     {% if result.gender == "M" %}
@@ -74,7 +67,8 @@
                     <li class="list-group-item">From: {{result.city}}</li>
                     <li class="list-group-item">Designation: {{result.designation}}</li>
                     <li class="list-group-item">Experience: {{result.experience}}</li>
-                     <li class="list-group-item">Cases fought:{{result.}}</li>
+                    <li class="list-group-item">Contact: {{result.contact}}</li>
+                    <li class="list-group-item"><a class="btn btn-primary" href="{% url 'view_fought' %}">Cases Fought</a></li>
                  </ul>
                 </div>
                 <div class="card-body">

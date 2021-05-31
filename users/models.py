@@ -35,12 +35,12 @@ class Lawyer(models.Model):
     GENDER_CHOICE = (('M','Male'),('F',"Female"))
     email = models.EmailField(max_length=200)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    designation = models.CharField(max_length=25,default='inter lawyer')
-    gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='M')
-    city = models.CharField(max_length=25,default='lucknow')
-    lawyertype =models.CharField(max_length=25,default='Criminal Lawyer')
-    contact =models.CharField(max_length=15,default='999999999')
-    experience = models.FloatField(default=1,help_text='no of years as lawyer')
+    designation = models.CharField(max_length=25,default='')
+    gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='')
+    city = models.CharField(max_length=25,default='')
+    lawyertype =models.CharField(max_length=25,default='')
+    contact =models.CharField(max_length=15,default='')
+    experience = models.FloatField(default=1,help_text='')
     pic= models.ImageField(upload_to="users/laywers",default="lawyer.png")
     
 
@@ -51,9 +51,9 @@ class Client(models.Model):
     GENDER_CHOICE = (('M','Male'),('F',"Female"))
     email = models.EmailField(max_length=32)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='M')
+    gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='')
     pic= models.ImageField(upload_to="users/client",default="client.png")
-    contact =models.CharField(max_length=15,default='999999999')
+    contact =models.CharField(max_length=15,default='')
 
     def __str__(self):
         return self.user.username
@@ -66,10 +66,10 @@ class Cases_Fought(models.Model):
         ('lose', 'lose')
     )
 
-    case = models.CharField(max_length=255, default='Case Name')
+    case = models.CharField(max_length=255, default='')
     summary = models.TextField()
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
-    user = models.ForeignKey(Lawyer, on_delete = models.CASCADE, default=100)
+    user = models.ForeignKey(Lawyer, on_delete = models.CASCADE)
     status = models.CharField(max_length=255, choices = status_value, default=status_value[0][1])
     def __str__(self):
         return self.case

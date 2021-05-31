@@ -7,23 +7,24 @@
 	<!--User-->
 	<br><br>
 	<div class="container mx-auto">
-	    <div class="row">
-	    	<div class="col-sm-12 col-md-12 col-lg-3 pb-4">
-		    	<div class="card p-4">
+	    <div class="row justify-content-center">
+	    	<div class="col-sm-6  pb-5">
+		    	<div class="card p-5">
 			    	<h4 class="card-title font-weight-bold text-center">Hello, {{ user.username|title }}</h4>
 			      	<hr>
 			    	<div class="card-text">
 			    		<p class="text-muted mb-0" style="font-size: 12px">Username:</p>
 			    		<p>{{ user.username }}</p>
 			    		<p class="text-muted mb-0" style="font-size: 12px">Details:</p>
-				  		<p>{{ user.lawyertype }} {{ user.experience }}</p>
+				  		<p>{{ user.lawyertype }} | Experience:{{ user.experience }}</p>
 				  		<p class="text-muted mb-0" style="font-size: 12px">Email:</p>
 				  		<p>{{ user.email }} </p>
+              <p class="text-muted mb-0" style="font-size: 12px;">Contact No:</p>
+              <p>{{user.contact}}</p>
                         <div class="text-right">
                             <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
                         </div>
-                        <p class="text-muted mb-0" style="font-size: 12px;">Contact No:</p>
-                        <p>{{result.contact_no}}</p>
+                       
 			        </div>
 		    	</div>
 			</div>
