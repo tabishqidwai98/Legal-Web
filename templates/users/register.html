@@ -7,14 +7,27 @@
 <style>
     body{
         height: 100vh;
-        background-image: url('http://satyr.io/1000x600/32?text=digipodium');
+    }
+    .jumbotron{
+        margin-left: 25%;
+        background-image: url("{% static 'img/wavebg.gif' %}");
         background-size: cover;
         background-repeat: no-repeat;
+        width: 500px;
+        height: 400px;
+        align-self: center;
+    }
+    .text,.lead{
+        color: #fff;
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
     }
     .alert-danger ul {
         list-style: none;
         padding-left: 0;
     }
+
 </style>
 {% endblock css %}
 
@@ -22,7 +35,7 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron my-5">
-        <h1 class="">Register Now</h1>
+        <h1 class="text">Register Now</h1>
 
         <p class="lead">
             <a class="btn btn-primary btn-sm" href="{% url 'client_register' %}" role="button">Client signup</a>
