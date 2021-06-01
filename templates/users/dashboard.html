@@ -10,7 +10,7 @@
    }
    
     .img{
-        background-image: url("{% static 'img\wallpaper1.jpg' %}");
+        background-image: url("{% static 'img\law2.jpg' %}");
         background-size: cover;
         height: 70vh;
         
@@ -110,14 +110,15 @@
 
 <div class="container-fluid  wrapper">
    <div class="img">
-      <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">signout</a>
-   
+    {% if user.is_authenticated %} 
+      <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a>
+    {% endif %}
     <div class="text">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">
-                    {% if user.is_authenticated %}   
-                        You are
+                     You are
+                    {% if user.is_authenticated %} 
                         {% if user.is_lawyer %}
                         Lawyer
                         {% elif user.is_client %}
@@ -125,9 +126,11 @@
                         {% elif user.is_superuser %}
                         Admin
                         {% endif %}
+                    {% else %}
+                      Guest
                     {% endif %}
                 </h4>
-                <p class="card-text">Lorem, ipsum dolor laboriosam ipsa nulla. Ea soluta ducimus odio numquam, quasi eveniet nihil maxime.</p>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet obcaecati  eum magnam mollitia facere? Officia, veritatis!</p>
             </div>
         </div>
     </div>
@@ -177,10 +180,7 @@
                                 <!--<a href="{% url 'view_cases' %}">View Cases Request</a> <br>
                                 <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a> <br>
                                 <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>-->
-                                
-
-                              
-                               
+                            
                  {% elif user.is_client %}
                  <div class="row">
                     <div class="column">
@@ -240,15 +240,15 @@
                  {% endif %}
                                 
                 {% else %}
-                    <a href="{% url 'login' %}">Login</a>
+                <div class="link d-flex ">
+                  <a class="btn btn-primary btn-sm" href="{% url 'login' %}">Login</a> 
+                  <a class="btn btn-primary btn-sm" href="{% url 'register' %}">Signup</a>
+                </div>   
                 {% endif %}
-                            
+              </div>
             </div>
-        </div>
-    </div>
-    </div>
-     
-       
+         </div>
+       </div>
     </div>
 </div>
 
