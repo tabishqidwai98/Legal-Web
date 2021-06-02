@@ -4,6 +4,9 @@
 
 {% block css %}
 <style>
+ body{
+   margin: 0;
+ }
    .container-fluid.wrapper{
        background-color: aliceblue;
        padding: 0;
@@ -12,11 +15,10 @@
     .img{
         background-image: url("{% static 'img\law2.jpg' %}");
         background-size: cover;
-        height: 70vh;
-        
+        height: 70vh;  
     }
     .img .btn{
-        margin-left: 91%;
+        margin-left: 90%;
     }
     .text{
         justify-content: center;
@@ -24,15 +26,22 @@
     }
     
     a.waves-effect, a.waves-light{
-        display: inline-block;
+      display: inline-block;
       align-self: flex-end;
     }
+
     .text .card{
         display: flex;
         align-self: center;
         height: 150px;
         width: 400px;
+        
     }
+    .text .card-body .b{
+      display: flex;
+      justify-content: center;
+    }
+
     .text .card:hover{
        cursor: pointer;
        transform: translateY(-1.2%);
@@ -45,33 +54,32 @@
     }
   
    .row {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin-right: 15px;
-    margin-left: 15px;
+    justify-content: space-around;
     align-items: center;
    }
 
   .column {
-  display: flex;
-  float: left;
-  width: 33.3%;
-  height: 270px;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  padding: 0 8px;
+   display: flex;
+   float: left;
+   width: 33.3%;
+   height: 270px;
+   margin-top: 30px;
+   margin-bottom: 50px;
+   padding: 0 8px;
   }
 
   .column .card{
-  width: 400px;
-  height: 255px;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
-  cursor: pointer;
-  overflow: hidden;
-  transition: 0.3s;
+   display: block;
+   width: 340px;
+   height: 255px;
+   border-radius: 0.5rem;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
+   cursor: pointer;
+   overflow: hidden;
+   transition: 0.3s;
 }
 .column .card:hover{
   transform: translateY(-0.5%);
@@ -80,7 +88,7 @@
 .column .card .card-block .img-fluid{
   display: block;
   border-radius: 0.5rem;
-  width: 300px;
+  width: auto;
   height: 200px;
   object-fit: cover;
 }
@@ -101,7 +109,14 @@
   background-color: rgba(54, 52, 52, 0.808);
   color: rgb(255, 255, 255);
 }
-
+@media screen and (max-width: 660px) {
+  .column {
+    width: 100%;
+    display: flex;
+  }
+  .img .btn{
+    margin-left: 60%;
+  }
 </style>
 
 {% endblock css %}
@@ -116,8 +131,9 @@
     <div class="text">
         <div class="card">
             <div class="card-body">
+              <b>Hello, {{ user.username|default:'Guest' }} </b>
                 <h4 class="card-title">
-                     You are
+                  You are
                     {% if user.is_authenticated %} 
                         {% if user.is_lawyer %}
                         Lawyer
@@ -135,24 +151,24 @@
         </div>
     </div>
     </div>
+</div>
+<div class="container ">
+   
+        <div>
+          {% if user.is_authenticated %}   
 
-    <div class="container ">
-         Hello, <b>{{ user.username|default:'Guest' }} </b>
-            <div>
-                {% if user.is_authenticated %}   
-
-                 {% if user.is_lawyer %}
-                    <div class="row">
-                        <div class="column">
-                         <div class="card">
-                            <div class="card-block">
-                                <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
-                                <div class="card-title">
-                                  <a href="{% url 'upload_cases' %}" class="btn">View Cases Reques</a> 
-                                </div>
-                            </div>
+              {% if user.is_lawyer %}
+                <div class="row">
+                  <div class="column">
+                    <div class="card">
+                      <div class="card-block">
+                        <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                        <div class="card-title">
+                         <a href="{% url 'upload_cases' %}" class="btn">View Cases Reques</a> 
                         </div>
-                    </div>
+                      </div>
+                  </div>
+                </div>
 
 
                     <div class="column">
@@ -160,7 +176,7 @@
                           <div class="card-block">
                             <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                             <div class="card-title">
-                              <a href="{% url 'add_CasesFought' %}" class="btn">Add Cases Fought</a> 
+                             <a href="{% url 'add_CasesFought' %}" class="btn">Add Cases Fought</a> 
                             </div>
                           </div>
                         </div>
@@ -172,7 +188,7 @@
                           <div class="card-block">
                              <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                              <div class="card-title">
-                               <a href="{% url 'lawyer_profile' %}" class="btn">Edit Profile</a>
+                              <a href="{% url 'lawyer_profile' %}" class="btn">Edit Profile</a>
                              </div>
                           </div>
                         </div>
@@ -188,7 +204,7 @@
                         <div class="card-block">
                             <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                             <div class="card-title">
-                              <a href="{% url 'view_lawyer' %}" class="btn">View Lawyers</a> 
+                             <a href="{% url 'view_lawyer' %}" class="btn">View Lawyers</a> 
                             </div>
                         </div>
                     </div>
@@ -250,6 +266,6 @@
          </div>
        </div>
     </div>
-</div>
+
 
 {% endblock content %}
