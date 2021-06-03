@@ -4,6 +4,15 @@
 
 
 {% block css %}
+<style>
+    body{
+        background-color: rgba(77, 117, 104, 0.719);
+    }
+    .row{
+        justify-content: center;
+    }
+
+</style>
 
 {% endblock css %}
 
@@ -12,24 +21,21 @@
 
 <div class="container">
     <div class="row my-5">
-        <div class="col-lg-8 ">
+        <div class="col-lg-6 ">
             <form class="card" method="post" enctype="multipart/form-data">
                 <div class="card-header">
-                    Upload your Ai Model, and fill the details
+                    Upload Your Case
                 </div>
                 <div class="card-body">
                     {% csrf_token %}
                     {{ uploadform|crispy }}
                 </div>
                 <div class="card-footer text-muted">
-                    <button  name="" id="" class="btn btn-primary btn-lg btn-block">Save</button>
+                    <button  name="" id="" class="btn btn-primary btn-md btn-block">Save</button>
                 </div>
             </form>
         </div>
-        <div class="col-lg-6">
-        
-            
-        </div>
+       
     </div>
 </div>
 {% endblock content %}

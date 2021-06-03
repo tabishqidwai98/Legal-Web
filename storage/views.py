@@ -1,3 +1,4 @@
+from users.models import Client
 from django.shortcuts import render, redirect, HttpResponse
 from .models import Cases, ReviewCases
 from .forms import CasesUploadForm
@@ -18,7 +19,9 @@ def upload_form(request):
         if filled_form.is_valid():
             #filled_form.save()
             form_data = filled_form.save(commit=False)
-            form_data.uploader = request.user
+            userid = request.user.id
+            client = Client.objects.get(pk=userid)
+            form_data.user = client
             form_data.save()
             # save a message in message system
             messages.add_message(request, messages.SUCCESS, 'Case details uploaded successfully')

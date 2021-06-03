@@ -22,12 +22,12 @@ class Cases(models.Model):
         ('Emancipation and Approval of Underage Marriages',"Emancipation and Approval of Underage Marriages"),
     )
 
-    caseName = models.CharField(max_length=255,default='Case')
-    category = models.CharField(choices=Case_category,default=Case_category[0][1], max_length=50)
+    caseName = models.CharField(max_length=255,default='')
+    category = models.CharField(choices=Case_category, max_length=50)
     description = models.TextField()
     case_image = models.ImageField(upload_to='Case_dir/images',null=True)
-    contact_No = models.IntegerField(default=911234567890,unique=True)
-    user = models.ForeignKey(Client,on_delete = models.CASCADE, default=100)
+    contact_No = models.IntegerField(unique=True)
+    user = models.ForeignKey(Client,on_delete = models.CASCADE)
     requested_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
