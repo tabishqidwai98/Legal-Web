@@ -4,9 +4,9 @@
 
 {% block css %}
 <style>
- body{
-   margin: 0;
- }
+   body{
+    margin: 0;
+   }
    .container-fluid.wrapper{
        background-color: aliceblue;
        padding: 0;
@@ -59,41 +59,41 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-   }
+    }
 
-  .column {
-   display: flex;
-   float: left;
-   width: 33.3%;
-   height: 270px;
-   margin-top: 30px;
-   margin-bottom: 50px;
-   padding: 0 8px;
-  }
+    .column {
+    display: flex;
+    float: left;
+    width: 33.3%;
+    height: 270px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 0 8px;
+    }
 
-  .column .card{
-   display: block;
-   width: 340px;
-   height: 255px;
-   border-radius: 0.5rem;
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
-   cursor: pointer;
-   overflow: hidden;
-   transition: 0.3s;
-}
-.column .card:hover{
-  transform: translateY(-0.5%);
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.651);
-}
-.column .card .card-block .img-fluid{
+    .column .card{
+    display: block;
+    width: 340px;
+    height: 255px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+    }
+   .column .card:hover{
+    transform: translateY(-0.5%);
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.651);
+    }
+  .column .card .card-block .img-fluid{
   display: block;
   border-radius: 0.5rem;
   width: auto;
   height: 200px;
   object-fit: cover;
-}
+  }
 
-.column .card-block .btn{
+  .column .card-block .btn{
   display: block;
   border: none;
   border-radius: 0.5rem;
@@ -103,13 +103,13 @@
   text-align: center;
   cursor: pointer;
   transition: 0.2s;
-}
+  }
 
-.column .card-block .btn:hover{
+  .column .card-block .btn:hover{
   background-color: rgba(54, 52, 52, 0.808);
   color: rgb(255, 255, 255);
-}
-@media screen and (max-width: 660px) {
+  }
+  @media screen and (max-width: 660px) {
   .column {
     width: 100%;
     display: flex;
@@ -117,13 +117,14 @@
   .img .btn{
     margin-left: 60%;
   }
-</style>
+  }
+ </style>
 
 {% endblock css %}
 
 {% block content %}
 
-<div class="container-fluid  wrapper">
+ <div class="container-fluid  wrapper">
    <div class="img">
     {% if user.is_authenticated %} 
       <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a>
@@ -193,9 +194,9 @@
                           </div>
                         </div>
                     </div>
-                                <!--<a href="{% url 'view_cases' %}">View Cases Request</a> <br>
+                                /*<a href="{% url 'view_cases' %}">View Cases Request</a> <br>
                                 <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a> <br>
-                                <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>-->
+                                <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>-->*/
                             
                  {% elif user.is_client %}
                  <div class="row">
@@ -244,11 +245,11 @@
                       </div>
                     </div>
                  </div>
-                               <!-- <a href="{% url 'view_lawyer' %}">View lawyers</a><br>
+                               /*<a href="{% url 'view_lawyer' %}">View lawyers</a><br>
                                 <a href="{% url 'upload_cases' %}">Add a judicial Case </a> <br>
                                 <a href="{% url 'password_change' %}">change password </a> <br>
                                 <a href="{% url 'password_reset' %}">reset password </a> <br>
-                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>-->
+                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>*/
                                 
                  {% elif user.is_superuser %}
                   <a class="btn btn-primary btn-sm " href="{% url 'admin:index' %}">Visit backend</a> <br>
@@ -266,6 +267,4 @@
          </div>
        </div>
     </div>
-
-
 {% endblock content %}
