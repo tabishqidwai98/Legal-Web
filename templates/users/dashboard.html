@@ -194,9 +194,9 @@
                           </div>
                         </div>
                     </div>
-                                /*<a href="{% url 'view_cases' %}">View Cases Request</a> <br>
+                                <!--<a href="{% url 'view_cases' %}">View Cases Request</a> <br>
                                 <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a> <br>
-                                <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>-->*/
+                                <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>-->
                             
                  {% elif user.is_client %}
                  <div class="row">
@@ -245,11 +245,11 @@
                       </div>
                     </div>
                  </div>
-                               /*<a href="{% url 'view_lawyer' %}">View lawyers</a><br>
+                               <!--<a href="{% url 'view_lawyer' %}">View lawyers</a><br>
                                 <a href="{% url 'upload_cases' %}">Add a judicial Case </a> <br>
                                 <a href="{% url 'password_change' %}">change password </a> <br>
                                 <a href="{% url 'password_reset' %}">reset password </a> <br>
-                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>*/
+                                <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a> <br>-->
                                 
                  {% elif user.is_superuser %}
                   <a class="btn btn-primary btn-sm " href="{% url 'admin:index' %}">Visit backend</a> <br>
