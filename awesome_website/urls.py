@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('storage/', include('storage.urls')),
+    path('chat/', include('chat.urls')),
 ]
 # if this is here, users can view media file
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

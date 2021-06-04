@@ -8,215 +8,225 @@
     
     <!-- Bootstrap CSS -->
     <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Google Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 
-{% block css %}
-        
-{% endblock css %}
-<style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    {% block css %}
+    
+    {% endblock css %}
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap');
-
-     /*navbar*/
-.header, .navbar{
-    padding: .8rem;
-    background-color: rgb(10, 85, 104);
-}
-
-.navbar-nav li{
-    padding-right: 40px;
-}
-.navbar-dark .navbar-brand{
-      color: #fff;
-}
-.nav-link{
-    font-size: 1.5em!important;
-}
-
-
-.navbar.navbar-dark .navbar-nav .nav-item .nav-link {
-    border-radius: 8px;
-    
-}
-.navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
-    
-    border-radius: 8px;
-    border-bottom: solid 2px color rgb(255, 253, 253);
-    
-}
-
-
-
-/*footer*/
-
-
-.social a{
-    font-size: 2.5em;
-    padding: .6rem;
-}
-.fa-facebook-square{
-    color: #0d4fdd;
-}
-.fa-instagram {
-    color: #e20fd0;
-}
-.fa-google-plus-g{
-    color: #dd4b39;
-} 
-.fa-linkedin{
-    color: rgb(19, 163, 96);
-}
-.fa-twitter{color: #00aced;}
-
-.footer{
-       background-color: #3f3f3f;
-       color: #fff;
-   }
-.footer a{
-       color: #fff;
-}
-
-</style>     
+        
+        /*navbar*/
+        .header, .navbar{
+            padding: .8rem;
+            background-color: rgb(10, 85, 104);
+        }
+        
+        .navbar-nav li{
+            padding-right: 40px;
+        }
+        .navbar-dark .navbar-brand{
+            color: #fff;
+        }
+        .nav-link{
+            font-size: 1.5em!important;
+        }
+        
+        
+        .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
+            border-radius: 8px;
+            
+        }
+        .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+            
+            border-radius: 8px;
+            border-bottom: solid 2px color rgb(255, 253, 253);
+            
+        }
+        
+        
+        
+        /*footer*/
+        
+        
+        .social a{
+            font-size: 2.5em;
+            padding: .6rem;
+        }
+        .fa-facebook-square{
+            color: #0d4fdd;
+        }
+        .fa-instagram {
+            color: #e20fd0;
+        }
+        .fa-google-plus-g{
+            color: #dd4b39;
+        } 
+        .fa-linkedin{
+            color: rgb(19, 163, 96);
+        }
+        .fa-twitter{color: #00aced;}
+        
+        .footer{
+            background-color: #3f3f3f;
+            color: #fff;
+        }
+        .footer a{
+            color: #fff;
+        }
+        
+    </style>     
 </head>
 
 
 <body>
     {% include 'notification.html' %}
     <header>
-    <nav class="navbar  navbar-expand-md navbar-dark  sticky-top scrolling-navbar">
-      <div class="container-fluid "> 
-          <a class="navbar-brand " href="#"><strong>Legal Web</strong> </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/about/">About</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/dashboard/">Dashboard</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/contact/">Contact</a>
-            </li>
-          </ul>
-         
-        </div>
-      </nav>
-    </header>
-    
-
-
-    {% block content %}
-
-    {% endblock content %}
-    
-    <!--footer-->
-    <footer class="footer bg-dark">
-       
-        <!--<div class="bg-light">-->
-
-        <div class="container text-center text-md-left mt-5">
-            <div class="row bg-dark py-4 d-flex align-items-center">
-                <div class="col-md-12 social text-center">
-                    <a href="#"><i class="fab fa-facebook-square  mr-4"></i></a>
-                    <a href="#"><i class="fab fa-twitter  mr-4"></i></a>
-                    <a href="#"><i class="fab fa-google-plus-g  mr-4"></i></a>
-                    <a href="#"><i class="fab fa-linkedin  mr-4"></i></a>
-                    <a href="#"><i class="fab fa-instagram  mr-4"></i></a>
+        <nav class="navbar  navbar-expand-md navbar-dark  sticky-top scrolling-navbar">
+            <div class="container-fluid "> 
+                <a class="navbar-brand " href="#"><strong>Legal Web</strong> </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/about/">About</a>
+                        </li>
+                        
+                        {% if user.is_authenticated %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/dashboard/">Dashboard</a>
+                        </li> 
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'chat' %}">Dicuss</a>
+                        </li> 
+                        {% else %}
+                        
+                        {% endif %}
+                        
+                        
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/contact/">Contact</a>
+                        </li>
+                    </ul>
+                    
                 </div>
+            </nav>
+        </header>
+        
+        
+        
+        {% block content %}
+        
+        {% endblock content %}
+        
+        <!--footer-->
+        <footer class="footer bg-dark">
+            
+            <!--<div class="bg-light">-->
+                
+                <div class="container text-center text-md-left mt-5">
+                    <div class="row bg-dark py-4 d-flex align-items-center">
+                        <div class="col-md-12 social text-center">
+                            <a href="#"><i class="fab fa-facebook-square  mr-4"></i></a>
+                            <a href="#"><i class="fab fa-twitter  mr-4"></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g  mr-4"></i></a>
+                            <a href="#"><i class="fab fa-linkedin  mr-4"></i></a>
+                            <a href="#"><i class="fab fa-instagram  mr-4"></i></a>
+                        </div>
+                    </div>
+                    <hr class="bg-light">
+                    <div class="row">
+                        <div class="col-md-3 mx-auto mb-4">
+                            <h6 class="text-uppercase font-weight-bold">Legal Web</h6>
+                            <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 125px; height:2px ">
+                            <p class="mt-2 ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit illo non quia aperiam eveniet modi, sap asperiores facere labore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum .</p>
+                        </div>
+                        
+                        <div class="col-md-2 mx-auto mb-4">
+                            <h6 class="text-uppercase font-weight-bold">products</h6>
+                            <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 85px; height:2px">
+                            
+                            <ul class="list-unstyled">
+                                <li class="my-2"><a href="#">HTML 5</a></li>
+                                <li class="my-2"><a href="#">CSS 3</a></li>
+                                <li class="my-2"><a href="#">Bootstrap 4</a></li>
+                                <li class="my-2"><a href="#">Javascript</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 mx-auto mb-4">
+                            <h6 class="text-uppercase font-weight-bold">Usefull Links</h6>
+                            <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 110px; height:2px">
+                            
+                            <ul class="list-unstyled">
+                                <li class="my-2"><a href="#">Home</a></li>
+                                <li class="my-2"><a href="#">About</a></li>
+                                <li class="my-2"><a href="#">Services</a></li>
+                                <li class="my-2"><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-md-2 mx-auto mb-4">
+                            <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                            <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 110px; height:2px">
+                            <ul class="list-unstyled">
+                                <li class="my-2"><i class="fas fa-home mr-3" ></i>Lucknow, Street 3 house no.134</li>
+                                <li class="my-2"><i class="fas fa-envelope mr-3"></i>legalweb@gmail.com</li>
+                                <li class="my-2"><i class="fas fa-phone mr-3"></i>+911100202987</li>
+                                <li class="my-2"><i class="fas fa-print mr-3"></i>+0022334455664</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="bg-light">
+                <div class="footer-copyright text-center py-3">
+                    <p>&copy; Copyright
+                        <a href="#">Legal Web</a>
+                    </p>
+                    <p>Designed By The Legal Web Team</p>
+                </div>
+                
             </div>
-            <hr class="bg-light">
-            <div class="row">
-                <div class="col-md-3 mx-auto mb-4">
-                    <h6 class="text-uppercase font-weight-bold">Legal Web</h6>
-                    <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 125px; height:2px ">
-                    <p class="mt-2 ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit illo non quia aperiam eveniet modi, sap asperiores facere labore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum .</p>
-                </div>
-               
-                <div class="col-md-2 mx-auto mb-4">
-                    <h6 class="text-uppercase font-weight-bold">products</h6>
-                    <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 85px; height:2px">
-                   
-                    <ul class="list-unstyled">
-                        <li class="my-2"><a href="#">HTML 5</a></li>
-                        <li class="my-2"><a href="#">CSS 3</a></li>
-                        <li class="my-2"><a href="#">Bootstrap 4</a></li>
-                        <li class="my-2"><a href="#">Javascript</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 mx-auto mb-4">
-                    <h6 class="text-uppercase font-weight-bold">Usefull Links</h6>
-                    <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 110px; height:2px">
-                   
-                    <ul class="list-unstyled">
-                        <li class="my-2"><a href="#">Home</a></li>
-                        <li class="my-2"><a href="#">About</a></li>
-                        <li class="my-2"><a href="#">Services</a></li>
-                        <li class="my-2"><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-2 mx-auto mb-4">
-                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
-                    <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 110px; height:2px">
-                    <ul class="list-unstyled">
-                        <li class="my-2"><i class="fas fa-home mr-3" ></i>Lucknow, Street 3 house no.134</li>
-                        <li class="my-2"><i class="fas fa-envelope mr-3"></i>legalweb@gmail.com</li>
-                        <li class="my-2"><i class="fas fa-phone mr-3"></i>+911100202987</li>
-                        <li class="my-2"><i class="fas fa-print mr-3"></i>+0022334455664</li>
-                    </ul>
-                </div>
-            </div>
-         </div>
-         <hr class="bg-light">
-           <div class="footer-copyright text-center py-3">
-               <p>&copy; Copyright
-                   <a href="#">Legal Web</a>
-               </p>
-               <p>Designed By The Legal Web Team</p>
-           </div>
-
-        </div>
-
-    </footer>
-
-    
-    
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <!-- Bootstrap tooltips -->
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-   <!-- Bootstrap core JavaScript -->
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-   <!-- MDB core JavaScript -->
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-   <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- JQuery -->
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.toast').toast('show');
-        });
-    </script>    
-    {% block js %}
-
-    {% endblock js %}
-    
-</body>
-</html>
+            
+        </footer>
+        
+        
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.toast').toast('show');
+            });
+        </script>    
+        {% block js %}
+        
+        {% endblock js %}
+        
+    </body>
+    </html>

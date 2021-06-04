@@ -147,7 +147,7 @@ html {
                     <img src="https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'upload_cases' %}" class="btn">View Fought Cases</a> 
+                      <a href="{% url 'view_fought' %}" class="btn">View Fought Cases</a> 
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">View Fought Cases</a>
                       {% endif %}
@@ -162,7 +162,7 @@ html {
                     <img src="https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'upload_cases' %}" class="btn">Add Fought Cases</a> 
+                      <a href="{% url 'add_CasesFought' %}" class="btn">Add Fought Cases</a> 
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">Add Fought Cases</a>
                       {% endif %}
@@ -177,7 +177,7 @@ html {
                     <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bGF3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'upload_cases' %}" class="btn">Search Lawyers</a> 
+                      <a href="{% url 'search_lawyer' %}" class="btn">Search Lawyers</a> 
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">Search Lawyers</a>
                       {% endif %}

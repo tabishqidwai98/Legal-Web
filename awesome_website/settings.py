@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'users',
     'storage',
     'crispy_forms',
-    'social_django'
+    'social_django',
+    'channels',
+    'chat',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -85,6 +87,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'TEST': {
+            'NAME': os.path.join(BASE_DIR, 'db_test.sqlite3')
+        }
     }
 }
 
@@ -150,3 +155,13 @@ SOCIAL_AUTH_GITHUB_KEY = 'CLIENTID AAPKI'
 SOCIAL_AUTH_GITHUB_SECRET = 'CLIENT SECRET AAPKA'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+ASGI_APPLICATION = "awesome_website.asgi.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
