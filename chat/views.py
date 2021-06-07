@@ -6,7 +6,7 @@ from users.models import Client, Lawyer
 # Create your views here.
 @login_required
 def index(request):
-    if request.user.is_client:
+    if request.user.is_client or request.user.is_superuser:
         lawyers = Lawyer.objects.all()
         ctx = {
             'chat_header':'discuss with a lawyer',
@@ -22,6 +22,7 @@ def index(request):
             'people':clients
         }
         return render(request,'chat/index.html',ctx)
+    
 
 @login_required
 def room(request,room_name):
