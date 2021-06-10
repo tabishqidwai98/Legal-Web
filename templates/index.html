@@ -1,103 +1,106 @@
 {% extends 'layout/base.html' %}
 {% load static %}
 
-{% block content %} 
-<head>
+
+{% block css %}
 <style>
-body {
- 
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background-color: rgba(255, 255, 255, 0.712);
-}
-
-html {
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-.row {
-    display: -ms-flexbox;
+  body {
+   
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.712);
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  .row {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      margin-right: 15px;
+      margin-left: 15px;
+      align-items: center;
+  }
+  .column {
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: 15px;
-    margin-left: 15px;
-    align-items: center;
-}
-.column {
-  display: flex;
-  float: left;
-  width: 33.3%;
-  height: 270px;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  padding: 0 8px;
-}
-.card{
-  width: auto;
-  height: 255px;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
-  cursor: pointer;
-  overflow: hidden;
-  transition: 0.3s;
-}
-.card:hover{
-  transform: translateY(-0.5%);
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.651);
-}
-.card .card-block .img-fluid{
-  display: block;
-  border-radius: 0.5rem;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-}
-.buttn .btn{ display:inline-block;
-    width: 20%;
-    border-radius: 8px;
+    float: left;
+    width: 33.3%;
+    height: 270px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 0 8px;
+  }
+  .card{
+    width: auto;
+    height: 255px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+  .card:hover{
+    transform: translateY(-0.5%);
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.651);
+  }
+  .card .card-block .img-fluid{
+    display: block;
+    border-radius: 0.5rem;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .buttn .btn{ display:inline-block;
+      width: 20%;
+      border-radius: 8px;
+      color: white;
+      background-color: rgb(10, 85, 104);
+  }
+  .buttn .btn:hover{
+    background-color: rgba(54, 52, 52, 0.808);
+    color: rgb(255, 255, 255);
+    transform: translateY(-0.5%);
+  }
+  
+  .card-block .btn{
+    display: block;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 8px;
     color: white;
     background-color: rgb(10, 85, 104);
-}
-.buttn .btn:hover{
-  background-color: rgba(54, 52, 52, 0.808);
-  color: rgb(255, 255, 255);
-  transform: translateY(-0.5%);
-}
-
-.card-block .btn{
-  display: block;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 8px;
-  color: white;
-  background-color: rgb(10, 85, 104);
-  text-align: center;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn:hover{
-  background-color: rgba(54, 52, 52, 0.808);
-  color: rgb(255, 255, 255);
-}
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-@media screen and (max-width: 660px) {
-  .column {
-    width: 100%;
-    display: flex;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
   }
-}
+  
+  .btn:hover{
+    background-color: rgba(54, 52, 52, 0.808);
+    color: rgb(255, 255, 255);
+  }
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  @media screen and (max-width: 660px) {
+    .column {
+      width: 100%;
+      display: flex;
+    }
+  }
+  
+  </style>
+{% endblock css %}
+  
+{% block content %} 
 
-</style>
-</head>
 <body>
 <div class="container py-5 text-center">
     <h1>Welcome To Legal Web</h1>

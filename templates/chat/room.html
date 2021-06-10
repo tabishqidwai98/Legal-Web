@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
+    <div class="row container d-flex justify-content-center">
         <div class="col-2">
             <h3>{{chat_header}}</h3>
         </div>
@@ -14,18 +14,25 @@
                     {{person.user}}
                 </a>
                 {% empty %}
-            </div>
             
-            {% endfor %}
-            
+                {% endfor %}
+			</div>
         </div>
     </div>
+
     <section class="row">
 
-        <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
-    {{ room_name|json_script:"room-name" }}
+     <textarea id="chat-log" cols="70" rows="20"></textarea><br>
+     <input id="chat-message-input" type="text" size="100" placeholder="Write Something.."><br>
+	 <a class="btn text-info">
+	 <i class="fa fa-paper-plane" id="chat-message-submit" type="button"></i>
+	 </a> 
+	 <span class="publisher-btn file-group"> 
+		<i class="fa fa-paperclip file-browser"></i>
+		<input type="file">
+	 </span>
+   
+      {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 

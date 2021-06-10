@@ -9,7 +9,7 @@ def index(request):
     if request.user.is_client or request.user.is_superuser:
         lawyers = Lawyer.objects.all()
         ctx = {
-            'chat_header':'discuss with a lawyer',
+            'chat_header':'What chat room would you like to enter?',
             'people':lawyers
         }
         return render(request,'chat/index.html',ctx)
@@ -23,7 +23,7 @@ def index(request):
         }
         return render(request,'chat/index.html',ctx)
     
-
+  
 @login_required
 def room(request,room_name):
     ctx = {
