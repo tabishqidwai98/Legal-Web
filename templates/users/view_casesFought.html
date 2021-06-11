@@ -7,11 +7,8 @@
 
 {% endblock css %}
 
-
 {% block content %}
-<nav class="nav">
-    <a class="nav-link active" href="{% url 'dashboard' %}">dashboard</a>
-</nav>
+
 <div class="container">
     <div class="row  justify-content-center">
         <div class="col-l2">
@@ -19,7 +16,7 @@
                 <div class="form-group">
                     <label for="q" class="p-2"><i class="fa fa-search" aria-hidden="true"></i> </label>
                     <input type="text" name="q" id="q" class="form-control " placeholder="case fought name" aria-describedby="qhelp">
-                    <button class="btn btn-sm btn-primary">search</button>
+                    <button class="btn btn-sm btn-primary">Search</button>
                 </div>
             </form>
         </div>
@@ -36,7 +33,7 @@
                     <p class='card-text lead'>{{ record.Name }}</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="{% url 'fought' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
+                    <a class="btn btn-primary" href="{% url 'fought' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> View Details</a>
                 </div>
             </div>
         </div>
