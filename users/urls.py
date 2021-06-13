@@ -4,7 +4,7 @@ from django.conf.urls import include
 from django.urls import path
 from . import views
 
-from .views import Cases_Fought_view, dashboard, detail_of_lawyer, register,index, User_Profile_view, lawyer_Profile_views, query_Lawyer_Profile, UserProfileListView, query_User_Profile, detail_of_User, CasesFoughtListView, query_Cases_Fought, detail_of_Cases_Fought, lawyerProfileListView, ClientSignUpView, LawyerSignUpView, your_User_Profile
+from .views import Cases_Fought_view, dashboard,Rating,detail_of_lawyer, register,index, User_Profile_view, lawyer_Profile_views, query_Lawyer_Profile, UserProfileListView, query_User_Profile, detail_of_User, CasesFoughtListView, query_Cases_Fought, detail_of_Cases_Fought, lawyerProfileListView, ClientSignUpView, LawyerSignUpView, your_User_Profile
 
 urlpatterns = [
     path('',index,name='index'),
@@ -18,6 +18,9 @@ urlpatterns = [
     path('lawyer_profile/',views.lawyer_Profile,name='lawyer_profile'),
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
+    path('rating/',views.rating,name='rating'),       #####  i here
+
+
 
     path('add_lawyer/',lawyer_Profile_views,name='add_lawyer'),
     path('view_lawyer/', lawyerProfileListView.as_view(), name='view_lawyer'),

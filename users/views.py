@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView
 from django.core.paginator import Paginator
-from .models import Category, Cases_Fought, Contact,User,Lawyer, Client
+from .models import Category, Cases_Fought, Contact,User,Lawyer, Client,Rating
 
 
 # Create your views here.
@@ -230,3 +230,29 @@ def edit_Cases_Fought(request,id):
     return render(request,'users/edit_casesFought.html',context)
 
 
+
+
+
+
+
+from django.http import JsonResponse
+# Create your views here.
+
+def rating(request):
+    obj = Rating.objects.filter(score=0).order_by("?").first()
+    context ={
+        'object': obj
+    }
+    return render(request, 'users/rating.html', context)
+
+
+def rate_image(request):
+    if request.method == 'POST':
+        el_id = request.POST.get('el_id')
+        val = request.POST.get('val')
+        print(val)
+        obj = Rating.objects.get(id=el_id)
+        obj.score = val
+        obj.save()
+        return JsonResponse({'success':'true', 'score': val}, safe=False)
+    return JsonResponse({'success':'false'})
