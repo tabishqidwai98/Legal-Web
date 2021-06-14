@@ -23,46 +23,53 @@
 body {
     background-color: #ffffff
 }
+.card-body,.text{
+    height: 400px;
+    width: 400px;
+}
+p.left,p.right{
+    padding:.3rem;
+    margin: 0;
+    border-radius: 5px;
 
+}
+p.left{
+    width: 100%;
+    text-align: left;
+
+}
+p.right{
+    width: 100%;
+    text-align: right;
+    
+}
+#chat-log{
+    overflow: scroll;
+}
 
 </style>
 
 
 <div class="container con">
-    <!-- <div class="row container d-flex justify-content-center">
-        <div class="col-2">
-            <h3>{{chat_header}}</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card ">
+                <div class="card-header">{{room_name}}</div>
+                <div class="card-body">
+                   <div class="text" id="chat-log"> </div>
+                </div>
+               <div class="card-footer">
+                   <input id="chat-message-input" type="text" style="width: 80%;" placeholder="Write Something..">
+                   <a class="btn text-info">
+                   <i class="fa fa-paper-plane" id="chat-message-submit" type="button"></i>
+                   </a> <br>
+                   
+               </div>
+            </div>
         </div>
-        <div class="col-md-2 cols-sm-4 max-auto">
-            
-            <div class="list-group">
-                {% for person in people %}
-                <a href="#" class="list-group-item list-group-item-action ">
-                    {{person.user}}
-                </a>
-                {% empty %}
-            
-                {% endfor %}
-			</div>
-        </div>
-    </div> -->
-    <section>  
-     <div class="card card-bordered">
-         <div class="card-header">{{room_name}}</div>
-         <div class="card-body" cols="100" rows="20" >
-            <textarea id="chat-log" cols="100" rows="10"></textarea>
-         </div>
-        <div class="card-footer">
-            <input id="chat-message-input" type="text" size="100" placeholder="Write Something..">
-            <a class="btn text-info">
-            <i class="fa fa-paper-plane" id="chat-message-submit" type="button"></i>
-            </a> <br>
-            <span class="publisher-btn file-group"> 
-               <i class="fa fa-paperclip file-browser" ></i>
-               <input type="file">
-            </span>
-        </div>
-     </div>
+    </div>
+      
+    
     
       {{ room_name|json_script:"room-name" }}
 
@@ -80,12 +87,22 @@ body {
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             console.log(data)
-            document.querySelector('#chat-log').value += (data.sender+": "+data.message +'\n');
+            console.log(data.client.client)
+            let msg="";
+            if (data.client.client ==='True'){
+               msg ='<p class="right"><b class="badge badge-primary">'+data.sender+'</b> :'+data.message+'</p>';
+            }
+            else{
+                msg ='<p class="left"><b class="badge badge-danger">'+data.sender+'</b> :'+data.message+'</p>';
+            }
+            document.querySelector('#chat-log').innerHTML += msg;
         };
 
         chatSocket.onclose = function(e) {
             console.error('Chat socket closed unexpectedly');
         };
+        
+        
 
         document.querySelector('#chat-message-input').focus();
         document.querySelector('#chat-message-input').onkeyup = function(e) {
@@ -97,14 +114,17 @@ body {
         document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
+            var isclient = "{{user.is_client}}"
             chatSocket.send(JSON.stringify({
                 'message': message,
                 'sender': "{{ user }}",
+                'client':isclient
+
             }));
             messageInputDom.value = '';
         };
     </script>
-    </section>
+    
 </div>
 
 {% endblock content %}

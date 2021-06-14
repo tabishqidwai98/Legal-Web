@@ -119,7 +119,8 @@ def query_Lawyer_Profile(request):
 
 def detail_of_lawyer(request,pk):
     result = Lawyer.objects.get(pk=pk)
-    context = {'result':result}
+    cases = Cases_Fought.objects.filter(user__pk=pk)
+    context = {'result':result,'cases':cases}
     return render(request,'users/detail_lawyer.html',context)
 
 def edit_lawyer_profile(request,id):
@@ -205,6 +206,13 @@ class CasesFoughtListView(ListView):
     template_name = "users/view_casesFought.html"
     paginate_by = 8
     
+def case_fought_view(request):
+    cases = Cases_Fought.objects.all()
+    paginator = Paginator(cases, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    ctx = {'page_obj':page_obj}
+    return render(request,"users/view_casesFought.html",ctx)
 
 def query_Cases_Fought(request):
     query = request.GET.get('q','')
@@ -217,7 +225,6 @@ def query_Cases_Fought(request):
         'result':page_obj,
         'query':query
     }
-    
     return render(request,'users/search_casesFought.html',context)
 
 def detail_of_Cases_Fought(request,pk):

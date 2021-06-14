@@ -49,10 +49,50 @@
 .card-link{
    align-items: baseline;
 }
-    </style>
+
+.popup .popupwindow{
+    visibility: hidden;
+    width: 400px;
+    height: 500px;
+    background-color: cadetblue;
+    align-items: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+.popup .popupwindow::after{
+    content:"";
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: red;
+
+}
+.popup .show{
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+@-webkit-keyframes fadeIn{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@keyframes fadeIn {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+</style>
+</head>
 <div class="container">
     <div class="row my-5">
-        <div class="col-lg-8 mx-auto">
+        <div class="col-lg-6 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <img class="card-img-top" src="{{ result.pic.url }} " alt="{{result.user.username}}">
@@ -68,19 +108,41 @@
                     <li class="list-group-item">Designation: {{result.designation}}</li>
                     <li class="list-group-item">Experience: {{result.experience}}</li>
                     <li class="list-group-item">Contact: {{result.contact}}</li>
-                    <li class="list-group-item"><a class="btn btn-primary" href="{% url 'view_fought' %}">Cases Fought</a></li>
                  </ul>
                 </div>
-                <div class="card-body">
-                    <a href="#" class="card-link"> <i class="fa fa-star" aria-hidden="true"></i>Give Rating</a>
+                <div class="card-footer">
+                <div class="popup" onclick="myFunction()">
+                   <p> Give Rating </p>
+                    <span class="popupwindow" id="myPopup"> hii!! </span>
+                    <a href="{% url 'rating' %}" id="rate" class="card-link"> <i class="fa fa-star" aria-hidden="true"></i>Give Rating</a>
+                </div>
                 </div>
             </div>
         </div>
         
-        
-    </div>
+        <div class="col-lg-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                 <blockquote class="blockquote">
+                    <p class="mb-0">{{cases}}</p>
+                </blockquote>
+            </div>
+            <ul class="list-group ">
+                <li class="list-group-item">Case Name:{{cases.case}}</li>
+                <li class="list-group-item">Category:{{cases.category}}</li>
+                <li class="list-group-item">Summary: {{cases.summary}}</li>
+                <li class="list-group-item">Status:{{cases.status}}</li>    
+            </ul>
+            </div>
+        </div>
+    </div> 
 </div>
-</head>
+<script>
+   function myFunction(){
+       var popup=document.getElementById("myPopup");
+       popup.classList.toggle("show");
+   } 
+</script>
 {% endblock content %}
 
 
