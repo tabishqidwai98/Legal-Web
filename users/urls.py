@@ -18,7 +18,7 @@ urlpatterns = [
     path('lawyer_profile/',views.lawyer_Profile,name='lawyer_profile'),
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
-    path('rating/',views.rating,name='rating'),       #####  i here
+    path('rating/<int:pk>',views.rating,name='rating'),       #####  i here
 
 
 

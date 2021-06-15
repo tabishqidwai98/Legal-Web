@@ -2,9 +2,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.db.models import fields
 from django.contrib.auth.models import User
-from .models import Cases_Fought, Category, Lawyer, Client
+from .models import Cases_Fought, Category, Lawyer, Client,Rating
 from django.db import transaction
 from django.forms.widgets import RadioSelect
+from django_starfield import Stars
 
 from .models import Client, User,Lawyer 
 
@@ -84,3 +85,15 @@ class LawyerSignUpForm(UserCreationForm):
         lawyer.email = self.cleaned_data.get('email') 
         lawyer.save()
         return user
+
+class RatingForm(forms.ModelForm):
+    """Form definition for Rating."""
+
+    class Meta:
+        """Meta definition for Ratingform."""
+
+        model = Rating
+        fields = ('score',)
+        widgets = {
+            'score': Stars
+        }

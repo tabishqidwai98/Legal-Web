@@ -93,7 +93,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 class Rating(models.Model):
-    image = models.ImageField(upload_to='images/')
+    lawyer = models.ForeignKey(Lawyer,on_delete=models.CASCADE)
+    client = models.ForeignKey(Client,on_delete=models.CASCADE)
     score = models.IntegerField(default=0,
         validators=[
             MaxValueValidator(5),

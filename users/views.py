@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.urls import reverse
-from .forms import CasesFoughtForm, LawyerForm, ClientForm, ClientSignUpForm, LawyerSignUpForm
+from .forms import CasesFoughtForm, LawyerForm, ClientForm, ClientSignUpForm, LawyerSignUpForm, RatingForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView
@@ -238,19 +238,27 @@ def edit_Cases_Fought(request,id):
 
 
 
-
-
-
-
 from django.http import JsonResponse
 # Create your views here.
 
-def rating(request):
-    obj = Rating.objects.filter(score=0).order_by("?").first()
-    context ={
-        'object': obj
-    }
-    return render(request, 'users/rating.html', context)
+@login_required
+def rating(request,pk):
+    lawyer=Lawyer.objects.filter(pk=pk)
+    form = RatingForm()
+    if request.method == 'POST':
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            fd = form.save(commit=False)
+            fd.lawyer =  lawyer
+            fd.client = request.user
+            fd.save()
+             
+            messages.add_message(request, messages.SUCCESS, 'Thankyou for rating.')
+            return redirect(to='detail_lawyer')
+        else:
+            messages.add_message(request, messages.ERROR, 'Something went wrong...Please try again.')
+            ctx = {'RatingForm':RatingForm}
+            return render(request, 'users/rating.html', context)
 
 
 def rate_image(request):

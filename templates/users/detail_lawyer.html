@@ -123,16 +123,26 @@
         <div class="col-lg-4 mx-auto">
             <div class="card">
                 <div class="card-body">
-                 <blockquote class="blockquote">
-                    <p class="mb-0">{{cases}}</p>
-                </blockquote>
+                 <h3 class="card-title">
+                    <p class="mb-0">lawyers cases</p>
+                 </h3>
             </div>
+            
+            {% for case in cases %}
+            
             <ul class="list-group ">
-                <li class="list-group-item">Case Name:{{cases.case}}</li>
-                <li class="list-group-item">Category:{{cases.category}}</li>
-                <li class="list-group-item">Summary: {{cases.summary}}</li>
-                <li class="list-group-item">Status:{{cases.status}}</li>    
+                <li class="list-group-item"><p class="lead">Case {{case.id}}</p></li>
+                <li class="list-group-item">Case Name:{{case.case}}</li>
+                <li class="list-group-item">Category:{{case.category}}</li>
+                <li class="list-group-item">Summary: {{case.summary}}</li>
+                <li class="list-group-item">Status:{{case.status}}</li>    
             </ul>
+            {% empty %}
+                <ul class="list-group">
+                    <li class="list-group item">No cases  fought</li>
+                </ul>
+            {% endfor %}
+                
             </div>
         </div>
     </div> 
