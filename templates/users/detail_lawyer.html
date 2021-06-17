@@ -88,6 +88,10 @@
     from{opacity: 0;}
     to{opacity: 1;}
 }
+.card-link{
+    margin-left: 55%;
+}
+
 </style>
 </head>
 <div class="container">
@@ -103,19 +107,19 @@
                     {% else %}
                     <li class="list-group-item">Gender : Female</li>
                     {% endif %}
-                    <li class="list-group-item">Type: {{result.lawyertype}}</li>
+                    <li class="list-group-item">Type: {{result.lawyertype}} <br> <br>
+                         Designation: {{result.designation}} <br><br>
+                         Experience: {{result.experience}}
+                    </li>
                     <li class="list-group-item">From: {{result.city}}</li>
-                    <li class="list-group-item">Designation: {{result.designation}}</li>
-                    <li class="list-group-item">Experience: {{result.experience}}</li>
-                    <li class="list-group-item">Contact: {{result.contact}}</li>
+                    <li class="list-group-item">Contact: {{result.contact}} <br>{{result.email}}</li>
+                    
                  </ul>
                 </div>
                 <div class="card-footer">
-                <div class="popup" onclick="myFunction()">
-                   <p> Give Rating </p>
-                    <span class="popupwindow" id="myPopup"> hii!! </span>
-                    <a href="{% url 'rating' %}" id="rate" class="card-link"> <i class="fa fa-star" aria-hidden="true"></i>Give Rating</a>
-                </div>
+                <span class="" id="myPopup"> {{tot_rating}} <i class="fa fa-star" aria-hidden="true"></i> Lawyer </span>
+                <a href="{% url 'rating' result.pk %}" id="rate" class="card-link"> <i class="fa fa-star" aria-hidden="true"></i>Give Rating</a>
+  
                 </div>
             </div>
         </div>

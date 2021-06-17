@@ -120,7 +120,12 @@ def query_Lawyer_Profile(request):
 def detail_of_lawyer(request,pk):
     result = Lawyer.objects.get(pk=pk)
     cases = Cases_Fought.objects.filter(user__pk=pk)
-    context = {'result':result,'cases':cases}
+    ratings = Rating.objects.filter(lawyer__pk=pk)
+    total_rating = 0
+    for rating in ratings:
+        total_rating+=rating.score
+    total_rating /= len(ratings)
+    context = {'result':result,'cases':cases,'tot_rating':total_rating}
     return render(request,'users/detail_lawyer.html',context)
 
 def edit_lawyer_profile(request,id):
@@ -243,22 +248,42 @@ from django.http import JsonResponse
 
 @login_required
 def rating(request,pk):
+    if not request.user.is_client:
+        return redirect('dashboard')
     lawyer=Lawyer.objects.filter(pk=pk)
-    form = RatingForm()
+    
+    rating = Rating.objects.filter(client__user__pk=request.user.pk)
+    print(rating)
+    if len(rating) > 0 :
+        form = RatingForm(instance=rating[0])
+    else:
+        form = RatingForm()
     if request.method == 'POST':
-        form = RatingForm(request.POST)
-        if form.is_valid():
-            fd = form.save(commit=False)
-            fd.lawyer =  lawyer
-            fd.client = request.user
-            fd.save()
-             
-            messages.add_message(request, messages.SUCCESS, 'Thankyou for rating.')
-            return redirect(to='detail_lawyer')
+        if len(rating)>0:
+            form = RatingForm(request.POST,instance=rating[0])
+            if form.is_valid():
+                form.save()
+                messages.add_message(request, messages.SUCCESS, 'Thankyou for rating.')
+                return redirect('dashboard')
+            else:
+                messages.add_message(request, messages.ERROR, 'Something went wrong!!Please try again.')
         else:
-            messages.add_message(request, messages.ERROR, 'Something went wrong...Please try again.')
-            ctx = {'RatingForm':RatingForm}
-            return render(request, 'users/rating.html', context)
+            form = RatingForm(request.POST)
+            if form.is_valid():
+                fd = form.save(commit=False)
+                fd.lawyer =  lawyer[0]
+                fd.client = Client.objects.get(user__pk=request.user.pk)
+                fd.save()
+             
+                messages.add_message(request, messages.SUCCESS, 'Thankyou for rating.')
+                return redirect('dashboard')
+            else:
+                messages.add_message(request, messages.ERROR, 'Something went wrong!!Please try again.')
+    ctx = {
+        'form':form,
+        'lawyer':lawyer[0],
+        }
+    return render(request, 'users/rating.html', ctx)
 
 
 def rate_image(request):

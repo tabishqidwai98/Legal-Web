@@ -94,6 +94,8 @@ class RatingForm(forms.ModelForm):
 
         model = Rating
         fields = ('score',)
-        widgets = {
-            'score': Stars
-        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['score'] = forms.FloatField(max_value=5, min_value=0)
+       
