@@ -121,10 +121,13 @@ def detail_of_lawyer(request,pk):
     result = Lawyer.objects.get(pk=pk)
     cases = Cases_Fought.objects.filter(user__pk=pk)
     ratings = Rating.objects.filter(lawyer__pk=pk)
-    total_rating = 0
-    for rating in ratings:
-        total_rating+=rating.score
-    total_rating /= len(ratings)
+    if ratings:
+        total_rating = 0
+        for rating in ratings:
+            total_rating+=rating.score
+        total_rating /= len(ratings)
+    else:
+        total_rating="N/A"
     context = {'result':result,'cases':cases,'tot_rating':total_rating}
     return render(request,'users/detail_lawyer.html',context)
 

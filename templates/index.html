@@ -95,7 +95,6 @@
       display: flex;
     }
   }
-  
   </style>
 {% endblock css %}
   
@@ -113,7 +112,8 @@
             </p>
          </div>
         {% endif %}
-
+       
+        
         <div class="row">
             <div class="column">
               <div class="card">
@@ -121,7 +121,11 @@
                   <img src="static\img\law3.jpg" alt="Jane" class="img-fluid">
                   <div class="card-title">
                     {% if user.is_authenticated %}
-                    <a href="{% url 'upload_cases' %}" class="btn">Post a case</a> 
+                      {% if user.is_client %}
+                      <a href="{% url 'upload_cases' %}" class="btn">Post a case</a> 
+                      {% else %}
+                      <a href="#" class="btn">Login as a client</a>
+                      {% endif  %} 
                     {% else %}
                     <a href="{% url 'login' %}" class="btn">Post a case</a>
                     {% endif %}
@@ -129,7 +133,7 @@
                 </div>
               </div>
             </div>
-
+       
             <div class="column">
                 <div class="card">
                   <div class="card-block">
@@ -151,9 +155,9 @@
                     <img src="static\img\book.jpg" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'view_fought' %}" class="btn">View Fought Cases</a> 
+                      <a href="{% url 'view_fought' %}" class="btn">Cases fought by Lawyers</a> 
                       {% else %}
-                      <a href="{% url 'login' %}" class="btn">View Fought Cases</a>
+                      <a href="{% url 'login' %}" class="btn">Cases fought by Lawyers</a>
                       {% endif %}
                     </div>
                   </div>
@@ -166,7 +170,7 @@
                     <img src="https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'add_CasesFought' %}" class="btn">Add Fought Cases</a> 
+                       <a href="{% url 'add_CasesFought' %}" class="btn">Add Fought Cases</a>
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">Add Fought Cases</a>
                       {% endif %}
@@ -181,7 +185,7 @@
                     <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bGF3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'search_lawyer' %}" class="btn">Search Lawyers</a> 
+                      <a href="{% url 'view_lawyer' %}" class="btn">Search Lawyers</a> 
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">Search Lawyers</a>
                       {% endif %}
@@ -196,7 +200,9 @@
                     <img src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGxhd3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                      <a href="{% url 'upload_cases' %}" class="btn">Ask a Question</a> 
+                       {% if user.is_client %}
+                       <a href="{% url 'upload_cases' %}" class="btn">Ask a Question</a> 
+                       {% endif %}
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">Ask a Question</a>
                       {% endif %}
