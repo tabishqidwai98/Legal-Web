@@ -49,7 +49,7 @@ class Lawyer(models.Model):
 
 class Client(models.Model):
     GENDER_CHOICE = (('M','Male'),('F',"Female"))
-    email = models.EmailField(max_length=32)
+    email = models.EmailField(max_length=200)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='')
     pic= models.ImageField(upload_to="users/client",default="client.png")

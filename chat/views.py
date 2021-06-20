@@ -18,7 +18,7 @@ def index(request):
         # because this is stupid
         clients = Client.objects.all()
         ctx = {
-            'chat-header':'chat with client',
+            'chat-header':'Chat with your clients.',
             'people':clients
         }
         return render(request,'chat/index.html',ctx)

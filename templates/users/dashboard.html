@@ -99,14 +99,14 @@
   border-radius: 0.5rem;
   padding: 8px;
   color: white;
-  background-color: rgb(10, 85, 104);
+  background-color: #287B92;
   text-align: center;
   cursor: pointer;
   transition: 0.2s;
   }
 
   .column .card-block .btn:hover{
-  background-color: rgba(54, 52, 52, 0.808);
+  background-color:  #EE9E81;
   color: rgb(255, 255, 255);
   }
   @media screen and (max-width: 660px) {
@@ -126,9 +126,7 @@
 
  <div class="container-fluid  wrapper">
    <div class="img">
-    {% if user.is_authenticated %} 
-      <a class="btn btn-primary btn-sm " href="{% url 'logout' %}">Signout</a>
-    {% endif %}
+    
     <div class="text">
         <div class="card">
             <div class="card-body">
@@ -147,7 +145,7 @@
                       Guest
                     {% endif %}
                 </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet obcaecati  eum magnam mollitia facere? Officia, veritatis!</p>
+              
             </div>
         </div>
     </div>
@@ -194,6 +192,16 @@
                           </div>
                         </div>
                     </div>
+                    <div class="column">
+                      <div class="card">
+                        <div class="card-block">
+                           <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                           <div class="card-title">
+                             <a href="{% url 'password_change' %}" class="btn">Change password</a>
+                           </div>
+                        </div>
+                      </div>
+                   </div>
                                 <!--<a href="{% url 'view_cases' %}">View Cases Request</a> <br>
                                 <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a> <br>
                                 <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>-->
@@ -222,7 +230,16 @@
                       </div>
                     </div>
                  </div>         
-                
+                 <div class="column">
+                  <div class="card">
+                    <div class="card-block">
+                       <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                       <div class="card-title">
+                        <a href="{% url 'client_profile' %}" class="btn">Edit Profile</a>
+                       </div>
+                    </div>
+                  </div>
+              </div>
                 
                  <div class="column">
                     <div class="card">
@@ -230,17 +247,6 @@
                          <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                          <div class="card-title">
                            <a href="{% url 'password_change' %}" class="btn">Change password</a>
-                         </div>
-                      </div>
-                    </div>
-                 </div>
-                 
-                 <div class="column">
-                    <div class="card">
-                      <div class="card-block">
-                         <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
-                         <div class="card-title">
-                           <a href="{% url 'password_reset' %}" class="btn">Reset Password</a>
                          </div>
                       </div>
                     </div>
@@ -257,10 +263,7 @@
                  {% endif %}
                                 
                 {% else %}
-                <div class="link d-flex ">
-                  <a class="btn btn-primary btn-sm" href="{% url 'login' %}">Login</a> 
-                  <a class="btn btn-primary btn-sm" href="{% url 'register' %}">Signup</a>
-                </div>   
+                <p>Please Login to Avail our services!!</p>  
                 {% endif %}
               </div>
             </div>

@@ -4,40 +4,50 @@
 
 
 {% block css %}
-
+<style>
+    
+    .container{
+        padding-top: 20px;
+    }
+    .card{
+        border-radius: .5rem;
+        width: 300px;
+        height: 400px;
+        background: linear-gradient(to bottom,#287B92,#fff) ;
+    }
+    .card-body{
+     border-radius: .5rem;
+    
+    }
+    .column{
+       padding: 20px;
+    }
+    .card-title {
+        font-size: 20px;
+        font-style: 'Poppins',sans-serif;
+    }
+ 
+    .card-img-top{
+        margin-left: 10%;
+        border-radius: 100%;
+        width: 80%;
+        height: 70%;
+        object-fit: cover;
+    }
+    
+    .card-footer .btn{
+     margin-left: 25%;
+    }
+    .btn{
+     font-size: medium;
+    }
+ </style>
 {% endblock css %}
 
 
 {% block content %}
 <head>
-<style>
-   .container{
-       padding-top: 20px;
-      
-   }
-   
-   .column{
-      padding: 20px;
-   }
-   
-   .card-title{
-       font-size: 20px;
-       font-style: 'Poppins',sans-serif;
 
-   }
-   .card-img-top{
-       width: 300px;
-       height: 300px;
-       object-fit: contain;
-   }
-   .card-footer{
-       background-color: #fff;
-   }
-
-   .btn{
-       font-size: medium;
-   }
-</style>
 </head>
 <div class="container">
     <div class="row  justify-content-center">
@@ -55,22 +65,18 @@
 <div class="container">
     <div class="row">
         {% for record in page_obj %}
-        <div class="col-lg-6 col-xs-4 my-2 column">
+         <div class="col-md-4 my-2 column">
             <div class="card">
-                <a href="{% url 'lawyer_profile' record.pk %}"><img class="card-img-top" src="{{ record.pic.url }} " alt="{{record.user.username}}"></a>
                 <div class="card-body">
+                    <a href="{% url 'lawyer_profile' record.pk %}"><img class="card-img-top" src="{{ record.pic.url }} " alt="{{record.user.username}}"></a>
                     <div class="card-title"><a href="{% url 'lawyer_profile' record.pk %}">{{record.user.username}}</a></div>
                    <div class="card-title"><a href="{% url 'lawyer_profile' record.pk %}">{{record.lawyertype}}</a></div>
-                    <p class="card-text">{{record.Category}}</p>
-                    <p class="card-text lead">{{record.General_Fee}}</p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary " href="{% url 'lawyer_profile' record.pk %}"><i class="fa fa-info" aria-hidden="true"></i> View Details</a>
                 </div>
             </div>
-        </div>
-        
-        
+         </div>
         {% empty %}
         <p class="lead">No records found</p>
         {% endfor %}
@@ -84,13 +90,11 @@
                     <li class="page-item"></li><a class="page-link" href="?page=1">&laquo; first</a></li>
                     <li class="page-item"></li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
                     {% endif %}
-                    
                     <li class="page-item active" aria-current="page">
                         <a class="page-link">
                             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                         </a>
                     </li>
-                    
                     {% if page_obj.has_next %}
                     <li class="page-item"></li><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
                     <li class="page-item"></li><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>

@@ -4,7 +4,7 @@ from django.conf.urls import include
 from django.urls import path
 from . import views
 
-from .views import Cases_Fought_view, dashboard,Rating,detail_of_lawyer, register,index, User_Profile_view, lawyer_Profile_views, query_Lawyer_Profile, UserProfileListView, query_User_Profile, detail_of_User, CasesFoughtListView, query_Cases_Fought, detail_of_Cases_Fought, lawyerProfileListView, ClientSignUpView, LawyerSignUpView, your_User_Profile
+from .views import Cases_Fought_view, dashboard,Rating,detail_of_lawyer, register,index, User_Profile_view, your_User_Profile, lawyer_Profile_views, query_Lawyer_Profile, query_User_Profile, detail_of_User, CasesFoughtListView, query_Cases_Fought, detail_of_Cases_Fought, ClientSignUpView, LawyerSignUpView
 
 urlpatterns = [
     path('',index,name='index'),
@@ -16,9 +16,10 @@ urlpatterns = [
     path('accounts/signup/lawyer', LawyerSignUpView.as_view(), name='lawyer_register'),
     path('oauth/', include('social_django.urls')),
     path('lawyer_profile/',views.lawyer_Profile,name='lawyer_profile'),
+    path('client_profile/',views.client_Profile,name='client_profile'),
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
-    path('rating/<int:pk>',views.rating,name='rating'),       #####  i here
+    path('rating/<int:pk>',views.rating,name='rating'),       
 
 
 

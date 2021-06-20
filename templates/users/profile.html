@@ -1,18 +1,26 @@
 {% extends "layout/base.html" %}
 
-	{% block content %}
+{% load crispy_forms_tags %}  
 
-	{% load crispy_forms_tags %}  
+{% block css %}
+<style>
+.card-img-top{
+        width:500px;
+        height: 300px; 
+        object-fit: contain; 
+    }
 
-	<!--User-->
-	<br><br>
+</style>
+{% endblock css %}
+{% block content %}
 	<div class="container mx-auto">
 	    <div class="row justify-content-center">
 	    	<div class="col-sm-6  pb-5">
 		    	<div class="card p-5">
 			    	<h4 class="card-title font-weight-bold text-center">Hello, {{ user.username|title }}</h4>
 			      	<hr>
-			    	<div class="card-text">
+            <div class="card-text">
+              <img class="card-img-top" src="{{ user.pic.url }} " alt="{{user.username}}">
 			    		<p class="text-muted mb-0" style="font-size: 12px">Username:</p>
 			    		<p>{{ user.username }}</p>
 			    		<p class="text-muted mb-0" style="font-size: 12px">Details:</p>

@@ -5,7 +5,7 @@
 {% block css %}
 <style>
   body {
-   
+  
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: rgba(255, 255, 255, 0.712);
@@ -56,14 +56,16 @@
     height: 200px;
     object-fit: cover;
   }
-  .buttn .btn{ display:inline-block;
+  .buttn .btn{ 
+      display:inline-flex;
       width: 20%;
+      justify-content: center;
       border-radius: 8px;
       color: white;
-      background-color: rgb(10, 85, 104);
+      background-color: #287B92;
   }
   .buttn .btn:hover{
-    background-color: rgba(54, 52, 52, 0.808);
+    background-color: #D95C46;
     color: rgb(255, 255, 255);
     transform: translateY(-0.5%);
   }
@@ -74,15 +76,25 @@
     border-radius: 0.5rem;
     padding: 8px;
     color: white;
-    background-color: rgb(10, 85, 104);
+    background-color: #287B92;
     text-align: center;
     cursor: pointer;
     transition: 0.2s;
   }
   
   .btn:hover{
-    background-color: rgba(54, 52, 52, 0.808);
+    background-color: #DC7E56;
     color: rgb(255, 255, 255);
+  }
+  .lead{
+    height: 80vh;
+    width: 70vw;
+    align-items: center;
+  }
+  .img .img-top{
+   width: 40vw;
+   height: 70vh;
+   object-fit: cover;
   }
   .container::after, .row::after {
     content: "";
@@ -99,10 +111,12 @@
 {% endblock css %}
   
 {% block content %} 
-
+{% include 'notification.html' %}
 <body>
 <div class="container py-5 text-center">
-    <h1>Welcome To Legal Web</h1>
+  <div class="row lead">
+    <div class="col-lg-6">
+        <h1>Welcome To Legal Web</h1>
         {% if user.is_authenticated %}
             <p><a href="{% url 'dashboard' %}">View Dashboard</a></p>
         {% else %}
@@ -112,7 +126,13 @@
             </p>
          </div>
         {% endif %}
-       
+    </div>
+    <div class="col-lg-6">
+      <div class="img">
+        <img class="img-top" src="static\img\weigh.png" >
+      </div>
+    </div>
+  </div>    
         
         <div class="row">
             <div class="column">
@@ -124,7 +144,7 @@
                       {% if user.is_client %}
                       <a href="{% url 'upload_cases' %}" class="btn">Post a case</a> 
                       {% else %}
-                      <a href="#" class="btn">Login as a client</a>
+                      <a href="{% url 'upload_cases' %}" class="btn">Post a case</a>
                       {% endif  %} 
                     {% else %}
                     <a href="{% url 'login' %}" class="btn">Post a case</a>
@@ -201,6 +221,8 @@
                     <div class="card-title">
                       {% if user.is_authenticated %}
                        {% if user.is_client %}
+                       <a href="{% url 'upload_cases' %}" class="btn">Ask a Question</a> 
+                       {% else %}
                        <a href="{% url 'upload_cases' %}" class="btn">Ask a Question</a> 
                        {% endif %}
                       {% else %}

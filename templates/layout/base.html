@@ -2,22 +2,12 @@
 <html lang="en">
 <head>
     <title>Legal Web</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <!-- Bootstrap CSS -->
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"> <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     {% block css %}
     
     {% endblock css %}
@@ -25,9 +15,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap');
         
         /*navbar*/
+        body{
+            background-color: #57a5bb69;
+            margin: 0;
+            /* background: linear-gradient(to top, #dbd6f8,#d9e4ec);
+            orange #D95C46
+            light orange #DC7E56
+            lightest orange #EE9E81
+            the yellow #ffd698
+            orange gray #96837F
+            blue #287B92 */
+        }
         .header, .navbar{
             padding: .8rem;
-            background-color: rgb(10, 85, 104);
+            background-color: #D95C46;
         }
         
         .navbar-nav li{
@@ -38,51 +39,64 @@
         }
         .nav-link{
             font-size: 1.5em!important;
-        }
-        
-        
-        .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
             border-radius: 8px;
+        }
+       
+        .nav-link:hover {
+          border-radius: 8px;
+          border-bottom: solid 2px color rgb(255, 253, 253);
             
         }
-        .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
-            
-            border-radius: 8px;
-            border-bottom: solid 2px color rgb(255, 253, 253);
-            
-        }
-        
-        
-        
-        /*footer*/
-        
-        
-        .social a{
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.icon{font-size: xx-large;}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: transparent;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #DC7E56;
+  border-radius: 0.8rem;
+  min-width: 160px;
+  min-height: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;}
+
+.dropdown-content a {
+  color: white;
+  padding-top: 16px;
+  padding-left: 5px;
+  text-align: left;
+  text-decoration: none;
+  display: block;}
+
+.dropdown-content a:hover {background-color: #DC7E56}
+.show {display:inline-block;}
+  
+      
+    /*footer*/
+    .social a{
             font-size: 2.5em;
             padding: .6rem;
         }
-        .fa-facebook-square{
-            color: #0d4fdd;
-        }
-        .fa-instagram {
-            color: #e20fd0;
-        }
-        .fa-google-plus-g{
-            color: #dd4b39;
-        } 
-        .fa-linkedin{
-            color: rgb(19, 163, 96);
-        }
-        .fa-twitter{color: #00aced;}
-        
-        .footer{
-            background-color: #3f3f3f;
-            color: #fff;
-        }
-        .footer a{
-            color: #fff;
-        }
-        
+    .fa-facebook-square{color: #0d4fdd;}
+    .fa-instagram { color: #e20fd0;}
+    .fa-google-plus-g{ color: #dd4b39;}    
+    .fa-linkedin{ color: rgb(19, 163, 96);}    
+    .fa-twitter{color: #00aced;}
+    .footer a{color: #fff;}  
+    .footer{ background-color: #3f3f3f;  color: #fff;}    
+     
     </style>     
 </head>
 
@@ -92,7 +106,7 @@
     <header>
         <nav class="navbar  navbar-expand-md navbar-dark  sticky-top scrolling-navbar">
             <div class="container-fluid "> 
-                <a class="navbar-brand " href="#"><strong>Legal Web</strong> </a>
+                <a class="navbar-brand " href="/about/"><strong>Legal Web</strong> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" >
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -120,12 +134,49 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/contact/">Contact</a>
                         </li>
+                        
+                           <div class="dropdown"> 
+                               <button onclick="myFunction()" class="dropbtn">
+                                 <i class="fas fa-user-circle icon"></i>
+                               </button>
+                             <div id="myDropdown" class="dropdown-content dropdown-menu-right">
+                               {% if user.is_authenticated %}
+                                <a href="{% url 'logout' %}">Sign Out</a>
+                                <a href="{% url 'login' %}">Login with other account</a>
+                                    {% if user.is_lawyer %}
+                                        <a href="{% url 'lawyer_profile' %}">My Profile</a>
+                                    {% elif user.is_client %}   
+                                        <a href="{% url 'client_profile' %}">My Profile</a>
+                                    {% endif %}
+                                {% else %}
+                                   <a href="{% url 'login' %}">Login</a>
+                                {% endif %}
+                                   <a href="{% url 'register' %}">Create a new account</a>
+                             </div>
+                           </div>
+                        
                     </ul>
-                    
                 </div>
             </nav>
         </header>
-        
+        <script>
+            function myFunction() {
+              document.getElementById("myDropdown").classList.toggle("show");
+            }
+            
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+        </script>
         
         
         {% block content %}

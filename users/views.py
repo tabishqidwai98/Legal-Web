@@ -13,6 +13,7 @@ from .models import Category, Cases_Fought, Contact,User,Lawyer, Client,Rating
 
 def index(request):
     return render(request, 'index.html')
+   
 
 def about(request):
     return render(request, 'about.html')
@@ -25,6 +26,7 @@ def contact(request):
      message=request.POST.get('message',"")
      contact=Contact(full_name=full_name,email=email,subject=subject,message=message)
      contact.save()
+     messages.success(request,('Your query has been received by the team.'))
      
     return render(request, 'contact.html')
 
@@ -38,7 +40,7 @@ class ClientSignUpView(CreateView):
     model = User
     form_class = ClientSignUpForm
     template_name = 'registration/signup_form.html'
-
+    
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'client'
         return super().get_context_data(**kwargs)
@@ -47,6 +49,19 @@ class ClientSignUpView(CreateView):
        
         user = form.save()
         return redirect('dashboard')
+
+def client_Profile(request):
+    if request.method == "POST":
+        user_form = ClientForm(request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request,('Your profile was successfully updated!'))
+        else:
+            messages.error(request,('Unable to complete request'))
+        return redirect ("profile")
+    user_form = ClientForm()
+    client = Client.objects.get(pk=request.user.id)
+    return render(request = request, template_name ="users/edit_user.html", context = {"user": client,"user_form": user_form})
 
 class LawyerSignUpView(CreateView):
     model = User
@@ -247,7 +262,6 @@ def edit_Cases_Fought(request,id):
 
 
 from django.http import JsonResponse
-# Create your views here.
 
 @login_required
 def rating(request,pk):
@@ -288,14 +302,3 @@ def rating(request,pk):
         }
     return render(request, 'users/rating.html', ctx)
 
-
-def rate_image(request):
-    if request.method == 'POST':
-        el_id = request.POST.get('el_id')
-        val = request.POST.get('val')
-        print(val)
-        obj = Rating.objects.get(id=el_id)
-        obj.score = val
-        obj.save()
-        return JsonResponse({'success':'true', 'score': val}, safe=False)
-    return JsonResponse({'success':'false'})
