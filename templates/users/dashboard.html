@@ -8,19 +8,10 @@
     margin: 0;
    }
    .container-fluid.wrapper{
-       background-color: aliceblue;
        padding: 0;
    }
    
-    .img{
-        background-image: url("{% static 'img\law2.jpg' %}");
-        background-size: cover;
-        height: 70vh;  
-    }
-    .img .btn{
-        margin-left: 90%;
-    }
-    .text{
+   .text{
         justify-content: center;
         display: flex;
     }
@@ -105,18 +96,24 @@
   transition: 0.2s;
   }
 
+  .lead{
+    height: 80vh;
+    width: 70vw;
+    align-items: center;
+  }
+  .lead .img .img-top{
+   width: 40vw;
+   height: 70vh;
+   object-fit: cover;
+  }
   .column .card-block .btn:hover{
   background-color:  #EE9E81;
   color: rgb(255, 255, 255);
   }
-  @media screen and (max-width: 660px) {
-  .column {
+  @media screen and (max-width: 660px) 
+  {.column {
     width: 100%;
-    display: flex;
-  }
-  .img .btn{
-    margin-left: 60%;
-  }
+    display: flex;}
   }
  </style>
 
@@ -124,38 +121,43 @@
 
 {% block content %}
 
- <div class="container-fluid  wrapper">
-   <div class="img">
-    
-    <div class="text">
-        <div class="card">
-            <div class="card-body">
-              <b>Hello, {{ user.username|default:'Guest' }} </b>
-                <h4 class="card-title">
-                  You are
-                    {% if user.is_authenticated %} 
-                        {% if user.is_lawyer %}
-                        Lawyer
-                        {% elif user.is_client %}
-                        Client
-                        {% elif user.is_superuser %}
-                        Admin
-                        {% endif %}
-                    {% else %}
-                      Guest
-                    {% endif %}
-                </h4>
-              
-            </div>
+  <div class="container-fluid  wrapper">
+    <div class="row lead">
+      <div class="col-lg-6">
+        <div class="img">
+          <img class="img-top" src="static\img\back law.jpg" alt="picture not found">
         </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="text">
+          <div class="card">
+            <div class="card-body">
+               <b>
+                Hello, {{ user.username|default:'Guest' }} 
+               </b>
+            <h4 class="card-title">
+              You are
+              {% if user.is_authenticated %} 
+              {% if user.is_lawyer %}
+              Lawyer
+              {% elif user.is_client %}
+              Client
+              {% elif user.is_superuser %}
+              Admin
+              {% endif %}
+              {% else %}
+              Guest
+              {% endif %}
+            </h4>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-</div>
-<div class="container ">
-   
-        <div>
-          {% if user.is_authenticated %}   
+  </div>
 
+ <div class="container ">
+    <div>
+          {% if user.is_authenticated %}   
               {% if user.is_lawyer %}
                 <div class="row">
                   <div class="column">
@@ -268,6 +270,6 @@
               </div>
             </div>
          </div>
-       </div>
     </div>
+  </div>
 {% endblock content %}

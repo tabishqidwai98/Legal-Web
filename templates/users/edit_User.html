@@ -16,21 +16,23 @@
 	    <div class="row justify-content-center">
 	    	<div class="col-sm-6  pb-5">
 		    	<div class="card p-5">
-			    	<h4 class="card-title font-weight-bold text-center">Hello, {{ user.username|title }}</h4>
+			    	<h4 class="card-title font-weight-bold text-center">{{ client.user|title }}</h4>
 			      	<hr>
 			    	<div class="card-text">
-              <img class="card-img-top" src="{{ user.pic.url }} " alt="{{user.username}}">
-			    		<p class="text mb-0" style="font-size: 12px">Username:{{ user.username }}</p>
+              <img class="card-img-top" src="{{ client.pic.url }} " alt="{{client.username}}">
+			    		<p class="text mb-0" style="font-size: 12px">Username: {{ client.user }}</p>
 			    		
-			    		<p class="text mb-0" style="font-size: 12px">Details:</p>
-				  		<p class="text mb-0" style="font-size: 12px">Email:{{ user.email }}</p>
+			    	
+				  		<p class="text mb-0" style="font-size: 12px">Email:  {{ client.email }}</p>
 				  		
-                        <p class="text mb-0" style="font-size: 12px;">Contact No:</p>
-                        <p>{{user.contact}}</p>
-                        <div class="text-right">
-                            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
-                        </div>
-                       
+              <p class="text mb-0" style="font-size: 12px;">Contact No:  {{client.contact}}</p>
+              <div class="text-left">
+                <button type="button" href="{% url view_cases %}" class="btn btn-outline-primary btn-sm">My Posts</button>
+              </div>  
+              <div class="text-right">
+                <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
+              </div>                              
+                                 
 			        </div>
 		    	</div>
 			</div>
@@ -48,7 +50,7 @@
                   </button>
               </div>
               <div class="modal-body">
-                  <form method="post">
+                  <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ user_form|crispy }}
               </div>

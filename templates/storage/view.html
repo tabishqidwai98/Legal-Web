@@ -4,21 +4,38 @@
 
 
 {% block css %}
-
+<style>
+    .container{
+        padding-top: 20px;
+    }
+    .col-lg-6{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .card{
+        border-radius: .5rem;
+        width: 400px;
+        height: 600px;
+      
+    }
+    .card-img-top{
+        width: 400px;
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
 {% endblock css %}
 
 
 {% block content %}
-<nav class="nav">
-    <a class="nav-link active" href="{% url 'dashboard' %}">dashboard</a>
-</nav>
+
 <div class="container">
     <div class="row  justify-content-center">
         <div class="col-l2">
             <form class="form-inline" action="{% url 'search_cases' %}">
                 <div class="form-group">
                     <label for="q" class="p-2"><i class="fa fa-search" aria-hidden="true"></i> </label>
-                    <input type="text" name="q" id="q" class="form-control " placeholder="model name" aria-describedby="qhelp">
+                    <input type="text" name="q" id="q" class="form-control " placeholder="Case name" aria-describedby="qhelp">
                     <button class="btn btn-sm btn-primary">search</button>
                 </div>
             </form>
@@ -33,17 +50,29 @@
                 <a href="{% url 'detail_cases' record.id %}"><img class="card-img-top" src="{{ record.case_image.url }} " alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title"><a href="{% url 'detail_cases' record.id %}">{{record.caseName}}</a></h4>
-                    <p class="card-text">{{record.description}}</p>
+                    <p class="card-text">{{record.description}}  </p>
+                    <li class="list-group-item">Upload: {{record.user}}</li>
+                    <li class="list-group-item">Posted on:{{record.requested_on}}</li>
+                    <li class="list-group-item">{{record.category}}</li>
+                    <li class="list-group-item">Phone no.:{{record.contact_No}}</li>
+                  
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="{% url 'detail_cases' record.id %}"><i class="fa fa-info" aria-hidden="true"></i> view details</a>
+                    
                     <a class="btn btn-warning" href="{% url 'delete_case' record.pk %}"><i class="fa fa-remove" aria-hidden="true"></i>delete</a>
                     <a class="btn btn-info" href="{% url 'edit_case' record.pk %}"><i class="fa fa-edit" aria-hidden="true"></i>edit</a>
 
                 </div>
             </div>
         </div>
-        
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Detail of {{record.caseName}}</h4>
+                    <p class="card-text">{{record.description|linebreaks}}</p>
+                </div>
+            </div>
+        </div>
         
         {% empty %}
         <p class="lead">No records found</p>

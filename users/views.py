@@ -14,7 +14,6 @@ from .models import Category, Cases_Fought, Contact,User,Lawyer, Client,Rating
 def index(request):
     return render(request, 'index.html')
    
-
 def about(request):
     return render(request, 'about.html')
 
@@ -52,16 +51,18 @@ class ClientSignUpView(CreateView):
 
 def client_Profile(request):
     if request.method == "POST":
-        user_form = ClientForm(request.POST)
+        user_form = ClientForm(request.POST,request.FILES)
         if user_form.is_valid():
-            user_form.save()
+            fd =user_form.save(commit=False)
+            fd.user = request.user
+            fd.save()
             messages.success(request,('Your profile was successfully updated!'))
         else:
             messages.error(request,('Unable to complete request'))
-        return redirect ("profile")
+        return redirect ("client_profile")
     user_form = ClientForm()
     client = Client.objects.get(pk=request.user.id)
-    return render(request = request, template_name ="users/edit_user.html", context = {"user": client,"user_form": user_form})
+    return render(request = request, template_name ="users/edit_user.html", context = {"client": client,"user_form": user_form})
 
 class LawyerSignUpView(CreateView):
     model = User
@@ -78,16 +79,18 @@ class LawyerSignUpView(CreateView):
 
 def lawyer_Profile(request):
     if request.method == "POST":
-        user_form = LawyerForm(request.POST)
+        user_form = LawyerForm(request.POST,request.FILES)
         if user_form.is_valid():
-            user_form.save()
+            fd =user_form.save(commit=False)
+            fd.user = request.user
+            fd.save()
             messages.success(request,('Your profile was successfully updated!'))
         else:
             messages.error(request,('Unable to complete request'))
-        return redirect ("profile")
+        return redirect ("lawyer_profile")
     user_form = LawyerForm()
     lawyer =Lawyer.objects.get(pk=request.user.id)
-    return render(request = request, template_name ="users/profile.html", context = {"user":lawyer,"user_form": user_form})
+    return render(request = request, template_name ="users/profile.html", context = {"lawyer":lawyer,"user_form": user_form})
 
 def lawyer_Profile_views(request, pk):
     result = Lawyer.objects.get(pk=pk)

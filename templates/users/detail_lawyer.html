@@ -95,12 +95,13 @@
             {% for case in cases %}
             
             <ul class="list-group ">
-                <li class="list-group-item"><p class="lead">Case {{case.id}}</p></li>
+                <li class="list-group-item"><p class="lead">Case {{case.id}} | {{case.uploaded_on}}</p></li>
                 <li class="list-group-item">Case Name:{{case.case}}</li>
                 <li class="list-group-item">Category:{{case.category}}</li>
                 <li class="list-group-item">Summary: {{case.summary}}</li>
                 <li class="list-group-item">Status:{{case.status}}</li>    
             </ul>
+            
             {% empty %}
                 <ul class="list-group">
                     <li class="list-group item">No cases  fought</li>

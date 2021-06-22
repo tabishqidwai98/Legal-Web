@@ -71,6 +71,7 @@ class Cases_Fought(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
     user = models.ForeignKey(Lawyer, on_delete = models.CASCADE)
     status = models.CharField(max_length=255, choices = status_value, default=status_value[0][1])
+    uploaded_on = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.case
   
@@ -83,14 +84,7 @@ class Contact(models.Model):
       def __str__(self):
         return self.full_name
 
-
-
-
-
-
-
 from django.core.validators import MaxValueValidator, MinValueValidator
-# Create your models here.
 
 class Rating(models.Model):
     lawyer = models.ForeignKey(Lawyer,on_delete=models.CASCADE)

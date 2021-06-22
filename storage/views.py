@@ -65,8 +65,8 @@ def query_Cases(request):
 def detail_of_Cases(request,pk):
     result = Cases.objects.get(pk=pk)
     reviews = ReviewCases.objects.filter(Case_id=pk)
-    context = {'result':result,'reviews':reviews}
-    return render(request,'storage/detail.html',context)
+    ctx = {'result':result,'reviews':reviews}
+    return render(request,'storage/detail.html',ctx)
 
 def edit_Case(request,pk):
     try:
