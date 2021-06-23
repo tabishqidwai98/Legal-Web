@@ -62,7 +62,7 @@ def client_Profile(request):
         return redirect ("client_profile")
     user_form = ClientForm()
     client = Client.objects.get(pk=request.user.id)
-    return render(request = request, template_name ="users/edit_user.html", context = {"client": client,"user_form": user_form})
+    return render(request = request, template_name ="users/edit_User.html", context = {"client": client,"user_form": user_form})
 
 class LawyerSignUpView(CreateView):
     model = User

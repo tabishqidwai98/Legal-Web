@@ -7,9 +7,7 @@
 {% block css %}
 <style>
     
-    .container{
-   
-    }
+    
     .row{
         justify-content: center;
     align-items: center;
@@ -20,8 +18,7 @@
     }
     .card{
         background-color: #EE9E81;
-        width: 500px;
-        height: 700px;
+        
         color: white;
         
     }
@@ -53,7 +50,7 @@
                             {% csrf_token %}
                             {{ casesFoughtForm|crispy }}
                         </div>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer text-right">
                             <button class="btn btn-success">Save</button>
                         </div>
                     </div>

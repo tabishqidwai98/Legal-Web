@@ -101,7 +101,8 @@
     width: 70vw;
     align-items: center;
   }
-  .lead .img .img-top{
+  .lead .img {
+  background-image: url("{% static 'img\law.jpg' %}");
    width: 40vw;
    height: 70vh;
    object-fit: cover;
@@ -115,17 +116,17 @@
     width: 100%;
     display: flex;}
   }
- </style>
+</style>
 
 {% endblock css %}
 
 {% block content %}
 
-  <div class="container-fluid  wrapper">
+<div class="container-fluid  wrapper">
     <div class="row lead">
       <div class="col-lg-6">
         <div class="img">
-          <img class="img-top" src="static\img\back law.jpg" alt="picture not found">
+          
         </div>
       </div>
       <div class="col-lg-6">
@@ -155,7 +156,7 @@
     </div>
   </div>
 
- <div class="container ">
+  <div class="container ">
     <div>
           {% if user.is_authenticated %}   
               {% if user.is_lawyer %}
@@ -270,6 +271,6 @@
               </div>
             </div>
          </div>
-    </div>
   </div>
+</div>
 {% endblock content %}
