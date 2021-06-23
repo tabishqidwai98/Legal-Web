@@ -12,6 +12,7 @@
 
 </style>
 {% endblock css %}
+
 {% block content %}
 
 	<div class="container mx-auto">
@@ -56,9 +57,9 @@
                         {{ user_form|crispy }}
               </div>
                 <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary">Save changes</button>
+                      <button type="submit" class="btn btn-success">Save changes</button>
                   </form> 
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
           </div>
         </div>

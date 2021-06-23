@@ -19,8 +19,6 @@
                 <div class="card-body">
                     <div class="card-title"><a href="{% url 'lawyer_profile' record.pk %}">{{record.user.username}}</a></div>
                    <div class="card-title"><a href="{% url 'lawyer_profile' record.pk %}">{{record.lawyertype}}</a></div>
-                    <p class="card-text">{{record.Category}}</p>
-                    <p class="card-text lead">{{record.General_Fee}}</p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary" href="{% url 'lawyer_profile' record.pk %}"><i class="fa fa-info" aria-hidden="true"></i> View Details</a>

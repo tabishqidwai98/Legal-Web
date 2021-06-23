@@ -4,59 +4,57 @@
 
 {% load crispy_forms_tags %}
 
+{% block css %}
+<style>
+    
+    .container{
+   
+    }
+    .row{
+        justify-content: center;
+    align-items: center;
+    }
+    .col-6{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .card{
+        background-color: #EE9E81;
+        width: 500px;
+        height: 700px;
+        color: white;
+        
+    }
+    .card-header{
+        
+       display: flex;
+    }
+    .card-body{
+       
+        width: auto;
+        height: auto; 
+    }
+   
+    </style>
+{% endblock css %}
+    
 
 {% block content %}
-<style>
-.body{
-    margin: 0;
-    background-color: #fff;
-    align-items: center;
-}
-.container{
-display: inline-block;
-align-self: center;
-}
-.row{
-    padding-left: 15px;
-    padding-right: 15px;
-align-items: center;
-}
 
-.card{
-    background-image: url("{% static 'img/bg.jpg' %}");
-    width: auto;
-    height: auto;
-    color: #fff;
-    background-color: #fff;
-    
-}
-.card-header{
-   display: flex;
-}
-.card-body{
-    color: #fff;
-    width: auto;
-    height: auto; 
-}
-.card-body .form-control{
-    opacity: .5;
-
-}
-</style>
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <form enctype="multipart/form-data" method="post">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Upload Your Profile</h4>
+                            <h4>Add Case Details</h4>
                         </div>
                         <div class="card-body">
                             {% csrf_token %}
                             {{ casesFoughtForm|crispy }}
                         </div>
                         <div class="card-footer text-muted">
-                            <button class="btn btn-primary">Save</button>
+                            <button class="btn btn-success">Save</button>
                         </div>
                     </div>
                 </form>
