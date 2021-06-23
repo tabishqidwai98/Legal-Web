@@ -40,14 +40,13 @@
         height: 300px; 
         object-fit: contain; 
     }
+        
     .card-link{
-       align-items: baseline;
+        float: right;
     }
-    
-    .card-link{
-        margin-left: 55%;
+    .list-group-item{
+        text-transform: capitalize;
     }
-    
     </style>
 {% endblock css %}
 
@@ -78,7 +77,7 @@
                 </div>
                 <div class="card-footer">
                 <span class="" id="myPopup"> {{tot_rating}} <i class="fa fa-star" aria-hidden="true"></i> Lawyer </span>
-                <a href="{% url 'rating' result.pk %}" id="rate" class="card-link"> <i class="fa fa-star" aria-hidden="true"></i>Give Rating</a>
+                <a href="{% url 'rating' result.pk %}" id="rate"  class="card-link"> <i class="fa fa-star" aria-hidden="true"></i>Give Rating</a>
   
                 </div>
             </div>
@@ -96,10 +95,10 @@
             
             <ul class="list-group ">
                 <li class="list-group-item"><p class="lead">Case {{case.id}} | {{case.uploaded_on}}</p></li>
-                <li class="list-group-item">Case Name:{{case.case}}</li>
-                <li class="list-group-item">Category:{{case.category}}</li>
+                <li class="list-group-item">Case Name: {{case.case}}</li>
+                <li class="list-group-item">Category: {{case.category}}</li>
                 <li class="list-group-item">Summary: {{case.summary}}</li>
-                <li class="list-group-item">Status:{{case.status}}</li>    
+                <li class="list-group-item">Status: {{case.status}}</li>    
             </ul>
             
             {% empty %}

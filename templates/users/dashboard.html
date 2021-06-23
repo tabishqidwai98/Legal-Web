@@ -6,24 +6,18 @@
 <style>
    body{
     margin: 0;
+    overflow: scroll;
    }
    .container-fluid.wrapper{
        padding: 0;
    }
    
-   .text{
-        justify-content: center;
-        display: flex;
-    }
-    
     a.waves-effect, a.waves-light{
       display: inline-block;
       align-self: flex-end;
     }
 
     .text .card{
-        display: flex;
-        align-self: center;
         height: 150px;
         width: 400px;
         
@@ -44,7 +38,7 @@
         justify-content: center;
     }
   
-   .row {
+   .container .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -72,10 +66,12 @@
     overflow: hidden;
     transition: 0.3s;
     }
+
    .column .card:hover{
     transform: translateY(-0.5%);
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.651);
     }
+
   .column .card .card-block .img-fluid{
   display: block;
   border-radius: 0.5rem;
@@ -95,47 +91,77 @@
   cursor: pointer;
   transition: 0.2s;
   }
-
-  .lead{
-    height: 80vh;
-    width: 70vw;
-    align-items: center;
-  }
-  .lead .img {
-  background-image: url("{% static 'img\law.jpg' %}");
-   width: 40vw;
-   height: 70vh;
-   object-fit: cover;
-  }
   .column .card-block .btn:hover{
   background-color:  #EE9E81;
   color: rgb(255, 255, 255);
   }
+  .lead{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 70vw;
+    justify-content: center;
+  }
+  .col-lg-10{
+    padding-left: 40px;
+    display: flex;
+  }
+  .lead .img {
+   background-image: url("{% static 'img\lawback2.jpg' %}");
+   background-repeat: no-repeat;
+   width: 50vw;
+   height: 70vh;
+   object-fit: cover;
+   align-items: center;
+   display: flex;
+   
+  }
+ 
   @media screen and (max-width: 660px) 
   {.column {
     width: 100%;
     display: flex;}
+ 
+  .lead{
+    display: flex;
+    height: auto;
+    width: auto;
+  }
+  
+  .lead.img {
+      display: flex;
+      width: 100%;
+      height: 50%;
+      object-fit: cover;
+    }
+  
+  .col-lg-10{
+    width: 90%;
+    height: 50%;
+    display: flex;
+    padding-left: 0;
+  }
+ 
   }
 </style>
-
 {% endblock css %}
 
 {% block content %}
+<style>body{ background-color: #fff;}</style>
 
 <div class="container-fluid  wrapper">
     <div class="row lead">
-      <div class="col-lg-6">
+      <div class="col-lg-10">
         <div class="img">
-          
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-10">
         <div class="text">
           <div class="card">
             <div class="card-body">
-               <b>
+              <b>
                 Hello, {{ user.username|default:'Guest' }} 
-               </b>
+              </b>
             <h4 class="card-title">
               You are
               {% if user.is_authenticated %} 
@@ -164,7 +190,7 @@
                   <div class="column">
                     <div class="card">
                       <div class="card-block">
-                        <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                        <img src="" alt="Jane" class="img-fluid">
                         <div class="card-title">
                          <a href="{% url 'view_cases' %}" class="btn">View Cases Requests</a> 
                         </div>
@@ -176,7 +202,7 @@
                     <div class="column">
                         <div class="card">
                           <div class="card-block">
-                            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                            <img src="static\img\book.jpg" alt="Jane" class="img-fluid">
                             <div class="card-title">
                              <a href="{% url 'add_CasesFought' %}" class="btn">Add Cases Fought</a> 
                             </div>
@@ -188,7 +214,7 @@
                     <div class="column">
                         <div class="card">
                           <div class="card-block">
-                             <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                             <img src="static\img\book.jpg" alt="Jane" class="img-fluid">
                              <div class="card-title">
                               <a href="{% url 'lawyer_profile' %}" class="btn">Edit Profile</a>
                              </div>
@@ -198,7 +224,7 @@
                     <div class="column">
                       <div class="card">
                         <div class="card-block">
-                           <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                           <img src="static\img\book.jpg" alt="Jane" class="img-fluid">
                            <div class="card-title">
                              <a href="{% url 'password_change' %}" class="btn">Change password</a>
                            </div>
@@ -214,7 +240,7 @@
                     <div class="column">
                      <div class="card">
                         <div class="card-block">
-                            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                            <img src="static\img\book.jpg" alt="Jane" class="img-fluid">
                             <div class="card-title">
                              <a href="{% url 'view_lawyer' %}" class="btn">View Lawyers</a> 
                             </div>
@@ -226,7 +252,7 @@
                  <div class="column">
                     <div class="card">
                       <div class="card-block">
-                        <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                        <img src="static\img\book.jpg" alt="Jane" class="img-fluid">
                         <div class="card-title">
                           <a href="{% url 'upload_cases' %}" class="btn">Post your Case</a> 
                         </div>
@@ -236,7 +262,7 @@
                  <div class="column">
                   <div class="card">
                     <div class="card-block">
-                       <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                       <img src="static\img\book.jpg" alt="Jane" class="img-fluid">
                        <div class="card-title">
                         <a href="{% url 'client_profile' %}" class="btn">Edit Profile</a>
                        </div>
@@ -247,7 +273,7 @@
                  <div class="column">
                     <div class="card">
                       <div class="card-block">
-                         <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGl0aWdhdGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
+                         <img src="static\img\book.jpg" alt="Jane" class="img-fluid">
                          <div class="card-title">
                            <a href="{% url 'password_change' %}" class="btn">Change password</a>
                          </div>

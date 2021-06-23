@@ -5,7 +5,6 @@
 {% block css %}
 <style>
   body {
-  
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: rgba(255, 255, 255, 0.712);
@@ -87,6 +86,7 @@
     color: rgb(255, 255, 255);
   }
   .lead{
+    display: flex;
     height: 80vh;
     width: 70vw;
     align-items: center;
@@ -94,6 +94,7 @@
   .img .img-top{
    width: 40vw;
    height: 70vh;
+   display: flex;
    object-fit: cover;
   }
   .container::after, .row::after {
@@ -102,9 +103,19 @@
     display: table;
   }
   @media screen and (max-width: 660px) {
+    
     .column {
       width: 100%;
       display: flex;
+    }
+    .lead{
+     height: auto;
+     width: auto;
+    }
+    .img .img-top{
+      display: flex;
+      height: 100%;
+      width: 100%;
     }
   }
 </style>
