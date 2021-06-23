@@ -11,6 +11,7 @@
     {% block css %}
     
     {% endblock css %}
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap');
         
@@ -30,33 +31,35 @@
             padding: .8rem;
             background-color: #D95C46;
         }
-        
         .navbar-nav li{
-            padding-right: 40px;
+            padding-left: 40px;
         }
+
         .navbar-dark .navbar-brand{
             color: #fff;
         }
         .nav-link{
             font-size: 1.5em!important;
-            border-radius: 8px;
+            border: none;
         }
-       
         .nav-link:hover {
-          border-radius: 8px;
           border-bottom: solid 2px color rgb(255, 253, 253);
-            
+          color: #fff;
         }
 .dropbtn {
   background-color: transparent;
   color: white;
   border: none;
   cursor: pointer;
+  font-size: xx-large;
 }
-.icon{font-size: xx-large;}
-
+.drop{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 .dropbtn:hover, .dropbtn:focus {
-  background-color: red;}
+  background-color:transparent;}
 
 .dropdown {
   position: relative;
@@ -113,48 +116,48 @@
                 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item ">
                             <a class="nav-link" href="/">Home</span></a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item ">
                             <a class="nav-link" href="/about/">About</a>
                         </li>
                         
                         {% if user.is_authenticated %}
-                        <li class="nav-item active">
+                        <li class="nav-item ">
                             <a class="nav-link" href="/dashboard/">Dashboard</a>
                         </li> 
-                        <li class="nav-item active">
+                        <li class="nav-item ">
                             <a class="nav-link" href="{% url 'chat' %}">Discuss</a>
                         </li> 
                         {% else %}
                         
                         {% endif %}
                         
-                        <li class="nav-item active">
+                        <li class="nav-item ">
                             <a class="nav-link" href="/contact/">Contact</a>
                         </li>
-                        
-                           <div class="dropdown"> 
-                               <button onclick="myFunction()" class="dropbtn">
-                                 <i class="fas fa-user-circle icon"></i>
-                               </button>
-                             <div id="myDropdown" class="dropdown-content dropdown-menu-right">
-                               {% if user.is_authenticated %}
-                                <a href="{% url 'logout' %}">Sign Out</a>
-                                <a href="{% url 'login' %}">Login with other account</a>
-                                    {% if user.is_lawyer %}
-                                        <a href="{% url 'lawyer_profile' %}">My Profile</a>
-                                    {% elif user.is_client %}   
-                                        <a href="{% url 'client_profile' %}">My Profile</a>
-                                    {% endif %}
-                                {% else %}
-                                   <a href="{% url 'login' %}">Login</a>
-                                {% endif %}
-                                   <a href="{% url 'register' %}">Create a new account</a>
-                             </div>
-                           </div>
-                        
+                        <li class="nav-item">
+                            <div class="dropdown"> 
+                                 <button onclick="myFunction()" class="drop">
+                                      <i class="fas fa-user-circle icon dropbtn" type="button"></i>
+                                 </button>
+                                <div id="myDropdown" class="dropdown-content dropdown-menu-right">
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'logout' %}">Sign Out</a>
+                                        <a href="{% url 'login' %}">Login with other account</a>
+                                        {% if user.is_lawyer %}
+                                            <a href="{% url 'lawyer_profile' %}">My Profile</a>
+                                        {% elif user.is_client %}   
+                                            <a href="{% url 'client_profile' %}">My Profile</a>
+                                        {% endif %}
+                                  {% else %}
+                                    <a href="{% url 'login' %}">Login</a>
+                                  {% endif %}
+                                    <a href="{% url 'register' %}">Create a new account</a>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>
