@@ -25,7 +25,7 @@
         border-radius: 0.5rem;
         display: flex;
         width: 500px;
-        height: auto;
+        height: 750px;
         cursor: pointer;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
         overflow: hidden;
@@ -40,6 +40,10 @@
         height: 300px; 
         object-fit: contain; 
     }
+    
+    #scroll{
+    overflow: scroll;
+    }
         
     .card-link{
         float: right;
@@ -47,7 +51,8 @@
     .list-group-item{
         text-transform: capitalize;
     }
-    </style>
+  
+</style>
 {% endblock css %}
 
 
@@ -55,7 +60,7 @@
 
 <div class="container">
     <div class="row my-5">
-        <div class="col-lg-6 mx-auto">
+        <div class="col-lg-6 mx-2">
             <div class="card">
                 <div class="card-body">
                     <img class="card-img-top" src="{{ result.pic.url }} " alt="media\lawyer.png">
@@ -83,31 +88,30 @@
             </div>
         </div>
         
-        <div class="col-lg-4 mx-auto">
+        <div class="col-lg-4 mx-5">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" id="scroll">
                  <h3 class="card-title">
                     <p class="mb-0">Cases fought by this Lawyer</p>
                  </h3>
-            </div>
-            
-            {% for case in cases %}
-            
-            <ul class="list-group ">
-                <li class="list-group-item"><p class="lead">Case {{case.id}} | {{case.uploaded_on}}</p></li>
-                <li class="list-group-item">Case Name: {{case.case}}</li>
-                <li class="list-group-item">Category: {{case.category}}</li>
-                <li class="list-group-item">Summary: {{case.summary}}</li>
-                <li class="list-group-item">Status: {{case.status}}</li>    
-            </ul>
-            
-            {% empty %}
-                <ul class="list-group">
-                    <li class="list-group item">No cases  fought</li>
-                </ul>
-            {% endfor %}
                 
+                {% for case in cases %}
+            
+                <ul class="list-group ">
+                    <li class="list-group-item"><p class="lead">Case {{case.id}} | {{case.uploaded_on}}</p></li>
+                    <li class="list-group-item">Case Name: {{case.case}}</li>
+                    <li class="list-group-item">Category: {{case.category}}</li>
+                    <li class="list-group-item">Summary: {{case.summary}}</li>
+                    <li class="list-group-item">Status: {{case.status}}</li>    
+                </ul>
+            
+                {% empty %}
+                     <ul class="list-group">
+                        <li class="list-group item">No cases  fought</li>
+                     </ul>
+                {% endfor %}
             </div>
+        </div>
         </div>
     </div> 
 </div>

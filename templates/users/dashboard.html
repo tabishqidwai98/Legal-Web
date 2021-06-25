@@ -4,10 +4,7 @@
 
 {% block css %}
 <style>
-   body{
-    margin: 0;
-    overflow: scroll;
-   }
+   
    .container-fluid.wrapper{
        padding: 0;
    }
@@ -17,23 +14,23 @@
       align-self: flex-end;
     }
 
-    .text .card{
-        height: 150px;
-        width: 400px;
+    .col-lg-6 .card{
+      height: 150px;
+      width: 400px;
         
     }
-    .text .card-body .b{
+    .col-lg-6 .card-body .b{
       display: flex;
       justify-content: center;
     }
 
-    .text .card:hover{
+    .col-lg-6 .card:hover{
        cursor: pointer;
        transform: translateY(-1.2%);
        transition: 0.3s;
     }
 
-    .text .card-title{
+    .col-lg-6 .card-title{
         display: flex;
         justify-content: center;
     }
@@ -95,26 +92,28 @@
   background-color:  #EE9E81;
   color: rgb(255, 255, 255);
   }
-  .lead{
+  #lead{
     display: flex;
     flex-direction: column;
-    height: 80vh;
-    width: 70vw;
+    width: 100vw;
+    height: 70vh;
     justify-content: center;
   }
-  .col-lg-10{
-    padding-left: 40px;
-    display: flex;
+  .col-lg-6{
+    padding-top: 50px;
+    padding-left: 5%;
+   
   }
-  .lead .img {
+  #hello{
+    padding-left: 10%;
+  }
+  #lead .img {
    background-image: url("{% static 'img\lawback2.jpg' %}");
    background-repeat: no-repeat;
-   width: 50vw;
+   width: 100%;
    height: 70vh;
    object-fit: cover;
-   align-items: center;
    display: flex;
-   
   }
  
   @media screen and (max-width: 660px) 
@@ -122,24 +121,26 @@
     width: 100%;
     display: flex;}
  
-  .lead{
+  #lead{
     display: flex;
-    height: auto;
-    width: auto;
+    height: 90vh;
+    width: 100vw;
   }
   
-  .lead.img {
+  #lead .img {
       display: flex;
+      margin-left: -65px;
       width: 100%;
-      height: 50%;
+      height: 70vh;
       object-fit: cover;
     }
   
-  .col-lg-10{
-    width: 90%;
+  .col-lg-6{
+    width: 100%;
     height: 50%;
     display: flex;
     padding-left: 0;
+    padding-top: 0;
   }
  
   }
@@ -150,13 +151,13 @@
 <style>body{ background-color: #fff;}</style>
 
 <div class="container-fluid  wrapper">
-    <div class="row lead">
-      <div class="col-lg-10">
+    <div class="row" id="lead">
+      <div class="col-lg-6">
         <div class="img">
+          
         </div>
       </div>
-      <div class="col-lg-10">
-        <div class="text">
+      <div class="col-lg-6 " id="hello">
           <div class="card">
             <div class="card-body">
               <b>
@@ -177,7 +178,7 @@
               {% endif %}
             </h4>
           </div>
-        </div>
+        
       </div>
     </div>
   </div>

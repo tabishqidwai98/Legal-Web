@@ -7,7 +7,7 @@ from users.models import Client
 # Create your models here.
 
 class Cases(models.Model):
-    """Model definition for Cases."""
+    # """Model definition for Cases."""
 
     Case_category = (
         ('Criminal Case',"Criminal Case"),
