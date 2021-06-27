@@ -3,25 +3,42 @@
 
 {% block css %}
 <style>
+    
     .card-bordered{
         border: 1px solid #ebebeb
     }
     .col-lg-6{
-        padding-top: 8%;
+        padding-top: 5%;
     }
-    .card {
+    .card{
         border: 0;
+        height: 500px;
+        width: 500px;
         border-radius: 4px;
         margin-bottom: 30px;
         -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.753);
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.644);
         -webkit-transition: .5s;
-        transition: .5s
+        transition: .5s;
     }
-    
+    .card-header,.card-footer{
+        background-color: #287B92;
+        color: #fff;
+    }
+    .btn{
+        border-radius: 100%;
+    }
+    #chat-message-submit{
+        color: #fff;
+    }
     .card-body,.text{
-        height: 400px;
-        width: 400px;
+        height: 100%;
+        width: 100%;
+    }
+    #chat-log{
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
     }
     p.left,p.right{
         padding:.3rem;
@@ -36,21 +53,30 @@
         width: 100%;
         text-align: right;
     }
-    #chat-log{
-        overflow-y: scroll;
-    }
+   .img-top{
+   width: 40vw;
+   height: 70vh;
+   display: flex;
+   background-color: transparent;
+   object-fit: cover;
+  }
     @media screen and (max-width: 660px) {
     .card{
         width: 100vw;
+        height: 95vh;
         margin-bottom: 0;
         display: inline-block;
     }
     .card-body,.text{
-        height: 72vh;
+        height: 73vh;
         width: 100vw;
     }
+   .card-footer{
+       padding-left: 5px;
+       padding-right: 2px;
+   }
     .col-lg-6 {
-     padding: 0;
+      padding: 0;
       width: 100vw;
       height: auto;
       display: flex;
@@ -80,17 +106,18 @@
                    <div class="text" id="chat-log"> </div>
                 </div>
                <div class="card-footer">
-                   <input id="chat-message-input" type="text" style="width: 80%;" placeholder="Write Something..">
+                   <input id="chat-message-input" type="text" style="width: 85%;" placeholder="Write Something..">
                    <a class="btn text-info">
                    <i class="fa fa-paper-plane" id="chat-message-submit" type="button"></i>
-                   </a> <br>
+                   </a> 
                 </div>
             </div>
         </div>
+        <div class="col-lg-6">
+            <img class="img-top" src="{% static 'img\chat4.png' %}" alt="">
+        </div>
     </div>
        
-    
-    
     {{ room_name|json_script:"room-name" }}
 
     <script>

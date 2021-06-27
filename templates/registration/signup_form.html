@@ -21,7 +21,9 @@
     .text-muted{
     color: #000000!important
     }
-
+    .invalid-feedback{
+        color: #fff;
+    }
     .alert-danger ul {
         list-style: none;
         padding-left: 0;
@@ -36,7 +38,7 @@
         <div class="col-lg-6  formarea">
             <div class="card text-inverse">
                 <div class="card-body">
-                    <h4 class="card-title">Sign Up free</h4>
+                    <h4 class="card-title">Sign Up</h4>
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form|crispy}}

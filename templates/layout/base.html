@@ -215,15 +215,31 @@
                         </div>
                         
                         <div class="col-md-2 mx-auto mb-4">
-                            <h6 class="text-uppercase font-weight-bold">products</h6>
+                            <h6 class="text-uppercase font-weight-bold">Services</h6>
                             <hr class="bg-success mb-4 mt-0 d-inline-block mx-auto" style="width: 85px; height:2px">
                             
-                            <ul class="list-unstyled">
-                                <li class="my-2"><a href="#">HTML 5</a></li>
-                                <li class="my-2"><a href="#">CSS 3</a></li>
-                                <li class="my-2"><a href="#">Bootstrap 4</a></li>
+                            {% if user.is_authenticated %}
+                                
+                             <ul class="list-unstyled">
+                                <li class="my-2"><a href="{% url 'view_lawyer' %}"></a>View Lawyers</li>
+                                <li class="my-2"><a href="{% url 'upload_cases' %}">Post your case</a></li>
+                                {% if user.is_client %}
+                                <li class="my-2"><a href="{% url 'client_profile' %}">Edit your Profile</a></li>
+                                {% elif user.is_lawyer %}
+                                <li class="my-2"><a href="{% url 'lawyer_profile' %}">Edit your Profile</a></li>
+                                <li class="my-2"><a href="{% url 'add_CasesFought' %}">Add Cases fought</a></li>
+                                {% endif %}
+                                    
                                 <li class="my-2"><a href="#">Javascript</a></li>
-                            </ul>
+                             </ul>
+                            {% else %}
+                             <ul class="list-unstyled">
+                                <li class="my-2"><a href="{% url 'login' %}">View Lawyers</a></li>
+                                <li class="my-2"><a href="{% url 'login' %}">Post your case</a></li>
+                                <li class="my-2"><a href="{% url 'login' %}">Edit your Profile</a></li>
+                                <li class="my-2"><a href="{% url 'login' %}">Add Cases fought</a></li>
+                             </ul>
+                            {% endif %}
                         </div>
                         <div class="col-md-2 mx-auto mb-4">
                             <h6 class="text-uppercase font-weight-bold">Usefull Links</h6>

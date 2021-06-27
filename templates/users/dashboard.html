@@ -54,8 +54,7 @@
     }
 
     .column .card{
-    display: block;
-    width: 340px;
+    width: 300px;
     height: 255px;
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.397);
@@ -72,7 +71,7 @@
   .column .card .card-block .img-fluid{
   display: block;
   border-radius: 0.5rem;
-  width: 100%;
+  width: 300px;
   height: 200px;
   object-fit: cover;
   }
@@ -204,7 +203,7 @@
                     <div class="column">
                         <div class="card">
                           <div class="card-block">
-                            <img src="{% static 'img\book.jpg' %}" alt="Jane" class="img-fluid">
+                            <img src="https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                             <div class="card-title">
                              <a href="{% url 'add_CasesFought' %}" class="btn">Add Cases Fought</a> 
                             </div>
@@ -218,21 +217,12 @@
                           <div class="card-block">
                              <img src="{% static 'img\book.jpg' %}" alt="Jane" class="img-fluid">
                              <div class="card-title">
-                              <a href="{% static 'img\book.jpg' %}" class="btn">Edit Profile</a>
+                              <a href="{% url 'lawyer_profile' %}" class="btn">Edit Profile</a>
                              </div>
                           </div>
                         </div>
                     </div>
-                    <div class="column">
-                      <div class="card">
-                        <div class="card-block">
-                           <img src="{% static 'img\book.jpg' %}" alt="Jane" class="img-fluid">
-                           <div class="card-title">
-                             <a href="{% url 'password_change' %}" class="btn">Change password</a>
-                           </div>
-                        </div>
-                      </div>
-                   </div>
+                  
                                 <!--<a href="{% url 'view_cases' %}">View Cases Request</a> <br>
                                 <a href="{% url 'add_CasesFought' %}">Add Cases Fought</a> <br>
                                 <a href="{% url 'lawyer_profile' %}">Edit Profile</a><br>-->
@@ -242,7 +232,7 @@
                     <div class="column">
                      <div class="card">
                         <div class="card-block">
-                            <img src="{% static 'img\book.jpg' %}" alt="Jane" class="img-fluid">
+                            <img src="https://images.unsplash.com/photo-1605664041952-4a2855d9363b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGxhd3llcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                             <div class="card-title">
                              <a href="{% url 'view_lawyer' %}" class="btn">View Lawyers</a> 
                             </div>
@@ -254,7 +244,7 @@
                  <div class="column">
                     <div class="card">
                       <div class="card-block">
-                        <img src="{% static 'img\book.jpg' %}" alt="Jane" class="img-fluid">
+                        <img src="{% static 'img\law3.jpg' %}" alt="Jane" class="img-fluid">
                         <div class="card-title">
                           <a href="{% url 'upload_cases' %}" class="btn">Post your Case</a> 
                         </div>
@@ -264,24 +254,14 @@
                  <div class="column">
                   <div class="card">
                     <div class="card-block">
-                       <img src="{% static 'img\book.jpg' %}" alt="Jane" class="img-fluid">
+                       <img src="{% static 'img\client.png' %}" alt="Jane" class="img-fluid">
                        <div class="card-title">
-                        <a href="{% url 'client_profile' %}" class="btn">Edit Profile</a>
+                        <a href="{% url 'client_profile' %}" class="btn">Visit Profile</a>
                        </div>
                     </div>
                   </div>
               </div>
                 
-                 <div class="column">
-                    <div class="card">
-                      <div class="card-block">
-                         <img src="{% static 'img\book.jpg' %}" alt="Jane" class="img-fluid">
-                         <div class="card-title">
-                           <a href="{% url 'password_change' %}" class="btn">Change password</a>
-                         </div>
-                      </div>
-                    </div>
-                 </div>
                                <!--<a href="{% url 'view_lawyer' %}">View lawyers</a><br>
                                 <a href="{% url 'upload_cases' %}">Add a judicial Case </a> <br>
                                 <a href="{% url 'password_change' %}">change password </a> <br>

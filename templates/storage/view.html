@@ -15,7 +15,7 @@
     .card{
         border-radius: .5rem;
         width: 400px;
-        height: 600px;
+        height: auto;
       
     }
     .card-img-top{
@@ -50,7 +50,7 @@
                 <a href="{% url 'detail_cases' record.id %}"><img class="card-img-top" src="{{ record.case_image.url }} " alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title"><a href="{% url 'detail_cases' record.id %}">{{record.caseName}}</a></h4>
-                    <p class="card-text">{{record.description}}  </p>
+                    
                     <li class="list-group-item">Upload: {{record.user}}</li>
                     <li class="list-group-item">Posted on:{{record.requested_on}}</li>
                     <li class="list-group-item">{{record.category}}</li>

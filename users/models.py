@@ -35,7 +35,7 @@ class Lawyer(models.Model):
     GENDER_CHOICE = (('M','Male'),('F',"Female"))
     email = models.EmailField(max_length=200)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    designation = models.CharField(max_length=25,default='')
+    designation = models.CharField(max_length=100,default='')
     gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='')
     city = models.CharField(max_length=25,default='')
     lawyertype =models.CharField(max_length=25,default='')
