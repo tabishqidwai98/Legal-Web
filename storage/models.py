@@ -26,7 +26,7 @@ class Cases(models.Model):
     category = models.CharField(choices=Case_category, max_length=50)
     description = models.TextField()
     case_image = models.ImageField(upload_to='Case_dir/images',null=True)
-    contact_No = models.IntegerField(unique=True)
+    contact_No = models.CharField(unique=True, max_length=10)
     user = models.ForeignKey(Client,on_delete = models.CASCADE)
     requested_on = models.DateTimeField(auto_now=True)
 

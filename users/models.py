@@ -38,7 +38,7 @@ class Lawyer(models.Model):
     designation = models.CharField(max_length=100,default='')
     gender = models.CharField(max_length=1,choices=GENDER_CHOICE,default='')
     city = models.CharField(max_length=25,default='')
-    lawyertype =models.CharField(max_length=25,default='')
+    lawyertype =models.ForeignKey(Category, on_delete = models.CASCADE)
     contact =models.CharField(max_length=15,default='')
     experience = models.FloatField(default=1,help_text='')
     pic= models.ImageField(upload_to="users/laywers",default="lawyer.png")

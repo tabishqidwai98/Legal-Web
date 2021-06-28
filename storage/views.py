@@ -42,11 +42,34 @@ def upload_form(request):
     return render(request,'storage/add.html',ctx)
 
 
-class CasesListView(ListView):
-    model = Cases
-    template_name = "storage/view.html"
-    paginate_by = 8
-    
+# @login_required
+# def case_view(request):
+#     client = Client.objects.get(user=request.user)
+#     print("client",client)
+#     results = Cases.objects.filter(user=client)
+#     print("results",results)
+#     paginator = Paginator(results, 6) # num of result to show per page, change this
+#     page_num = request.GET.get('page')
+#     page_obj = paginator.get_page(page_num)
+#     context = {
+#         'page_obj':page_obj,
+#     }
+#     return render(request,'storage/view.html',context)
+
+@login_required
+def case_view(request):
+    # client = Client.objects.get(user=request.user)
+    # print("client",client)
+    # results = Cases.objects.filter(user=client)
+    # print("results",results)
+    results = Cases.objects.all()
+    paginator = Paginator(results, 6) # num of result to show per page, change this
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
+    context = {
+        'page_obj':page_obj,
+    }
+    return render(request,'storage/view.html',context)
 
 def query_Cases(request):
     query = request.GET.get('q','')

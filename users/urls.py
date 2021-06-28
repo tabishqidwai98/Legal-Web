@@ -1,4 +1,4 @@
-from storage.views import CasesListView
+
 from .views import about, contact, lawyerProfileListView, CasesFoughtListView, UserProfileListView
 from django.conf.urls import include
 from django.urls import path
