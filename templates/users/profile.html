@@ -9,7 +9,9 @@
         height: 300px; 
         object-fit: contain; 
     }
-
+#icon{
+  align-items: right;
+}
 </style>
 {% endblock css %}
 
@@ -20,9 +22,13 @@
 	    	<div class="col-sm-6  py-5">
 		    	<div class="card p-5">
 			    	<h4 class="card-title font-weight-bold text-center">{{ lawyer.user|title }}</h4>
+            
+           <a href="{% url 'password_change' %}"> <i class="fas fa-user-cog" type="button" id="icon"></i></a>
+            
 			      	<hr>
             <div class="card-text">
               <img class="card-img-top" src="{{ lawyer.pic.url }} " alt="{{lawyer.user}}">
+              
 			    		<p class="text-muted mb-0" style="font-size: 12px">Username:</p>
 			    		<p>{{ lawyer.user }}</p>
 			    		<p class="text-muted mb-0" style="font-size: 12px">Details:</p>

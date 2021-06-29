@@ -16,9 +16,9 @@ def index(request):
     elif request.user.is_lawyer:
         # kya lawyer client se chat krega apni marzi se?
         # because this is stupid
-        clients = Client.objects.all()
+        clients = Lawyer.objects.all()
         ctx = {
-            'chat-header':'Chat with your clients.',
+            'chat_header':'Chat with your clients.',
             'people':clients
         }
         return render(request,'chat/index.html',ctx)

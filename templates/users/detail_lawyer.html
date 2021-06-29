@@ -75,14 +75,17 @@
                          Designation: {{result.designation}} <br><br>
                          Experience: {{result.experience}}
                     </li>
-                    <li class="list-group-item">From: {{result.city}}</li>
-                    <li class="list-group-item">Contact: {{result.contact}} <br>{{result.email}}</li>
+                    <li class="list-group-item"><i class="fas fa-home mr-3" ></i>From: {{result.city}}</li>
+                    <li class="list-group-item"><i class="fas fa-phone mr-3"></i>Contact: {{result.contact}} <br><i class="fas fa-envelope mr-3"></i>{{result.email}}</li>
                     
                  </ul>
                 </div>
+                
                 <div class="card-footer">
                 <span class="" id="myPopup"> {{tot_rating}} <i class="fa fa-star" aria-hidden="true"></i> Lawyer </span>
+                {% if user.is_client %}
                 <a href="{% url 'rating' result.pk %}" id="rate"  class="card-link"> <i class="fa fa-star" aria-hidden="true"></i>Give Rating</a>
+                {% endif %}
   
                 </div>
             </div>
@@ -107,7 +110,7 @@
             
                 {% empty %}
                      <ul class="list-group">
-                        <li class="list-group item">No cases  fought</li>
+                        <li class="list-group item">No cases fought</li>
                      </ul>
                 {% endfor %}
             </div>

@@ -73,7 +73,7 @@ class Cases_Fought(models.Model):
     status = models.CharField(max_length=255, choices = status_value, default=status_value[0][1])
     uploaded_on = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return self.case
+        return f'{self.case}|{self.category}|{self.user}|{self.status}'
   
 class Contact(models.Model):
 

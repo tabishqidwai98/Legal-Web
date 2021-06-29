@@ -155,7 +155,7 @@
                       {% if user.is_client %}
                       <a href="{% url 'upload_cases' %}" class="btn">Post a case</a> 
                       {% else %}
-                      <a href="{% url 'upload_cases' %}" class="btn">Post a case</a>
+                      <a href="#" class="btn">Post a case</a>
                       {% endif  %} 
                     {% else %}
                     <a href="{% url 'login' %}" class="btn">Post a case</a>
@@ -201,7 +201,13 @@
                     <img src="https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bGF3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane" class="img-fluid">
                     <div class="card-title">
                       {% if user.is_authenticated %}
-                       <a href="{% url 'add_CasesFought' %}" class="btn">Add Fought Cases</a>
+                      
+                        {% if user.is_lawyer %}
+                          <a href="{% url 'add_CasesFought' %}" class="btn">Add Fought Cases</a>
+                        {% else %}
+                          <a href="#" class="btn">Add Fought Cases</a>
+                        {% endif %}
+                        
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">Add Fought Cases</a>
                       {% endif %}
@@ -234,7 +240,7 @@
                        {% if user.is_client %}
                        <a href="{% url 'upload_cases' %}" class="btn">Ask a Question</a> 
                        {% else %}
-                       <a href="{% url 'upload_cases' %}" class="btn">Ask a Question</a> 
+                       <a href="#" class="btn">Ask a Question</a> 
                        {% endif %}
                       {% else %}
                       <a href="{% url 'login' %}" class="btn">Ask a Question</a>
@@ -245,8 +251,6 @@
               </div>  
         </div>
 </div> 
-<!-- Start of HubSpot Embed Code -->
-<script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/20138079.js"></script>
-<!-- End of HubSpot Embed Code -->
+
 {% endblock content %}
     

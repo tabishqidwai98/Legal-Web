@@ -134,14 +134,13 @@ html {
       <div class="card-block">
         <img src="https://cdn.powerpackelements.com/wp-content/uploads/2017/11/Team-memeber-01.png" alt="Jane" class="img-fluid">
         <div class="card-title">
-          <h2>Jane Doe</h2>
+          <h2>John Taylor</h2>
         </div>
         <div class="card-text">
           <p class="title">CEO & Founder</p>
-          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>jane@example.com</p>
+          <p>example@example.com</p>
         </div>
-        <a  href="#" class="btn">Contact</a>
+        <a  href="{% url 'contact' %}" class="btn">Contact</a>
       </div>
     </div>
   </div>
@@ -155,11 +154,11 @@ html {
           <h2>Jane Doe</h2>
         </div>
         <div class="card-text">
-          <p class="title">CEO & Founder</p>
-          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>jane@example.com</p>
+          <p class="title">Co-Founder</p>
+         
+          <p>example@example.com</p>
         </div>
-          <a href="#" class="btn">Contact</a>
+          <a href="{% url 'contact' %}" class="btn">Contact</a>
         </div>
       </div>
   </div>
@@ -167,16 +166,15 @@ html {
   <div class="column">
     <div class="card">
       <div class="card-block">
-        <img src="https://cdn.powerpackelements.com/wp-content/uploads/2017/11/Team-memeber-01.png" alt="Jane" class="img-fluid">
+        <img src="{% static 'img\about3.png' %}" alt="Jane" class="img-fluid">
           <div class="card-title">
-            <h2>Jane Doe</h2>
+            <h2>Jassica</h2>
           </div>
           <div class="card-text">
-            <p class="title">CEO & Founder</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p>jane@example.com</p>
+            <p class="title">Co-Founder</p>
+            <p>example@example.com</p>
           </div>
-            <a href="#" class="btn">Contact</a>
+            <a href="{% url 'contact' %}" class="btn">Contact</a>
           </div>
         </div>
   </div>
