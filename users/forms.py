@@ -14,24 +14,11 @@ class CustomUserCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + ('email',)
 
 class LawyerForm(forms.ModelForm):
-    email=forms.EmailField(widget=forms.EmailInput,required=False)
-    designation = forms.CharField(widget=forms.TextInput,required=False)
-    gender = forms.ChoiceField(choices=Lawyer.GENDER_CHOICE, widget=forms.RadioSelect,required=False)
-    experience = forms.CharField(widget=forms.TextInput,required=False)
-    city = forms.CharField(widget=forms.TextInput,required=False)
-    image  = forms.ImageField(required=False)
-    contact = forms.CharField(max_length=15,widget=forms.TextInput,required=False)
-  
     class Meta:
         model = Lawyer
         fields = ('designation','contact','email','pic','gender','city','lawyertype','experience')
 
 class ClientForm(forms.ModelForm):
-    email=forms.EmailField(widget=forms.EmailInput,required=False)
-    gender = forms.ChoiceField(choices=Client.GENDER_CHOICE, widget=forms.RadioSelect,required=False)
-    image  = forms.ImageField(required=False)
-    contact = forms.CharField(max_length=15,widget=forms.TextInput,required=False)
-    
     class Meta:
         model = Client
         fields = ('gender','contact','email','pic')
