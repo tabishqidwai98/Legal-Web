@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView
 from django.core.paginator import Paginator
 from .models import Category, Cases_Fought, Contact,User,Lawyer, Client,Rating
+from django.conf import settings
 
 
 # Create your views here.

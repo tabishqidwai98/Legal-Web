@@ -1,6 +1,19 @@
 {% extends 'layout/base.html' %}
 {% load static %}
 
+
+{% block css %}
+<style>
+.img-top{
+    float: right;
+   width: 300px;
+   height: 200px;
+   display: flex;
+   background-color: transparent;
+   object-fit: cover;}
+</style>
+{% endblock css %}
+    
 {% block content %}
 
 <div class="container">
@@ -8,7 +21,7 @@
         <div class="col-8">
             <h3>{{chat_header}}</h3>
         </div>
-        <div class="col-md-8 max-auto">
+        <div class="col-md-6 max-auto">
             
             <div class="list-group">
                 {% for person in people %}
@@ -21,6 +34,9 @@
                 {% endfor %}
                 
             </div>
+        </div>
+        <div class="col-lg-6">
+            <img src="{% static 'img\chatindex.png' %}" class="img-top" alt="">
         </div>
     </div>
 </div>

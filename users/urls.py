@@ -1,4 +1,4 @@
-
+from django.contrib.auth import views as auth_views
 from .views import about, contact, lawyerProfileListView, CasesFoughtListView, UserProfileListView
 from django.conf.urls import include
 from django.urls import path
@@ -10,6 +10,11 @@ urlpatterns = [
     path('',index,name='index'),
     path('dashboard/', dashboard, name='dashboard'),
     path('accounts/',include('django.contrib.auth.urls')),
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('password_reset_confirm/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(), name='password_reset'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+
     path('register/', register, name='register'),
     path('accounts/signup', register, name='register'),
     path('accounts/signup/client', ClientSignUpView.as_view(), name='client_register'),
